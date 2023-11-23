@@ -1,16 +1,37 @@
-import ToolBar from "../components/ToolBar"
-import { Link } from "react-router-dom"
+import {  useEffect, useState } from 'react'
+import ProductGrid from '../components/ProductGrid';
+import Cart from '../components/Cart';
+import ToolBar from '../components/ToolBar';
+import restService from '../services/restService';
 
-export default function Homepage(){
-        return(
-        <div>
-            <ToolBar/>
+export default function Homepage({fillCart, cart}){
+    const [products, setProducts] = useState([]);
 
-            <h1>Welcome to Costco I love you!</h1>
-            <h2>
-                <Link to="../products">Take me to the products!</Link>
-            </h2>
-            
-        </div>
+    useEffect(()=> loadProducts, [])
+    
+    const loadProducts = async ()=>{
+        try {
+            const products = await restService.getAll();
+            setProducts(products) 
+        } catch (error) {
+            console.error("error fetching", error);
+        }
+    }
+    
+
+    try {
+        return ( 
+            <div>
+                <ToolBar/>
+                <h3>Katalog</h3>
+                <ProductGrid products={products} fillCart={fillCart} />
+                <Cart cart={cart}/>
+            </div>
+        );
+    } catch(error){
+        return ( 
+            <h2>Error</h2>
         )
+    }
+
 }

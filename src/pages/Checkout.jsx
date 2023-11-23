@@ -1,22 +1,20 @@
 import ToolBar from "../components/ToolBar";
-import { useLocation } from "react-router-dom";
-import Cart from "../components/Cart";
+import Register from "../components/Register";
+import CheckoutBanner from "../components/CheckoutBanner";
 
-export default function Checkout(){
+export default function Checkout({cart, fillCart, reduceCart}){
     try {
-        const location = useLocation();
-        const { cart }  = location.state;
         return(
             <>
                 <ToolBar/>
-                <Cart cart={cart}/>
+                <Register cart={cart} fillCart={fillCart} reduceCart={reduceCart}/>
+                <CheckoutBanner cart={cart}/>
             </>
         )
     } catch (error) {
         return(
             <>
                 <ToolBar/>
-                <Cart cart={[]}/>
             </>
         )    }
 
