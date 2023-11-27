@@ -1,7 +1,9 @@
-import {Routes, Route} from "react-router-dom"
+import {Routes, Route, Navigate, Outlet} from "react-router-dom"
 import HomePage from "../pages/Homepage"
 import Checkout from "../pages/Checkout"
+import Admin from "../pages/Admin";
 import { useState } from "react";
+import Login from "../pages/Login";
 
 export default function Router(){
   const [cart, setCart] = useState([]);
@@ -37,10 +39,26 @@ export default function Router(){
 
   }
 
+  const emptyCart = ()=> {
+    setCart([]);
+  }
+
+
+  const AdminAuth = () => {
+    const isAuthenticated = sessionStorage.getItem("authenticated")
+    return isAuthenticated ? <Outlet /> : <Navigate to="/login" />;
+  };
+
+
+
   return(
       <Routes>
-        <Route path="/" element={<HomePage fillCart={fillCart} cart={cart}/>}/>
-        <Route path="/checkout" element={<Checkout cart={cart} fillCart={fillCart} reduceCart={reduceCart}/>}/>
+        <Route path="/" element={<HomePage fillCart={fillCart} cart={cart} emptyCart={emptyCart}/>}/>
+        <Route path="/checkout" element={<Checkout cart={cart} fillCart={fillCart} reduceCart={reduceCart} emptyCart={emptyCart}/>}/>
+        <Route element={<AdminAuth />}>
+          <Route path="/admin" element={<Admin/>} />
+        </Route>
+        <Route path="login" element={<Login/>}/>
       </Routes>
     )
 }

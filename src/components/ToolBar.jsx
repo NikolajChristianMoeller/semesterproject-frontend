@@ -1,10 +1,10 @@
 import Cart from "./Cart"
 import { Link } from "react-router-dom"
 
-export default function ToolBar({cart}){
+export default function ToolBar({cart, emptyCart}){
     // const [showModal, setShowModal] = useState(false);
     return(
-    <nav className="navbar navbar-expand-lg navbar-light bg-light" aria-label="Offcanvas navbar large">
+    <nav className="navbar fixed navbar-light bg-light" aria-label="Offcanvas navbar large">
         <div className="container-fluid">
             <div className="navbar-brand">                    
                 <Link to="/" style={{textDecoration: "none", color:"black"}}>MikroHome</Link>
@@ -25,12 +25,18 @@ export default function ToolBar({cart}){
                 <li className="nav-item">
                 <Link to="/checkout" style={{textDecoration: "none", color:"black"}} className="nav-link active" aria-current="page">Checkout</Link>
                 </li>
+                <li className="nav-item">
+                <Link to="/login" style={{textDecoration: "none", color:"black"}} className="nav-link active" aria-current="page">Login</Link>
+                </li>
+                <li className="nav-item">
+                <Link to="/admin" style={{textDecoration: "none", color:"black"}} className="nav-link active" aria-current="page">Admin</Link>
+                </li>
               </ul>
               <form className="d-flex mt-3 mt-lg-0" role="search">
                 <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search"/>
                 <button className="btn btn-outline-success" type="submit">Search</button>
               </form>
-              <Cart cart={cart}/>
+              <Cart cart={cart} emptyCart={emptyCart}/>
             </div>
           </div>
         </div>

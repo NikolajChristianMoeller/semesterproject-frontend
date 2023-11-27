@@ -2,10 +2,10 @@ import totalItems from "../services/TotalItems";
 import totalPrice from "../services/TotalPrice";
 import { Link } from "react-router-dom";
 
-export default function Cart({cart}){
+export default function Cart({cart, emptyCart}){
     try {
         return(    
-            <section className="card offcanvas-header" style={{width:"18rem", marginTop:"1.5rem"}}>
+            <section className="card text-center" style={{width:"18rem", marginTop:"1.5rem"}}>
                 <p>Kurv</p>
                 <ul className="card-body list-group list-group-flush">
                 {cart.map((product)=>(
@@ -16,6 +16,9 @@ export default function Cart({cart}){
                 <p>Items in Cart {totalItems(cart)}</p>
                 <button className="btn btn-outline-success">
                     <Link to="../checkout" style={{textDecoration: "none", color:"black"}}>Go to checkout</Link>
+                </button>
+                <button className="btn btn-outline-danger" onClick={()=>emptyCart()}>
+                    Tøm Kurv
                 </button>
             </section>
         )
