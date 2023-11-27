@@ -7,9 +7,9 @@ export default function Register({cart, fillCart, reduceCart}){
                 <p>{product.Name}</p>
                 <p>Qty: {product.amount}</p>
                 <p>Price: {product.Price*product.amount}kr</p>
-                <div>
-                    <button onClick={()=>reduceCart(product)}>-</button>
-                    <button onClick={()=>fillCart(product)}>+</button>
+                <div className="btn-group" role="group">
+                    <button onClick={()=>reduceCart(product)} className="btn btn-dark">-</button>
+                    <button onClick={()=>fillCart(product)} className="btn btn-dark">+</button>
                 </div>
             </section>
         ))}

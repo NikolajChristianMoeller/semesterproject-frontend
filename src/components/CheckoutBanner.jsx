@@ -9,7 +9,6 @@ export default function CheckoutBanner({cart}){
                 <p>Items in Cart {totalItems(cart)}</p>
             </section>
         )
-    
     } catch (error) {
         return(
             <div>

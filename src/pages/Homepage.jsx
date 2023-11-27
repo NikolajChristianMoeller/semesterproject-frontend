@@ -11,7 +11,7 @@ export default function Homepage({fillCart, cart}){
     
     const loadProducts = async ()=>{
         try {
-            const products = await restService.getAll();
+            const products = await restService.getAll("products");
             setProducts(products) 
         } catch (error) {
             console.error("error fetching", error);

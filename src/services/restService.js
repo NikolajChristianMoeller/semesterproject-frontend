@@ -2,9 +2,9 @@ import Product from "../models/product";
 class RestService{
     endpoint = "http://localhost:3000";
 
-    async getAll(){
+    async getAll(type){
         try {
-            const res = await fetch(`${this.endpoint}/products`);
+            const res = await fetch(`${this.endpoint}/${type}`);
             const data = await res.json();
             return data.map(json => new Product(json));    
         } catch (error) {

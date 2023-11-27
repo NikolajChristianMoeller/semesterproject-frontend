@@ -2,26 +2,26 @@
 export default function ProductGrid({products, fillCart}){ 
     try {
         return (
-        <div className="store">
-
-            <section id="product-grid">
+        <div className="container">
+            <div className="row">
                 {products.map((product)=>(
-                    <div className="product" key={product.ID}>
-                        <p style={{fontWeight:"900"}}>{product.Name}</p>
+                    <div className="col" key={product.ID}>
+                        <div className="card">
+                        <img src="/vite.svg" className="card-img-top"/>
+                        <p className="card-header">{product.Name}</p>
                         <p>{product.Price}kr</p>
-                        <p>{product.Description}</p>
-                        <p>{product.Stock}</p>
-                        <div className="colors">
+                        <div className="colors card-footer">
                                 {product.ProductColor.map((color)=>(
                                     <div className="color-dot" key={product.ID + color.ID} style={{backgroundColor:(color.Code)}}/>                            
                                 ))}    
                             </div>
-                        <button onClick={()=> fillCart(product)}>
+                        <button onClick={()=> fillCart(product)} className="btn btn-light">
                         Tilføj til kurv 🛒
                         </button>
                     </div>
+                </div>
                 ))}
-            </section>
+            </div>
         </div>
         )
     
