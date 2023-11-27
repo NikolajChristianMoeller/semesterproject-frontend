@@ -30,8 +30,7 @@ export default function Login(){
     <div className="mb-3">
         <label htmlFor="username" className="form-label">Username</label>
         <input type="text" className="form-control" id="login-username" value={username}
- onChange={(e) => setusername(e.target.value)}
-/>
+            onChange={(e) => setusername(e.target.value)}/>
     </div>
     <div className="mb-3">
         <label htmlFor="login-password" className="form-label">Password</label>
