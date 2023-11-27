@@ -1,6 +1,5 @@
 import {  useEffect, useState } from 'react'
 import ProductGrid from '../components/ProductGrid';
-import Cart from '../components/Cart';
 import ToolBar from '../components/ToolBar';
 import restService from '../services/restService';
 
@@ -22,10 +21,9 @@ export default function Homepage({fillCart, cart}){
     try {
         return ( 
             <div>
-                <ToolBar/>
+                <ToolBar cart={cart}/>
                 <h3>Katalog</h3>
                 <ProductGrid products={products} fillCart={fillCart} />
-                <Cart cart={cart}/>
             </div>
         );
     } catch(error){

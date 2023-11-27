@@ -5,7 +5,8 @@ import { Link } from "react-router-dom";
 export default function Cart({cart}){
     try {
         return(    
-            <section className="card" style={{width:"18rem"}}>
+            <section className="card offcanvas-header" style={{width:"18rem", marginTop:"1.5rem"}}>
+                <p>Kurv</p>
                 <ul className="card-body list-group list-group-flush">
                 {cart.map((product)=>(
                     <li key={product.ID} className="list-group-item">{product.Name}: x{product.amount}</li>

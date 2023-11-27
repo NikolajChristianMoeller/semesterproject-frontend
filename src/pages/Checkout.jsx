@@ -6,7 +6,7 @@ export default function Checkout({cart, fillCart, reduceCart}){
     try {
         return(
             <>
-                <ToolBar/>
+                <ToolBar cart={cart}/>
                 <Register cart={cart} fillCart={fillCart} reduceCart={reduceCart}/>
                 <CheckoutBanner cart={cart}/>
             </>
@@ -14,7 +14,7 @@ export default function Checkout({cart, fillCart, reduceCart}){
     } catch (error) {
         return(
             <>
-                <ToolBar/>
+                <ToolBar cart={cart}/>
             </>
         )    }
 
