@@ -4,6 +4,8 @@ import Checkout from "../pages/Checkout"
 import Admin from "../pages/Admin";
 import { useState } from "react";
 import Login from "../pages/Login";
+import Contactpage from "../pages/Contactpage";
+
 
 export default function Router(){
   const [cart, setCart] = useState([]);
@@ -59,6 +61,7 @@ export default function Router(){
           <Route path="/admin" element={<Admin/>} />
         </Route>
         <Route path="login" element={<Login/>}/>
+        <Route path="/contact" element={<Contactpage cart={cart} emptyCart={emptyCart}/>} />
       </Routes>
     )
 }

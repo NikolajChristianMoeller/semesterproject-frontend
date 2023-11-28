@@ -1,3 +1,6 @@
+import { Link } from "react-router-dom"
+
+
 export default function Footer(){
 
     return(
@@ -6,7 +9,8 @@ export default function Footer(){
             <div className="col">
                 <h5>MIKROHOME</h5>
                 <p>Om os</p>
-                <p>Kontakt</p>
+                
+                 <Link to="/contact" style={{textDecoration: "none", color:"black"}}>Kontakt</Link>
                 <p>Info</p>
             </div>
 
@@ -27,7 +31,6 @@ export default function Footer(){
 
             <div className="col">
                 <h5>SUPPORT</h5>
-                <p>Kontakt</p>
                 <p>FAQ</p>
                 <p>Pleje</p>
                 <p>Tekstilguide</p>
