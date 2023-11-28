@@ -45,8 +45,8 @@ export default function Router(){
 
 
   const AdminAuth = () => {
-    const auth = sessionStorage.getItem("authenticated")
-    return auth ? <Outlet /> : <Navigate to="/login" />;
+    const isAuthenticated = sessionStorage.getItem("authenticated")
+    return isAuthenticated ? <Outlet /> : <Navigate to="/login" />;
   };
 
 

@@ -9,7 +9,7 @@ export default function ProductGrid({products, fillCart}){
                         <div className="card">
                         <img src="/vite.svg" className="card-img-top"/>
                         <p className="card-header">{product.Name}</p>
-                        <p>{product.Price}kr</p>
+                        <p className="ms-5 pt-3">{product.Price}kr</p>
                         <div className="colors card-footer">
                                 {product.ProductColor.map((color)=>(
                                     <div className="color-dot" key={product.ID + color.ID} style={{backgroundColor:(color.Code)}}/>                            

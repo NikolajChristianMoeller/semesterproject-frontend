@@ -15,7 +15,7 @@ export default function Carousel(){
         <div className="carousel-inner">
             <div className="carousel-item active">
             <img src="https://upload.wikimedia.org/wikipedia/commons/e/e6/Mathara_beach_wide_angle_view.jpg" className="d-block w-100 object-fit-fill" alt="..."/>
-            <div className="carousel-caption d-none d-md-block bg-dark bg-opacity-25 rounded-pill">
+            <div className="carousel-caption d-none d-md-block bg-dark bg-opacity-25">
                 <h4>Sennep Kollektion</h4>
                 <p>En kollektion af ting du ikke kan se at der er spildt sennep på.</p>
             </div>
