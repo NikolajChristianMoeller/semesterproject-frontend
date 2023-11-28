@@ -38,6 +38,7 @@ export default function Login(){
     </div>
     <button className="btn btn-primary">Submit</button>
     </form>
+    <p>User: Jane, Password: testpassword</p>
 </div>
 
 )}

@@ -2,6 +2,7 @@ import {  useEffect, useState } from 'react'
 import ProductGrid from '../components/ProductGrid';
 import ToolBar from '../components/ToolBar';
 import restService from '../services/restService';
+import Footer from '../components/Footer';
 
 export default function Homepage({fillCart, cart, emptyCart}){
     const [products, setProducts] = useState([]);
@@ -20,7 +21,7 @@ export default function Homepage({fillCart, cart, emptyCart}){
 
     try {
         return ( 
-            <div className="overflow-x-scroll">
+            <div>
                 <ToolBar cart={cart} emptyCart={emptyCart}/>
                 <div className="container" style={{maxWidth:"100vw", padding:"0"}}>
                     <div className="row">
@@ -37,8 +38,7 @@ export default function Homepage({fillCart, cart, emptyCart}){
                     </div>
                     </div>
                 </div>
-                <footer style={{paddingTop:"5rem"}}>
-                </footer>
+                <Footer/>
             </div>
         );
     } catch(error){
