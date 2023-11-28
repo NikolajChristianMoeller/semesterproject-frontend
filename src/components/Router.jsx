@@ -45,8 +45,8 @@ export default function Router(){
 
 
   const AdminAuth = () => {
-    const isAuthenticated = sessionStorage.getItem("authenticated")
-    return isAuthenticated ? <Outlet /> : <Navigate to="/login" />;
+    const auth = sessionStorage.getItem("authenticated")
+    return auth ? <Outlet /> : <Navigate to="/login" />;
   };
 
 
@@ -56,9 +56,9 @@ export default function Router(){
         <Route path="/" element={<HomePage fillCart={fillCart} cart={cart} emptyCart={emptyCart}/>}/>
         <Route path="/checkout" element={<Checkout cart={cart} fillCart={fillCart} reduceCart={reduceCart} emptyCart={emptyCart}/>}/>
         <Route element={<AdminAuth />}>
-          <Route path="/admin" element={<Admin/>} />
+          <Route path="/admin" element={<Admin cart={cart} emptyCart={emptyCart}/>} />
         </Route>
-        <Route path="login" element={<Login/>}/>
+        <Route path="login" element={<Login cart={cart} emptyCart={emptyCart}/>}/>
       </Routes>
     )
 }

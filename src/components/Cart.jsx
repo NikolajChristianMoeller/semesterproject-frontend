@@ -5,11 +5,11 @@ import { Link } from "react-router-dom";
 export default function Cart({cart, emptyCart}){
     try {
         return(    
-            <section className="card text-center" style={{width:"18rem", marginTop:"1.5rem"}}>
-                <p>Kurv</p>
-                <ul className="card-body list-group list-group-flush">
+            <section className="text-center" style={{width:"18rem"}}>
+                <h4>Kurv</h4>
+                <ul className="list-group list-group-flush">
                 {cart.map((product)=>(
-                    <li key={product.ID} className="list-group-item">{product.Name}: x{product.amount}</li>
+                    <li key={product.ID + "cart"} className="list-group-item">{product.Name}: x{product.amount}</li>
                 ))}
                 </ul>
                 <p>Total {totalPrice(cart)}kr</p>
