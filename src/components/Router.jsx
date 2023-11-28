@@ -9,12 +9,14 @@ import { useEffect } from "react";
 export default function Router() {
   const [cart, setCart] = useState([]);
 
+  // Loads the contents of the cart from local storage
   useEffect(() => {
     const savedCart = JSON.parse(localStorage.getItem("cart")) || [];
     if (savedCart.length > 0) {
       setCart(savedCart);
     }
   }, []);
+  //Saves the contents of the cart to local storage
   useEffect(() => {
     console.log("saving");
     if (cart.length > 0) {

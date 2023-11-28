@@ -1,6 +1,10 @@
+body {
+  padding-right: 0 !important;
+}
+
 .colors {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr ;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
 }
 
 .color-dot {
@@ -13,23 +17,24 @@
   border-width: 2px;
 }
 
-.store{
+.store {
   display: grid;
   grid-template-columns: 5fr 1fr;
-
 }
 
-
-h1,h2,h3,h4,h5 {
+h1,
+h2,
+h3,
+h4,
+h5 {
   margin: 1rem;
-  font-family: bauerbodnibtwxx-roman,serif;
+  font-family: bauerbodnibtwxx-roman, serif;
 }
 
-button{
-  margin: 0.5rem
+button {
+  margin: 0.5rem;
 }
 
-footer{
-  background-color:antiquewhite;
-
+footer {
+  background-color: antiquewhite;
 }
