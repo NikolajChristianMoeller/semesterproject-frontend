@@ -8,9 +8,9 @@ export default function Footer(){
         <div className="row">
             <div className="col">
                 <h5>MIKROHOME</h5>
-                <p>Om os</p>
-                
-                 <Link to="/contact" style={{textDecoration: "none", color:"black"}}>Kontakt</Link>
+                  <p><Link to="/about" style={{textDecoration: "none", color:"black"}}>Om Os</Link></p>
+             
+                 <p><Link to="/contact" style={{textDecoration: "none", color:"black"}}>Kontakt</Link> </p>
                 <p>Info</p>
             </div>
 
