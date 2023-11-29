@@ -25,7 +25,6 @@ export default function Admin({cart, emptyCart}){
         try {
             const products = await restService.getAll("products");
             setProducts(products) 
-            console.log(products)
         } catch (error) {
             console.error("error fetching", error);
         }
@@ -47,7 +46,35 @@ export default function Admin({cart, emptyCart}){
     }
 
     const updateClicked = (product)=>{
+        document.querySelector("#update-product-form").reset();
         setProductToUpdate(product)
+    }
+
+    const updateProduct = async (product)=>{
+        try {
+            const res = await restService.update(product, "products");
+            if(res){
+                document.querySelector("#update-modal").dispatchEvent( new KeyboardEvent("keydown", {
+                    altKey: false,
+                    code: "Escape",
+                    ctrlKey: false,
+                    isComposing: false,
+                    key: "Escape",
+                    location: 0,
+                    metaKey: false,
+                    repeat: false,
+                    shiftKey: false,
+                    which: 27,
+                    charCode: 0,
+                    keyCode: 27,
+                  }));
+//awkward and roundabout way of closing modal because bootstrap didnt want to cooperate
+                loadProducts();
+            } 
+        } catch (error) {
+         console.error("error updating product:",error)   
+        }
+
     }
 
     return (
@@ -55,7 +82,7 @@ export default function Admin({cart, emptyCart}){
             <ToolBar cart={cart} emptyCart={emptyCart}/>
             <AdminTable products={products} deleteClicked={deleteClicked} updateClicked={updateClicked}/>
             <DeleteModal productToDelete={productToDelete} deleteProduct={deleteProduct}/>
-            <UpdateForm productToUpdate={productToUpdate}/>
+            <UpdateForm productToUpdate={productToUpdate} updateProduct={updateProduct}/>
             <button className="btn btn-danger" onClick={logout}>Log out</button>
         </div>
 

@@ -18,7 +18,6 @@ export default function Router() {
   }, []);
   //Saves the contents of the cart to local storage
   useEffect(() => {
-    console.log("Saving cart-contents");
     if (cart.length > 0) {
       localStorage.setItem("cart", JSON.stringify(cart));
     } else {

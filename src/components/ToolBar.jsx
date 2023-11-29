@@ -18,13 +18,13 @@ export default function ToolBar({ cart, emptyCart }) {
         <ul className="ms-auto mb-2 mb-lg-0">
           <div className="dropstart nav-item">
             <button
-              className="btn btn-light dropdown-toggle"
+              className="btn btn-light dropdown-toggle me-2"
               type="button"
               data-bs-toggle="dropdown"
               aria-expanded="false"
             >
               <img src="/basket3-fill.svg" />
-              {totalItems(cart)}
+              <span className="position-absolute start-50 badge rounded-pill bg-danger">{totalItems(cart)}</span>
             </button>
             <ul className="dropdown-menu">
               <li>

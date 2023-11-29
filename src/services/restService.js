@@ -1,4 +1,6 @@
 import Product from "../models/product";
+import Color from "../models/color"
+import Collection from "../models/collection"
 class RestService {
   endpoint = "http://localhost:3000";
 
@@ -6,7 +8,16 @@ class RestService {
     try {
       const res = await fetch(`${this.endpoint}/${type}`);
       const data = await res.json();
-      return data.map((json) => new Product(json));
+      switch(type){
+        case type = "products":
+          return data.map((json) => new Product(json));
+        case type = "colors":
+          return data.map((json) => new Color(json));
+        case type = "collections":
+          return data.map((json) => new Collection(json));
+        default:
+          return;
+      }
     } catch (error) {
       console.error("error fetching products:", error);
     }
