@@ -25,34 +25,21 @@ export default function UpdateForm({productToUpdate}){
                 </div>
                 <div className="col-10">
                     <label htmlFor="productDescription" className="form-label">Description</label>
-                    <textarea type="text" className="form-control" id="productDescription"/>
-                </div>
-                <div className="col-10">
-                    <label htmlFor="inputAddress2" className="form-label">Address 2</label>
-                    <input type="text" className="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor"/>
+                    <textarea type="text" className="form-control" id="productDescription" rows="6" />
                 </div>
                 <div className="col-md-5">
-                    <label htmlFor="inputCity" className="form-label">City</label>
-                    <input type="text" className="form-control" id="inputCity"/>
-                </div>
-                <div className="col-md-5">
-                    <label htmlFor="inputState" className="form-label">State</label>
-                    <select id="inputState" className="form-select">
+                    <label htmlFor="inputCollection" className="form-label">Collection(s)</label>
+                    <select id="inputCollection" className="form-select">
                     <option>Choose...</option>
                     <option>...</option>
                     </select>
                 </div>
                 <div className="col-md-5">
-                    <label htmlFor="inputZip" className="form-label">Zip</label>
-                    <input type="text" className="form-control" id="inputZip"/>
-                </div>
-                <div className="col-10">
-                    <div className="form-check">
-                    <input className="form-check-input" type="checkbox" id="gridCheck"/>
-                    <label className="form-check-label" htmlFor="gridCheck">
-                        Check me out
-                    </label>
-                    </div>
+                    <label htmlFor="inputColor" className="form-label">Color(s)</label>
+                    <select id="inputColor" className="form-select">
+                    <option>Choose...</option>
+                    <option>...</option>
+                    </select>
                 </div>
                 <div className="col-12">
                     <button type="submit" className="btn btn-primary">Sign in</button>

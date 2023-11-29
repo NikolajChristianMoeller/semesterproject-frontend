@@ -43,3 +43,6 @@ footer{
   height: 500px;
 }
 
+textarea {
+  resize: none;
+}
