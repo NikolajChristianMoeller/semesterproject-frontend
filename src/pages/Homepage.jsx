@@ -1,10 +1,11 @@
 import {  useEffect, useState } from 'react'
 import ProductGrid from '../components/ProductGrid';
-import Cart from '../components/Cart';
 import ToolBar from '../components/ToolBar';
 import restService from '../services/restService';
+import Footer from '../components/Footer';
+import Carousel from '../components/Carousel';
 
-export default function Homepage({fillCart, cart}){
+export default function Homepage({fillCart, cart, emptyCart}){
     const [products, setProducts] = useState([]);
 
     useEffect(()=> loadProducts, [])
@@ -22,10 +23,21 @@ export default function Homepage({fillCart, cart}){
     try {
         return ( 
             <div>
-                <ToolBar/>
-                <h3>Katalog</h3>
-                <ProductGrid products={products} fillCart={fillCart} />
-                <Cart cart={cart}/>
+                <ToolBar cart={cart} emptyCart={emptyCart}/>
+                <div className="container" style={{maxWidth:"100vw", padding:"0"}}>
+                    <div className="row">
+                        <Carousel className="col w-100"/>
+                    </div>
+                    <div className="container" style={{marginTop:"2rem"}}>
+                    <div className="row">
+                        <h2 className="text-center" style={{marginBottom:"3rem"}}>Katalog</h2>
+                    </div>
+                        <div className="row">
+                        <ProductGrid products={products} fillCart={fillCart} emptyCart={emptyCart}/>
+                    </div>
+                    </div>
+                </div>
+                <Footer/>
             </div>
         );
     } catch(error){
