@@ -1,6 +1,6 @@
 body {
-  font-family: bauerbodnibtwxx-roman, serif;
   padding-right: 0 !important;
+  font-family: bauerbodnibtwxx-roman, serif;
 }
 
 .colors {
@@ -39,11 +39,21 @@ footer {
   display: none;
 }
 
-.carousel,
-.carousel-item {
-  height: 500px;
+.dropstart,
+.nav-item {
+  margin: 0.3rem;
 }
-
+.carousel,
+.carousel-item img {
+  height: 500px;
+  max-height: auto;
+}
+@media (max-width: 1000px) {
+  .carousel,
+  .carousel-item img {
+    max-height: 400px;
+  }
+}
 textarea {
   resize: none;
 }
