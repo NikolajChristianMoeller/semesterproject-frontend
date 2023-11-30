@@ -35,8 +35,8 @@ export default function Carousel() {
       <div className="carousel-inner">
         <div className="carousel-item active">
           <img
-            src="https://upload.wikimedia.org/wikipedia/commons/e/e6/Mathara_beach_wide_angle_view.jpg"
-            className="d-block w-100 object-fit-fill"
+            src="https://semesterprojekt.blob.core.windows.net/images/images/homepage/IMG_20220906_183940_720x.jpg"
+            className="d-block w-100 object-fit-cover"
             alt="..."
           />
           <div className="carousel-caption d-none d-md-block bg-dark bg-opacity-25 rounded-pill">
@@ -48,8 +48,8 @@ export default function Carousel() {
         </div>
         <div className="carousel-item">
           <img
-            src="https://upload.wikimedia.org/wikipedia/commons/e/e6/Mathara_beach_wide_angle_view.jpg"
-            className="d-block w-100 object-fit-fill"
+            src="https://semesterprojekt.blob.core.windows.net/images/images/homepage/to_skaller_og_mig_13.jpg"
+            className="d-block w-100 object-fit-cover"
             alt="..."
           />
           <div className="carousel-caption d-none d-md-block bg-dark bg-opacity-25 rounded-pill">
@@ -59,8 +59,8 @@ export default function Carousel() {
         </div>
         <div className="carousel-item">
           <img
-            src="https://upload.wikimedia.org/wikipedia/commons/e/e6/Mathara_beach_wide_angle_view.jpg"
-            className="d-block w-100 object-fit-fill"
+            src="https://semesterprojekt.blob.core.windows.net/images/images/homepage/profil10_spejlvendt_1800x.jpg"
+            className="d-block w-100 object-fit-cover"
             alt="..."
           />
           <div className="carousel-caption d-none d-md-block bg-dark bg-opacity-25 rounded-pill">
@@ -70,8 +70,8 @@ export default function Carousel() {
         </div>
         <div className="carousel-item">
           <img
-            src="https://upload.wikimedia.org/wikipedia/commons/e/e6/Mathara_beach_wide_angle_view.jpg"
-            className="d-block w-100 object-fit-fill"
+            src="https://semesterprojekt.blob.core.windows.net/images/images/homepage/droemmefanger_profil_2.jpg"
+            className="d-block w-100 object-fit-cover"
             alt="..."
           />
           <div className="carousel-caption d-none d-md-block bg-dark bg-opacity-25 rounded-pill">
