@@ -35,7 +35,7 @@ export default function Carousel() {
       <div className="carousel-inner">
         <div className="carousel-item active">
           <img
-            src="./public/IMG_20220906_183940_720x.jpg"
+            src="https://semesterprojekt.blob.core.windows.net/images/images/homepage/IMG_20220906_183940_720x.jpg"
             className="d-block w-100 object-fit-cover"
             alt="..."
           />
@@ -48,7 +48,7 @@ export default function Carousel() {
         </div>
         <div className="carousel-item">
           <img
-            src="./public/to_skaller_og_mig_13.jpg"
+            src="https://semesterprojekt.blob.core.windows.net/images/images/homepage/to_skaller_og_mig_13.jpg"
             className="d-block w-100 object-fit-cover"
             alt="..."
           />
@@ -59,7 +59,7 @@ export default function Carousel() {
         </div>
         <div className="carousel-item">
           <img
-            src="./public/profil10_spejlvendt_1800x.jpg"
+            src="https://semesterprojekt.blob.core.windows.net/images/images/homepage/profil10_spejlvendt_1800x.jpg"
             className="d-block w-100 object-fit-cover"
             alt="..."
           />
@@ -70,7 +70,7 @@ export default function Carousel() {
         </div>
         <div className="carousel-item">
           <img
-            src="./public/droemmefanger_profil_2.jpg"
+            src="https://semesterprojekt.blob.core.windows.net/images/images/homepage/droemmefanger_profil_2.jpg"
             className="d-block w-100 object-fit-cover"
             alt="..."
           />
