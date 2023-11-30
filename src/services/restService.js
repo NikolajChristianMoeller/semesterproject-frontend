@@ -1,6 +1,8 @@
 import Product from "../models/product";
 import Color from "../models/color"
 import Collection from "../models/collection"
+import Category from "../models/category";
+
 class RestService {
   endpoint = "http://localhost:3000";
 
@@ -15,6 +17,8 @@ class RestService {
           return data.map((json) => new Color(json));
         case type = "collections":
           return data.map((json) => new Collection(json));
+        case type = "categories":
+          return data.map((json) => new Category(json));    
         default:
           return;
       }
@@ -37,7 +41,7 @@ class RestService {
 
   async create(item, type) {
     try {
-      const res = await fetch(`${this.endpoint}/products`, {
+      const res = await fetch(`${this.endpoint}/${type}`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

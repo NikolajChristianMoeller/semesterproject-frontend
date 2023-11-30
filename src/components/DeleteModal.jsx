@@ -1,8 +1,8 @@
 //TODO: add feedback before closing!!
 
-export default function DeleteModal({productToDelete, deleteProduct}){
+export default function DeleteModal({productToDelete, deleteProduct: handleDelete}){
     return(
-       <div className="modal fade" id="delete-modal" tabIndex="-1" aria-labelledby="delete-modal" aria-hidden="true">
+       <div className="modal fade" id="delete-modal" tabIndex="-1" data-bs-keyboard="false">
           <div className="modal-dialog">
             <div className="modal-content">
               <div className="modal-header">
@@ -14,7 +14,7 @@ export default function DeleteModal({productToDelete, deleteProduct}){
               </div>
               <div className="modal-footer">
                 <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="button" className="btn btn-danger" onClick={()=>deleteProduct(productToDelete)} data-bs-dismiss="modal">Delete</button>
+                <button type="button" className="btn btn-danger" onClick={()=>handleDelete(productToDelete)} data-bs-dismiss="modal">Delete</button>
               </div>
             </div>
           </div>

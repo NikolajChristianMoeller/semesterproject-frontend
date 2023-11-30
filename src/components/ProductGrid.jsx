@@ -11,7 +11,7 @@ export default function ProductGrid({ products, fillCart }) {
                 <p className="card-header">{product.Name}</p>
                 <p className="ms-5 pt-3">{product.Price}kr</p>
                 <div className="colors card-footer">
-                  {product.ProductColor.map((color) => (
+                  {product.Colors.map((color) => (
                     <div
                       className="color-dot"
                       key={product.ID + color.ID}

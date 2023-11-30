@@ -1,144 +1,149 @@
-// TODO: add dropdown with only colors that exist in db
-// TODO: finish form
-// TODO: add dropdown with collection
-// TODO: setup so you can add multiple collections and colors when updating
-import restService from "../services/restService";
-import { useEffect, useState } from "react";
+/* eslint-disable react/prop-types */
+import { useState } from "react";
 
-export default function CreateProduct(){
-    const [colors, setColors] = useState([]);
-    const [collections, setCollections] = useState([]);
-    const [selectedColors, setSelectedColors] = useState([]);
-    const [selectedCollections, setSelectedCollections] = useState([]);
+export default function CreateProduct({createProduct, createOptionClick, collections, colors, categories}){
+  const [newColors, setNewColors] = useState([]);
+  const [newCollections, setNewCollections] = useState([]);
+  const [newCategories, setNewCategories] = useState([]);
 
-    
-      const loadColors = async ()=>{
-        try {
-            const colors = await restService.getAll("colors");
-            setColors(colors) 
-        } catch (error) {
-            console.error("error fetching colors", error);
-        }
-    }
-
-    const loadCollections = async ()=>{
-      try {
-          const collections = await restService.getAll("collections");
-          setCollections(collections) 
-      } catch (error) {
-          console.error("error fetching collections", error);
+  const handleChangeColor = (event, color)=>{
+    try {
+      if(event.target.checked){
+        setNewColors([...newColors, color])
+      }else{
+        newColors.splice([newColors.indexOf(color)], 1);
+        setNewColors([...newColors]);
       }
+    } catch (error) {
+      console.error("error adding color:", error)
     }
+  }
 
-    const handleSubmitColor = (event)=>{
-      event.preventDefault();
-      const selectedColors = [];
-      const options = document.querySelector("#inputColor").options
-      console.log(options)
-      for (const option of options) {
-        if(option.selected){
-          selectedColors.push(option.value);
-        }
+  const handleChangeCategory = (event, category)=>{
+    try {
+      if(event.target.checked){
+        setNewCategories([...newCategories, category])
+      }else{
+        newCategories.splice([newCategories.indexOf(category)], 1);
+        setNewCategories([...newCategories]);
       }
-      console.log(selectedColors);
+    } catch (error) {
+      console.error("error adding category:", error)
     }
+  }
 
-    const handleSubmitColllection = (event)=>{
-      event.preventDefault();
-      console.log()
+  const handleChangeCollection = (event, collection)=>{
+    try {
+      if(event.target.checked){
+        setNewCollections([...newCollections, collection])
+      }else{
+        newCollections.splice([newCollections.indexOf(collection)], 1);
+        setNewCollections([...newCollections]);
+      }
+    } catch (error) {
+      console.error("error adding collection:", error)
     }
+  }
 
+      const handleSubmit = (event)=> {
+        event.preventDefault();
 
-    useEffect(()=> loadColors, [])
-    useEffect(()=> loadCollections, [])
+          const product = {
+          Name: document.querySelector("#create-product-form").productName.value,
+          Price: document.querySelector("#create-product-form").productPrice.value,
+          Description: document.querySelector("#create-product-form").productDescription.value,
+          Stock: 0,
+          colors: newColors,
+          ProductCollection: newCollections,
+          }
+          
+        createProduct(product);
+      }
 
     return(
-        <div className="modal" id="update-modal" tabIndex="-1" aria-labelledby="update-modal" aria-hidden="true">
+        <div className="modal" id="create-product-modal" tabIndex="-1" data-bs-keyboard="false">
         <div className="modal-dialog modal-fullscreen" >
           <div className="modal-content">
             <div className="modal-header">
-              <h1 className="modal-title fs-5" id="update-modal-label">Update {productToUpdate.Name} ({productToUpdate.ID})</h1>
+              <h1 className="modal-title fs-5" id="create-modal-label">Create new product</h1>
               <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <div className="modal-body">
-            <form className="row g-3">
-                <div className="col-md-5">
-                    <label htmlFor="productName" className="form-label">Product Name</label>
-                    <input type="text" className="form-control" id="productName"/>
+            <div className="modal-body container">
+            <form id="create-product-form" className="row"  onSubmit={(event)=>handleSubmit(event)}>
+              <div className="row">
+                <div className="col">
+                      <label htmlFor="productName" className="form-label">Product Name</label>
+                      <input type="text" className="form-control" id="productName" />
+                  </div>
+                  <div className="col">
+                      <label htmlFor="productPrice" className="form-label">Price</label>
+                      <input type="text" className="form-control" id="productPrice" />
+                  </div>
                 </div>
-                <div className="col-md-5">
-                    <label htmlFor="productPrice" className="form-label">Price</label>
-                    <input type="text" className="form-control" id="productPrice"/>
-                </div>
-                <div className="col-10">
+                <div className="row">
                     <label htmlFor="productDescription" className="form-label">Description</label>
                     <textarea type="text" className="form-control" id="productDescription" rows="6" />
-                </div>
-                <div className="col-md-5">
-                    <label htmlFor="inputCollection" className="form-label">Collection(s)</label>
-                    <select id="inputCollection" className="form-select" multiple>
-                      {collections.map((collection)=>(
-                        <option key={collection.ID} value={collection}>
-                          {collection.Name} 
-                          </option>
-                        ))}                    
-                      </select>
-                    <button className="btn btn-primary mt-2"
-                    onClick={(event)=>handleSubmitColllection(event)}>
-                      Add Collection(s)
-                      </button>
-                </div>
-                <div className="col-md-5">
-                    <label htmlFor="inputColor" className="form-label" >Color(s)</label>
-                    <select id="inputColor" className="form-select" multiple>
-                    {colors.map((color)=>(
-                      <option key={color.ID} value={color}>
-                        {color.Name} 
-                        </option>
-                      ))}
-                    </select>
-                    <button className="btn btn-primary mt-2"
-                    onClick={(event)=>handleSubmitColor(event)}
-                   >Add Color(s)</button>
-                </div>
-                <div className="col-md-5">
-                    <p className="ms-5 text-decoration-underline">Collection(s):</p>
-                    <ul>
-                      {selectedCollections.map((collection)=>(
-                        <li key={"selected" + collection.ID}>
-                          {collection.Name}
-                        </li>
-                      ))}
-                    </ul>
-                </div>
-                <div className="col-md-5">
-                    <p className="ms-5 text-decoration-underline">Color(s)</p>
-                    <ul>
-                    {selectedColors.map((color)=>(
-                        <li key={"selected" + color.ID}>
-                          {color.Name}
-                          <div
-                              className="color-dot"
-                              style={{ backgroundColor: color.Code }}
-                            />                        
-                      </li>
-                      ))}
 
-                    </ul>
-                </div>  
-                <div className="col-12">
-                    <button type="submit" className="btn btn-primary">Update product</button>
+              </div>
+                <div className="row mx-auto">
+                <fieldset className="col">
+                  <legend>
+                    Collection
+                  </legend>
+                      {collections.map((collection)=>(
+                        <div className="form-check form-check" key={collection.ID+"checkbox"}>
+                        <input className="form-check-input" type="checkbox" id="update-collections" onChange={(event)=>handleChangeCollection(event, collection.ID)}/>
+                        <label className="form-check-label" htmlFor="update-collections">
+                         {collection.Name}
+                        </label>
+                        </div>
+                        ))}                    
+                </fieldset>
+                <fieldset className="col">
+                <legend>
+                    Colors
+                  </legend>
+                      {colors.map((color)=>(
+                        <div className="form-check form-check " key={color.ID+"checkbox"}>
+                        <label className="form-check-label d-flex flex-nowrap" htmlFor={"checkbox-"+color.Name}>
+                        <input className="form-check-input" type="checkbox" id={"checkbox-"+color.Name} onChange={(event)=>handleChangeColor(event, color.ID)}/>
+                        <div
+                      className="color-dot mt-0"
+                      style={{ backgroundColor: color.Code}}
+                    />
+                         {color.Name}
+                        </label>
+                        </div>
+                        ))}                  
+                </fieldset>
+                <fieldset className="col">
+                <legend>
+                    Categories
+                  </legend>
+                      {categories.map((category)=>(
+                        <div className="form-check form-check" key={category.ID+"checkbox"}>
+                        <input className="form-check-input" type="checkbox" id={"checkbox-"+category.Name} onChange={(event)=>handleChangeCategory(event, category.ID)}/>
+                        <label className="form-check-label" htmlFor={"checkbox-"+category.Name}>
+                         {category.Name}
+                        </label>
+                        </div>
+                        ))}                  
+                </fieldset>
+                </div>
+                <div className="row">
+                  <div className="alert alert-info w-50 mt-5 mx-auto">
+                    <p>Not seeing what you're looking for? Click below to add more colors, collections and categories! </p>
+                    <button className="btn btn-primary ms-2" data-bs-target="#create-options-modal" data-bs-toggle="modal" onClick={(event)=>{createOptionClick(event, "create")}}>Add more!</button> 
+                    </div>
+                  </div>
+                <div className="col-10">
+                    <button type="submit" className="btn btn-success">Create product</button>
+                    <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
                 </div>
                 </form>
-            </div>
-            <div className="modal-footer">
-              <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-              <button type="button" className="btn btn-success" data-bs-dismiss="modal">Update</button>
             </div>
           </div>
         </div>
       </div>
-
     )
-
 }

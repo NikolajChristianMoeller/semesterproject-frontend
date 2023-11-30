@@ -1,16 +1,49 @@
 /* eslint-disable react/prop-types */
-// TODO: add dropdown with only colors that exist in db
-// TODO: finish form
-// TODO: add dropdown with collection
-// TODO: setup so you can add multiple collections and colors when updating
-import restService from "../services/restService";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
-export default function UpdateForm({productToUpdate, updateProduct}){
-    const [colors, setColors] = useState([]);
-    const [collections, setCollections] = useState([]);
-    const [newColors, setNewColors] = useState([]);
-    const [newCollections, setNewCollections] = useState([]);
+export default function UpdateForm({productToUpdate, updateProduct, colors, collections, categories}){
+  const [newColors, setNewColors] = useState([]);
+  const [newCollections, setNewCollections] = useState([]);
+  const [newCategories, setNewCategories] = useState([]);
+
+  const handleChangeColor = (event, color)=>{
+    try {
+      if(event.target.checked){
+        setNewColors([...newColors, color])
+      }else{
+        newColors.splice([newColors.indexOf(color)], 1);
+        setNewColors([...newColors]);
+      }
+    } catch (error) {
+      console.error("error adding color:", error)
+    }
+  }
+
+  const handleChangeCategory = (event, category)=>{
+    try {
+      if(event.target.checked){
+        setNewCategories([...newCategories, category])
+      }else{
+        newCategories.splice([newCategories.indexOf(category)], 1);
+        setNewCategories([...newCategories]);
+      }
+    } catch (error) {
+      console.error("error adding category:", error)
+    }
+  }
+
+  const handleChangeCollection = (event, collection)=>{
+    try {
+      if(event.target.checked){
+        setNewCollections([...newCollections, collection])
+      }else{
+        newCollections.splice([newCollections.indexOf(collection)], 1);
+        setNewCollections([...newCollections]);
+      }
+    } catch (error) {
+      console.error("error adding collection:", error)
+    }
+  }
 
       const handleSubmit = (event)=> {
         event.preventDefault();
@@ -20,65 +53,17 @@ export default function UpdateForm({productToUpdate, updateProduct}){
           Name: document.querySelector("#update-product-form").productName.value,
           Price: document.querySelector("#update-product-form").productPrice.value,
           Description: document.querySelector("#update-product-form").productDescription.value,
-          ProductColor: newColors,
-          ProductCollection: newCollections,
+          colors: newColors,
+          collections: newCollections,
+          categories: newCategories
           }
           
         updateProduct(product);
       }
 
-      const loadColors = async ()=>{
-        try {
-            const colors = await restService.getAll("colors");
-            setColors(colors) 
-        } catch (error) {
-            console.error("error fetching colors", error);
-        }
-    }
-
-    const loadCollections = async ()=>{
-      try {
-          const collections = await restService.getAll("collections");
-          setCollections(collections) 
-      } catch (error) {
-          console.error("error fetching collections", error);
-      }
-    }
-
-    const handleChangeColor = (event, color)=>{
-      try {
-        if(event.target.checked){
-          setNewColors([...newColors, color])
-        }else{
-          newColors.splice([newColors.indexOf(color)], 1);
-          setNewColors([...newColors]);
-        }
-      } catch (error) {
-        console.error("error adding color:", error)
-      }
-      console.log(newColors);
-    }
-
-    const handleChangeColllection = (event, collection)=>{
-      try {
-        if(event.target.checked){
-          setNewCollections([...newCollections, collection])
-        }else{
-          newCollections.splice([newCollections.indexOf(collection)], 1);
-          setNewCollections([...newCollections]);
-        }
-      } catch (error) {
-        console.error("error adding collection:", error)
-      }
-      console.log(newColors);
-    }
-
-
-    useEffect(()=> loadColors, [])
-    useEffect(()=> loadCollections, [])
 
     return(
-        <div className="modal" id="update-modal" tabIndex="-1" aria-labelledby="update-modal" aria-hidden="true">
+        <div className="modal" id="update-modal" tabIndex="-1" aria-labelledby="update-modal" aria-hidden="true" data-bs-keyboard="false">
         <div className="modal-dialog modal-fullscreen" >
           <div className="modal-content">
             <div className="modal-header">
@@ -107,7 +92,7 @@ export default function UpdateForm({productToUpdate, updateProduct}){
                   </legend>
                       {collections.map((collection)=>(
                         <div className="form-check form-check" key={collection.ID+"checkbox"}>
-                        <input className="form-check-input" type="checkbox" id="update-collections" onChange={(event)=>handleChangeColllection(event, collection)}/>
+                        <input className="form-check-input" type="checkbox" id="update-collections" onChange={(event)=>handleChangeCollection(event, collection.ID)}/>
                         <label className="form-check-label" htmlFor="update-collections">
                          {collection.Name}
                         </label>
@@ -120,16 +105,31 @@ export default function UpdateForm({productToUpdate, updateProduct}){
                   </legend>
                       {colors.map((color)=>(
                         <div className="form-check form-check" key={color.ID+"checkbox"}>
-                        <input className="form-check-input" type="checkbox" id={"checkbox-"+color.Name} onChange={(event)=>handleChangeColor(event, color)}/>
+                        <input className="form-check-input" type="checkbox" id={"checkbox-"+color.Name} onChange={(event)=>handleChangeColor(event, color.ID)}/>
                         <label className="form-check-label" htmlFor={"checkbox-"+color.Name}>
                          {color.Name}
                         </label>
                         </div>
                         ))}                  
                 </fieldset>
+                <fieldset className="col-2">
+                <legend>
+                    Categories
+                  </legend>
+                      {categories.map((category)=>(
+                        <div className="form-check form-check" key={category.ID+"checkbox"}>
+                        <input className="form-check-input" type="checkbox" id={"checkbox-"+category.Name} onChange={(event)=>handleChangeCategory(event, category.ID)}/>
+                        <label className="form-check-label" htmlFor={"checkbox-"+category.Name}>
+                         {category.Name}
+                        </label>
+                        </div>
+                        ))}                  
+                </fieldset>
+
                 </div>
                 <div className="col-10">
                     <button type="submit" className="btn btn-primary">Update product</button>
+                    <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
                 </div>
                 </form>
             </div>

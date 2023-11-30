@@ -5,9 +5,10 @@ export default class Product {
             this.Price = product.Price,
             this.Description = product.Description,
             this.Stock = product.Stock,
-            this.ProductColor = product.ProductColor,
-            this.ProductCollection = product.ProductCollection,
+            this.Colors = product.Colors,
+            this.Collections = product.Collections,
             this.Reviews= product.Reviews,
-            this.Images = product.Images
+            this.Images = product.Images,
+            this.Categories = product.Categories
     }
 }
