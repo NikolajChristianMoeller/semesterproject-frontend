@@ -1,10 +1,15 @@
 import totalItems from "../services/TotalItems";
 import Cart from "./Cart";
 import { Link, useNavigate } from "react-router-dom";
+import TopBannerCarousel from "./TopBannerCarousel";
+
 
 export default function ToolBar({ cart, emptyCart }) {
   const navigate = useNavigate();
   return (
+      <div className="sticky-top">
+
+      <TopBannerCarousel/>
     <nav
       className="navbar sticky-top navbar-light bg-body-tertiary"
       aria-label="Offcanvas navbar large"
@@ -129,5 +134,6 @@ export default function ToolBar({ cart, emptyCart }) {
         </div>
       </div>
     </nav>
+    </div>
   );
 }

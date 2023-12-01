@@ -24,7 +24,6 @@ export default function Homepage({fillCart, cart, emptyCart}){
     try {
         return ( 
             <div>
-               <TopBannerCarousel/>
                 <ToolBar cart={cart} emptyCart={emptyCart}/>
                 <div className="container" style={{maxWidth:"100vw", padding:"0"}}>
                     <div className="row">
