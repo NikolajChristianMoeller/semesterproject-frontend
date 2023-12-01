@@ -56,7 +56,14 @@ export default function ToolBar({ cart, emptyCart }) {
         >
           <div className="offcanvas-header">
             <h5 className="offcanvas-title" id="offcanvasNavbarLabel">
-              MikroHome
+            <Link
+                  to="/"
+                  style={{ textDecoration: "none", color: "black" }}
+                  className="nav-link active"
+                  aria-current="page"
+                >
+                  MikroHome
+                </Link>
             </h5>
             <button
               type="button"
@@ -66,17 +73,18 @@ export default function ToolBar({ cart, emptyCart }) {
             ></button>
           </div>
           <div className="offcanvas-body">
+          <form className="d-flex mt-3 mt-lg-0" role="search">
+              <input
+                className="form-control me-2"
+                type="search"
+                placeholder="Search"
+                aria-label="Search"
+              />
+              <button className="btn btn-outline-success" type="submit">
+                Search
+              </button>
+            </form>
             <ul className="navbar-nav justify-content-end flex-grow-1 pe-3">
-              <li className="nav-item">
-                <Link
-                  to="/"
-                  style={{ textDecoration: "none", color: "black" }}
-                  className="nav-link active"
-                  aria-current="page"
-                >
-                  Home
-                </Link>
-              </li>
               <li className="nav-item">
                 <Link
                   to="/checkout"
@@ -108,17 +116,6 @@ export default function ToolBar({ cart, emptyCart }) {
                 </Link>
               </li>
             </ul>
-            <form className="d-flex mt-3 mt-lg-0" role="search">
-              <input
-                className="form-control me-2"
-                type="search"
-                placeholder="Search"
-                aria-label="Search"
-              />
-              <button className="btn btn-outline-success" type="submit">
-                Search
-              </button>
-            </form>
             <button
               className="nav-item btn btn-outline-danger"
               onClick={() => {

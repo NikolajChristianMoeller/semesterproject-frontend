@@ -2,8 +2,8 @@
 import { useState } from "react";
 
 export default function UpdateForm({
-  productToUpdate,
-  updateProduct,
+  updateTarget,
+  handleUpdate,
   colors,
   collections,
   categories,
@@ -55,7 +55,7 @@ export default function UpdateForm({
     event.preventDefault();
 
     const product = {
-      ID: productToUpdate.ID,
+      ID: updateTarget.ID,
       Name: document.querySelector("#update-product-form").productName.value,
       Price: document.querySelector("#update-product-form").productPrice.value,
       Description: document.querySelector("#update-product-form")
@@ -65,7 +65,7 @@ export default function UpdateForm({
       categories: newCategories,
     };
 
-    updateProduct(product);
+    handleUpdate(product);
   };
 
   return (
@@ -81,7 +81,7 @@ export default function UpdateForm({
         <div className="modal-content">
           <div className="modal-header">
             <h1 className="modal-title fs-5" id="update-modal-label">
-              Update {productToUpdate.Name} ({productToUpdate.ID})
+              Update {updateTarget.Name} ({updateTarget.ID})
             </h1>
             <button
               type="button"
@@ -104,7 +104,7 @@ export default function UpdateForm({
                   type="text"
                   className="form-control"
                   id="productName"
-                  defaultValue={productToUpdate.Name}
+                  defaultValue={updateTarget.Name}
                 />
               </div>
               <div className="col-md-5">
@@ -115,7 +115,7 @@ export default function UpdateForm({
                   type="text"
                   className="form-control"
                   id="productPrice"
-                  defaultValue={productToUpdate.Price}
+                  defaultValue={updateTarget.Price}
                 />
               </div>
               <div className="col-10">
@@ -127,7 +127,7 @@ export default function UpdateForm({
                   className="form-control"
                   id="productDescription"
                   rows="6"
-                  defaultValue={productToUpdate.Description}
+                  defaultValue={updateTarget.Description}
                 />
               </div>
 
