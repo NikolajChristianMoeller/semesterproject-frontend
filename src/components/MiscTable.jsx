@@ -1,4 +1,17 @@
 export default function MiscTable({ objects, deleteClicked, updateClicked, table }) {
+  const isColor = (object)=>{
+    if (table === "colors"){
+      return(
+        <div scope="row"
+        className="color-dot"
+        style={{ backgroundColor: object.Code}}
+      />
+      )
+    } else{
+      return
+    }
+  }
+
     return (
       <table className="table hidden" id={table+"-list"}>
         <thead>
@@ -11,7 +24,7 @@ export default function MiscTable({ objects, deleteClicked, updateClicked, table
           {objects.map((object) => (
             <tr key={object.ID}>
               <th scope="row">{object.ID}</th>
-              <td>{object.Name}</td>
+              <td>{object.Name}{isColor(object)}</td>
               <td>
                 <button
                   className="btn btn-outline-danger rounded-pill"

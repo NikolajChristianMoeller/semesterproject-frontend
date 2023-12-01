@@ -99,7 +99,6 @@ export default function Admin({cart, emptyCart}){
                             break;
                     }
                 } else{
-                console.log(res);
                 throw new Error("response not OK");
             }
         } catch (error) {
