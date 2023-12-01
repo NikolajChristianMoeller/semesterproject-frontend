@@ -10,7 +10,8 @@ export default function CreateOptions({form, handleCreate}){
             document.querySelector("#alert-success").classList.remove("hidden");
             setTimeout(()=>{
                 document.querySelector("#alert-success").classList.add("hidden")
-            }, 5000)        }else{
+            }, 5000)        
+        }else{
             document.querySelector("#alert-error").classList.remove("hidden");
             setTimeout(()=>{
                 document.querySelector("#alert-error").classList.add("hidden")
@@ -78,7 +79,7 @@ export default function CreateOptions({form, handleCreate}){
                         <form className="col" onSubmit={(event)=>handleColor(event)}>
                         <div className="mb-3">
                             <label htmlFor="colorName" className="form-label">Color name</label>
-                            <input type="text" className="form-control" id="colorName" placeholder="Color name here"/>
+                            <input type="text" className="form-control" id="colorName" placeholder="Color name here" required/>
                             </div>
                             <div className="mb-3">
                             <label htmlFor="colorCode" className="form-label">Choose color code</label>
@@ -89,7 +90,7 @@ export default function CreateOptions({form, handleCreate}){
                         <form className="col" onSubmit={(event)=>handleCollection(event)}>
                         <div className="mb-3">
                             <label htmlFor="collectionName" className="form-label">Collection name</label>
-                            <input type="text" className="form-control" id="collectionName" placeholder="Collection name here"/>
+                            <input type="text" className="form-control" id="collectionName" placeholder="Collection name here" required/>
                             </div>
                             <button type="btn" className="btn btn-primary">Create Collection</button>
                         </form>
@@ -98,7 +99,7 @@ export default function CreateOptions({form, handleCreate}){
                         <form className="col" onSubmit={(event)=>handleCategory(event)}>
                         <div className="mb-3">
                             <label htmlFor="categoryName" className="form-label">Category name</label>
-                            <input type="text" className="form-control" id="categoryName" placeholder="Category name here"/>
+                            <input type="text" className="form-control" id="categoryName" placeholder="Category name here" required/>
                             </div>
                             <button type="btn" className="btn btn-primary">Create Category</button>
                         </form>
