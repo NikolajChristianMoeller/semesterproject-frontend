@@ -18,7 +18,7 @@ export default function Footer(){
                 <h5>FORHANDLER</h5>
                 <p>Bliv forhandler</p>
                 <p>Billedbank</p>
-                <p>Handelsbetingelser</p>
+                <Link to="/policies " style={{textDecoration: "none", color:"black"}}>Handelsbetingelser</Link>
             </div>
 
             <div className="col">
@@ -38,7 +38,7 @@ export default function Footer(){
         </div>
 
             
-            <div className="row g">
+            <div className="row">
                 <a className="col text-end " href="https://www.facebook.com/Mikrohome"><img style={{width:"29px"}}src="Facebook_Logo_Primary.png"/></a>
             
                 <a  className="col text-start" href="https://www.instagram.com/mikrohomeinterior/"> <img style={{width:"29px"}}src="/Instagram_Glyph_Gradient.svg"/></a>

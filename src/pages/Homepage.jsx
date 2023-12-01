@@ -4,7 +4,7 @@ import ToolBar from '../components/ToolBar';
 import restService from '../services/restService';
 import Footer from '../components/Footer';
 import Carousel from '../components/Carousel';
-import TopBannerCarousel from '../components/TopBannerCarousel';
+
 
 export default function Homepage({fillCart, cart, emptyCart}){
     const [products, setProducts] = useState([]);

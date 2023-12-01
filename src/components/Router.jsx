@@ -6,6 +6,7 @@ import { useState } from "react";
 import Login from "../pages/Login";
 import Contactpage from "../pages/Contactpage";
 import Aboutpage from "../pages/Aboutpage"
+import Policiespage from "../pages/Policiespage"
 import { useEffect } from "react";
 
 export default function Router() {
@@ -96,6 +97,7 @@ export default function Router() {
       />
         <Route path="/contact" element={<Contactpage cart={cart} emptyCart={emptyCart}/>} />
         <Route path="/about" element={<Aboutpage cart={cart} emptyCart={emptyCart}/>} ></Route>
+        <Route path="/policies" element={<Policiespage cart={cart} emptyCart={emptyCart}/>} ></Route>
     </Routes>
   );
 }
