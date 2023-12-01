@@ -1,6 +1,11 @@
+body {
+  font-family: bauerbodnibtwxx-roman, serif;
+  padding-right: 0 !important;
+}
+
 .colors {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr ;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
 }
 
 .color-dot {
@@ -13,24 +18,32 @@
   border-width: 2px;
 }
 
-.store{
+.store {
   display: grid;
   grid-template-columns: 5fr 1fr;
-
 }
 
-
-h1,h2,h3,h4,h5 {
+h1,
+h2,
+h3,
+h4,
+h5 {
   margin: 1rem;
-  font-family: bauerbodnibtwxx-roman,serif;
 }
 
-button{
-  margin: 0.5rem
+footer {
+  background-color: #faebd7;
 }
 
-footer{
-  background-color:antiquewhite;
-
+.hidden {
+  display: none;
 }
 
+.carousel,
+.carousel-item {
+  height: 500px;
+}
+
+textarea {
+  resize: none;
+}
