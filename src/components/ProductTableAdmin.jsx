@@ -17,13 +17,12 @@ export default function ProductTableAdmin({ products, deleteClicked, updateClick
             <td>{product.Stock}</td>
             <td>
               <button
-                className="btn btn-outline-danger rounded-pill"
+                className="btn btn-outline-danger"
                 type="button"
                 data-bs-toggle="modal"
                 data-bs-target="#delete-modal"
                 onClick={() => deleteClicked(product, "products")}
               >
-                Delete
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="16"
@@ -36,13 +35,12 @@ export default function ProductTableAdmin({ products, deleteClicked, updateClick
                 </svg>
               </button>
               <button
-                className="btn btn-info ms-2 rounded-pill"
+                className="btn btn-info ms-2"
                 type="button"
                 data-bs-toggle="modal"
                 data-bs-target="#update-modal"
                 onClick={() => updateClicked(product, "products")}
               >
-                Update
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="16"

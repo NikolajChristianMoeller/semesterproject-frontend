@@ -45,9 +45,7 @@ export default function CreateProduct({handleCreate, createOptionClick, collecti
     }
   }
 
-      const handleSubmit = (event)=> {
-        event.preventDefault();
-
+      const handleSubmit = ()=> {
           const product = {
           Name: document.querySelector("#create-product-form").productName.value,
           Price: document.querySelector("#create-product-form").productPrice.value,

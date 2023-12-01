@@ -7,6 +7,7 @@ export default function CreateOptions({form, handleCreate}){
         }
         const res = await handleCreate(category, "categories");
         if(res){
+            event.target.reset();
             document.querySelector("#alert-success").classList.remove("hidden");
             setTimeout(()=>{
                 document.querySelector("#alert-success").classList.add("hidden")
@@ -28,6 +29,7 @@ export default function CreateOptions({form, handleCreate}){
         }
         const res = await handleCreate(color, "colors");
         if(res){
+            event.target.reset();
             document.querySelector("#alert-success").classList.remove("hidden");
             setTimeout(()=>{
                 document.querySelector("#alert-success").classList.add("hidden")
@@ -41,12 +43,13 @@ export default function CreateOptions({form, handleCreate}){
     }
 
     const handleCollection = async (event)=> {
-        event.preventDefault();
+        document.querySelectorAll("form").clear()
         const collection = {
             Name: event.target.collectionName.value,
         }
         const res = await handleCreate(collection, "collections");
         if(res){
+            event.target.reset();
             document.querySelector("#alert-success").classList.remove("hidden");
             setTimeout(()=>{
                 document.querySelector("#alert-success").classList.add("hidden")
@@ -76,7 +79,7 @@ export default function CreateOptions({form, handleCreate}){
                         </div>
                     <div className="modal-body container">
                         <div className="row mb-5">
-                        <form className="col" onSubmit={(event)=>handleColor(event)}>
+                        <form className="col" id="color-create-form" onSubmit={(event)=>handleColor(event)}>
                         <div className="mb-3">
                             <label htmlFor="colorName" className="form-label">Color name</label>
                             <input type="text" className="form-control" id="colorName" placeholder="Color name here" required/>
@@ -87,7 +90,7 @@ export default function CreateOptions({form, handleCreate}){
                             </div>
                             <button type="btn" className="btn btn-primary" >Create Color</button>
                         </form>
-                        <form className="col" onSubmit={(event)=>handleCollection(event)}>
+                        <form className="col" id="collection-create-form" onSubmit={(event)=>handleCollection(event)}>
                         <div className="mb-3">
                             <label htmlFor="collectionName" className="form-label">Collection name</label>
                             <input type="text" className="form-control" id="collectionName" placeholder="Collection name here" required/>
@@ -96,7 +99,7 @@ export default function CreateOptions({form, handleCreate}){
                         </form>
                         </div>
                         <div className="row mb-5">
-                        <form className="col" onSubmit={(event)=>handleCategory(event)}>
+                        <form className="col" id="category-create-form" onSubmit={(event)=>handleCategory(event)}>
                         <div className="mb-3">
                             <label htmlFor="categoryName" className="form-label">Category name</label>
                             <input type="text" className="form-control" id="categoryName" placeholder="Category name here" required/>
