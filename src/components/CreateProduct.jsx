@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 import { useState } from "react";
 
-export default function CreateProduct({createProduct, createOptionClick, collections, colors, categories}){
+export default function CreateProduct({handleCreate, createOptionClick, collections, colors, categories}){
   const [newColors, setNewColors] = useState([]);
   const [newCollections, setNewCollections] = useState([]);
   const [newCategories, setNewCategories] = useState([]);
@@ -57,7 +57,7 @@ export default function CreateProduct({createProduct, createOptionClick, collect
           ProductCollection: newCollections,
           }
           
-        createProduct(product);
+        handleCreate(product, "products");
       }
 
     return(

@@ -15,6 +15,7 @@ export default function Admin({cart, emptyCart}){
     const [products, setProducts] = useState([]);
     const [deleteTarget, setDeleteTarget] = useState({ID:0, Name: "No product selected"});
     const [updateTarget, setUpdateTarget] = useState({ID:0, Name: "No product selected"});
+    const [targetType, setTargetType] = useState();
     const [colors, setColors] = useState([]);
     const [collections, setCollections] = useState([]);
     const [categories, setCategories] = useState([]);
@@ -37,11 +38,13 @@ export default function Admin({cart, emptyCart}){
         }
     }
 
-    const deleteClicked = (item)=>{
+    const deleteClicked = (item, type)=>{
         setDeleteTarget(item)
+        setTargetType(type);
     }
 
-    const handleDelete = async (object, type)=> {
+    const handleDelete = async (object)=> {
+        let type = targetType;
         try {
             const res = await restService.delete(object.ID, type)
             loadProducts();
@@ -69,9 +72,10 @@ export default function Admin({cart, emptyCart}){
         }
     }
 
-    const updateClicked = (item, target)=>{
+    const updateClicked = (item, type)=>{
         document.querySelector("#update-product-form").reset();
-        setUpdateTarget(item, target)
+        setUpdateTarget(item)
+        setTargetType(type);
     }
 
     const handleUpdate = async (object, type)=>{
@@ -181,13 +185,13 @@ export default function Admin({cart, emptyCart}){
                     <p data-tab-show="product-list" onClick={(event)=>tabs(event)} className="nav-link">Products</p>
                     </li>
                     <li className="nav-item">
-                    <p data-tab-show="color-list" onClick={(event)=>tabs(event)} className="nav-link">Colors</p>
+                    <p data-tab-show="colors-list" onClick={(event)=>tabs(event)} className="nav-link">Colors</p>
                     </li>
                     <li className="nav-item">
-                    <p data-tab-show="collection-list" onClick={(event)=>tabs(event)} className="nav-link">Collections</p>
+                    <p data-tab-show="collections-list" onClick={(event)=>tabs(event)} className="nav-link">Collections</p>
                     </li>
                     <li className="nav-item">
-                    <p data-tab-show="category-list" onClick={(event)=>tabs(event)} className="nav-link">Categories</p>
+                    <p data-tab-show="categories-list" onClick={(event)=>tabs(event)} className="nav-link">Categories</p>
                     </li>
                     <button className="nav-item btn btn-info ms-2" 
                         type="button"
@@ -200,9 +204,9 @@ export default function Admin({cart, emptyCart}){
                 </ul>
                 <div className="row">
                     <ProductTableAdmin products={products} deleteClicked={deleteClicked} updateClicked={updateClicked}/>
-                    <MiscTable objects={colors} table={"color-list"} deleteClicked={deleteClicked} updateClicked={updateClicked}/>
-                    <MiscTable objects={categories} table={"category-list"} deleteClicked={deleteClicked} updateClicked={updateClicked}/>
-                    <MiscTable objects={collections} table={"collection-list"} deleteClicked={deleteClicked} updateClicked={updateClicked}/>
+                    <MiscTable objects={colors} table={"colors"} deleteClicked={deleteClicked} updateClicked={updateClicked}/>
+                    <MiscTable objects={categories} table={"categories"} deleteClicked={deleteClicked} updateClicked={updateClicked}/>
+                    <MiscTable objects={collections} table={"collections"} deleteClicked={deleteClicked} updateClicked={updateClicked}/>
                 </div>
             </div>
             <DeleteModal deleteTarget={deleteTarget} handleDelete={handleDelete}/>
