@@ -9,7 +9,7 @@ import CreateProduct from "../components/CreateProduct";
 import CreateOptions from "../components/CreateOptions";
 import tabs from "../services/tabs";
 import MiscTable from "../components/MiscTable";
-import FeedbackModal from "../components/FeedbackModal.jsx";
+import Feedback from "../components/Feedback.jsx";
 
 export default function Admin({cart, emptyCart}){
     const navigate = useNavigate();
@@ -27,6 +27,8 @@ export default function Admin({cart, emptyCart}){
         navigate("/");
     } 
 
+   
+    
 
     useEffect(()=> loadProducts, [])
     
@@ -44,6 +46,77 @@ export default function Admin({cart, emptyCart}){
         setTargetType(type);
     }
 
+    function showFeedback(res, type){
+        window.scrollTo({top:0, behavior:"smooth"});
+
+        {/*gives feedback message depending whether res is ok*/}
+        if(res){
+switch (type) {
+    case type = "delete": 
+    document.querySelector("#feedback-delete-success").classList.remove("hidden");
+            setTimeout(() => {
+                   document.querySelector("#feedback-delete-success").classList.add("hidden")
+            }, 5000);
+        break;
+
+    case type = "update":
+        document.querySelector("#feedback-update-success").classList.remove("hidden");
+            setTimeout(() => {
+                   document.querySelector("#feedback-update-success").classList.add("hidden")
+            }, 5000);
+        break;
+    case type = "create":
+        document.querySelector("#feedback-create-success").classList.remove("hidden");
+            setTimeout(() => {
+                   document.querySelector("#feedback-create-success").classList.add("hidden")
+            }, 5000);
+        break;
+        
+    default:
+        document.querySelector("#feedback-success").classList.remove("hidden");
+            setTimeout(() => {
+                   document.querySelector("#feedback-success").classList.add("hidden")
+            }, 5000);
+        break;
+    }
+ }
+
+        else{
+            switch (type) {
+                case type = "delete":
+                    document.querySelector("#feedback-delete-error").classList.remove("hidden");
+            setTimeout(() => {
+                   document.querySelector("#feedback-delete-error").classList.add("hidden")
+            }, 5000);
+            break;
+
+            case type = "create":
+                document.querySelector("#feedback-create-error").classList.remove("hidden");
+            setTimeout(() => {
+                   document.querySelector("#feedback-create-error").classList.add("hidden")
+            }, 5000);
+            break;
+
+            case type = "update":
+            document.querySelector("#feedback-update-error").classList.remove("hidden");
+            setTimeout(() => {
+                   document.querySelector("#feedback-update-error").classList.add("hidden")
+            }, 5000);
+            break;
+
+            default:
+            document.querySelector("#feedback-error").classList.remove("hidden");
+            setTimeout(() => {
+                   document.querySelector("#feedback-error").classList.add("hidden")
+            }, 5000);
+            break;
+            }  
+        }
+
+
+       
+    }
+
     const handleDelete = async (object)=> {
         let type = targetType;
         try {
@@ -53,16 +126,21 @@ export default function Admin({cart, emptyCart}){
                 switch (type) {
                     case type = "colors":
                         loadColors();                        
-                        return res;
+                        showFeedback(res, "delete");
+                        break;
+
                     case type = "collections":
                         loadCollections();
-                        return res;
+                        showFeedback(res, "delete");
+                        break;
                     case type = "categories":
                         loadCategories();
-                        return res;
+                        showFeedback(res, "delete");
+                        break;
                     case type = "products":
                         loadProducts();
-                        return res;
+                        showFeedback(res, "delete");
+                        break;
                     default:
                         break;
                 }
@@ -86,16 +164,20 @@ export default function Admin({cart, emptyCart}){
                     switch (type) {
                         case type = "colors":
                             loadColors();                        
-                            return res;
+                            showFeedback(res,"update");
+                        break;
                         case type = "collections":
                             loadCollections();
-                            return res;
+                            showFeedback(res,"update");
+                        break;
                         case type = "categories":
                             loadCategories();
-                            return res;
+                          showFeedback(res,"update");
+                        break;
                         case type = "products":
                             loadProducts();
-                            return res;
+                            showFeedback(res,"update");
+                        break;
                         default:
                             break;
                     }
@@ -115,16 +197,20 @@ export default function Admin({cart, emptyCart}){
                 switch (type) {
                     case type = "colors":
                         loadColors();                        
-                        return res;
-                    case type = "collections":
-                        loadCollections();
-                        return res;
-                    case type = "categories":
-                        loadCategories();
-                        return res;
-                    case type = "products":
-                        loadProducts();
-                        return res;
+                        showFeedback(res,"create");
+                        break;
+                        case type = "collections":
+                        loadCollections();          
+                        showFeedback(res,"create");
+                        break;
+                        case type = "categories":
+                        loadCategories();         
+                        showFeedback(res,"create");
+                        break;
+                        case type = "products":
+                        loadProducts();         
+                        showFeedback(res,"create");
+                        break;
                     default:
                         break;
                 }
@@ -179,6 +265,7 @@ export default function Admin({cart, emptyCart}){
     return (
         <div>
             <ToolBar cart={cart} emptyCart={emptyCart}/>
+            <Feedback/>
             <div id="tabs" className="container row mt-4 mx-auto">
                 <ul className="nav-tabs nav">
                     <li className="nav-item">
@@ -213,8 +300,7 @@ export default function Admin({cart, emptyCart}){
             <UpdateForm updateTarget={updateTarget} handleUpdate={handleUpdate} colors={colors} collections={collections} categories={categories}/>
             <CreateProduct handleCreate={handleCreate} createOptionClick={createOptionClick} colors={colors} collections={collections} categories={categories} />
             <CreateOptions form={form} handleCreate={handleCreate}/>
-        <FeedbackModal state={state}/>
-        <button type="button" className="btn btn-primary" data-bs-toggle="modal" data-bs-target="#testmodal">Modal</button>
+      
         </div>
 
     )

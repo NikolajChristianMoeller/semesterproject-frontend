@@ -4,6 +4,7 @@ import ToolBar from '../components/ToolBar';
 import restService from '../services/restService';
 import Footer from '../components/Footer';
 import Carousel from '../components/Carousel';
+import TopBannerCarousel from '../components/TopBannerCarousel';
 
 export default function Homepage({fillCart, cart, emptyCart}){
     const [products, setProducts] = useState([]);
@@ -23,6 +24,7 @@ export default function Homepage({fillCart, cart, emptyCart}){
     try {
         return ( 
             <div>
+               <TopBannerCarousel/>
                 <ToolBar cart={cart} emptyCart={emptyCart}/>
                 <div className="container" style={{maxWidth:"100vw", padding:"0"}}>
                     <div className="row">
