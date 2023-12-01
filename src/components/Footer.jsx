@@ -37,6 +37,15 @@ export default function Footer(){
             </div>
         </div>
 
+            
+            <div className="row g">
+                <a className="col text-end " href="https://www.facebook.com/Mikrohome"><img style={{width:"29px"}}src="Facebook_Logo_Primary.png"/></a>
+            
+                <a  className="col text-start" href="https://www.instagram.com/mikrohomeinterior/"> <img style={{width:"29px"}}src="/Instagram_Glyph_Gradient.svg"/></a>
+
+            </div>
+
+            
             <p>
             Formålet med Mikrohome er at give dig indsigt og inspiration til at indrette efter dine følelser og opnå en oplevelse af bedst muligt velvære i dit hjem og dine omgivelser.
             For mig er det vigtigt at du sætter dig selv, og dine egne behov i fokus og udtænker en strategi for hvordan dit hjem skal indrettes således at det påvirker dit endorfinniveau til det højeste.
@@ -45,7 +54,7 @@ export default function Footer(){
             </p>
 
             <p> 
-                © 2023 - VAT: DK12345678 - Mikrohome A/S - Rebekkavej 3, kld - 2900 Hellerup - Denmark
+                © 2023 - VAT: DK12345678 - Mikrohome A/S - Rebekkavej 3, kld - 2900 Hellerup - Denmark 
             </p>
 
         </footer>
