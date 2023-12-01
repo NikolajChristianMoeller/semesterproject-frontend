@@ -181,7 +181,7 @@ export default function Admin({cart, emptyCart}){
             <div id="tabs" className="container row mt-4 mx-auto">
                 <ul className="nav-tabs nav">
                     <li className="nav-item">
-                    <p data-tab-show="product-list" onClick={(event)=>tabs(event)} className="nav-link">Products</p>
+                    <p id="product-tab" data-tab-show="product-list" onClick={(event)=>tabs(event)} className="nav-link active">Products</p>
                     </li>
                     <li className="nav-item">
                     <p data-tab-show="colors-list" onClick={(event)=>tabs(event)} className="nav-link">Colors</p>
@@ -213,6 +213,7 @@ export default function Admin({cart, emptyCart}){
             <CreateProduct handleCreate={handleCreate} createOptionClick={createOptionClick} colors={colors} collections={collections} categories={categories} />
             <CreateOptions form={form} handleCreate={handleCreate}/>
         </div>
+        
 
     )
 

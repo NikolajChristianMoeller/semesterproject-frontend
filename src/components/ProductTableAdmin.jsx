@@ -1,6 +1,6 @@
 export default function ProductTableAdmin({ products, deleteClicked, updateClicked }) {
   return (
-    <table className="table hidden" id="product-list">
+    <table className="table" id="product-list">
       <thead>
         <tr>
           <th scope="col">ID</th>

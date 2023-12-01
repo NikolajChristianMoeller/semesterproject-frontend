@@ -43,7 +43,7 @@ export default function CreateOptions({form, handleCreate}){
     }
 
     const handleCollection = async (event)=> {
-        document.querySelectorAll("form").clear()
+        event.preventDefault();
         const collection = {
             Name: event.target.collectionName.value,
         }
