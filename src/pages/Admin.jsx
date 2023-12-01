@@ -7,6 +7,7 @@ import DeleteModal from "../components/DeleteModal";
 import UpdateForm from "../components/UpdateForm";
 import CreateProduct from "../components/CreateProduct";
 import CreateOptions from "../components/CreateOptions.jsx";
+import FeedbackModal from "../components/FeedbackModal.jsx";
 
 export default function Admin({cart, emptyCart}){
     const navigate = useNavigate();
@@ -45,6 +46,7 @@ export default function Admin({cart, emptyCart}){
             const res = await restService.delete(object.ID, type)
             loadProducts();
             return res.ok;
+            
         } catch (error) {
             console.error(`Error deleting product(${object.ID}):`, error)
             loadProducts();
@@ -165,6 +167,8 @@ export default function Admin({cart, emptyCart}){
                     Create
                 </button>
             <button className="btn btn-danger" onClick={logout}>Log out</button>
+        <FeedbackModal state={state}/>
+        <button type="button" className="btn btn-primary" data-bs-toggle="modal" data-bs-target="#testmodal">Modal</button>
         </div>
 
     )
