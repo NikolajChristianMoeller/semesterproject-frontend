@@ -20,10 +20,31 @@ class RestService {
         case type = "categories":
           return data.map((json) => new Category(json));    
         default:
-          return;
+          throw new Error("unknown type");
       }
     } catch (error) {
       console.error("error fetching products:", error);
+    }
+  }
+
+  async getOne(id, type){
+    try {
+      const res = await fetch(`${this.endpoint}/${type}/${id}`);
+      const data = await res.json();
+      switch(type){
+        case type = "products":
+          return new Product(data);
+        case type = "colors":
+          return new Color(data);
+        case type = "collections":
+          return new Collection(data);
+        case type = "categories":
+          return new Category(data);    
+        default:
+          throw new Error("unknown type");
+      }
+    } catch (error) {
+      console.error("Error getting"+id, error)
     }
   }
 
@@ -68,6 +89,20 @@ class RestService {
       console.error(`error updating ${type}:`, error);
     }
   }
+
+  async getIDs(){
+    try {
+      const res = await fetch(`${this.endpoint}/keys`);
+      const data = await res.json();
+      return data;
+    } catch (error) {
+      console.error("error getting IDs", error)
+    }
+  
+  }
+
+
 }
+
 
 export default new RestService();

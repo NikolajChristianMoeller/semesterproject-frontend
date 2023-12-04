@@ -5,9 +5,13 @@ import Admin from "../pages/Admin";
 import { useState } from "react";
 import Login from "../pages/Login";
 import { useEffect } from "react";
+import Product from "../pages/Product";
+import restService from "../services/restService";
 
 export default function Router() {
   const [cart, setCart] = useState([]);
+  const [productIDs, setProductIDs] = useState([]);
+
 
   // Loads the contents of the cart from local storage
   useEffect(() => {
@@ -25,6 +29,12 @@ export default function Router() {
       localStorage.removeItem("cart");
     }
   }, [cart]);
+
+
+  const getProductIDs = async ()=>{
+    const data = await restService.getIDs();
+    setProductIDs(data);
+  }
 
   const fillCart = (product) => {
     try {
@@ -63,12 +73,15 @@ export default function Router() {
     return isAuthenticated ? <Outlet /> : <Navigate to="/login" />;
   };
 
+  useEffect(()=>getProductIDs, [])
+    
+
   return (
     <Routes>
       <Route
         path="/"
         element={
-          <HomePage fillCart={fillCart} cart={cart} emptyCart={emptyCart} />
+          <HomePage fillCart={fillCart} cart={cart} emptyCart={emptyCart}/>
         }
       />
       <Route
@@ -92,6 +105,7 @@ export default function Router() {
         path="login"
         element={<Login cart={cart} emptyCart={emptyCart} />}
       />
+      <Route path="product/:id" element={<Product />} />
     </Routes>
   );
 }
