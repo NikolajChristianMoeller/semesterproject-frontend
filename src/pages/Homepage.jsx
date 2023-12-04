@@ -20,7 +20,7 @@ export default function Homepage({fillCart, cart, emptyCart}){
         }
     }
     
-
+window.scrollTo({top: 0, behavior: 'smooth'})
     try {
         return ( 
             <div>

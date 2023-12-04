@@ -5,9 +5,10 @@ import Policies from "../components/Policies"
 
 export default function Contactpage({cart, emptyCart}){
 
-
+window.scrollTo(0, 0)
 
     try{
+
         return(
             <div>
                   <ToolBar cart={cart} emptyCart={emptyCart}/>
