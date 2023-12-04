@@ -8,6 +8,7 @@ import Contactpage from "../pages/Contactpage";
 import Aboutpage from "../pages/Aboutpage"
 import Policiespage from "../pages/Policiespage"
 import { useEffect } from "react";
+import ScrollTop from "./ScrollTop";
 
 export default function Router() {
   const [cart, setCart] = useState([]);
@@ -66,7 +67,10 @@ export default function Router() {
     return isAuthenticated ? <Outlet /> : <Navigate to="/login" />;
   };
 
+
+
   return (
+    
     <Routes>
       <Route
         path="/"

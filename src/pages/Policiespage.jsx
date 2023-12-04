@@ -1,7 +1,12 @@
 import ToolBar from "../components/ToolBar"
 import Footer from "../components/Footer"
 import Policies from "../components/Policies"
+
+
 export default function Contactpage({cart, emptyCart}){
+
+
+
     try{
         return(
             <div>

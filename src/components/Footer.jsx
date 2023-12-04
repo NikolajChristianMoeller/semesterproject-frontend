@@ -3,6 +3,7 @@ import { Link } from "react-router-dom"
 
 export default function Footer(){
 
+ 
     return(
         <footer className="container text-center" style={{marginTop:"5rem", paddingBottom:"2rem",maxWidth:"100%"}} >
         <div className="row">
@@ -18,7 +19,7 @@ export default function Footer(){
                 <h5>FORHANDLER</h5>
                 <p>Bliv forhandler</p>
                 <p>Billedbank</p>
-                <Link to="/policies " style={{textDecoration: "none", color:"black"}}>Handelsbetingelser</Link>
+                <Link to="/policies" style={{textDecoration: "none", color:"black"}} >Handelsbetingelser</Link>
             </div>
 
             <div className="col">

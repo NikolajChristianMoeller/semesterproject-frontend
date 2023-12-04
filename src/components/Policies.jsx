@@ -1,4 +1,9 @@
+
+
 export default function Policies(){
+
+  
+
     return(
         <div>
             <h3 className="text-center">HANDELSBETINGELSER</h3>
