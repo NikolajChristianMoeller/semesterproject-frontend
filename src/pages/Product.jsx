@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
 import restService from "../services/restService";
+import ToolBar from "../components/ToolBar";
 
-export default function Product(){
+export default function Product({cart, emptyCart}){
     const {id} = useParams();
     const [product, setProduct] = useState([])
 
@@ -20,6 +21,7 @@ export default function Product(){
     try {
         return(
             <div>
+                <ToolBar cart={cart} emptyCart={emptyCart}/>
                 <p> hello </p>
                 <p> {product.Name}</p>
             </div>

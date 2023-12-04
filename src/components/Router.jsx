@@ -105,7 +105,7 @@ export default function Router() {
         path="login"
         element={<Login cart={cart} emptyCart={emptyCart} />}
       />
-      <Route path="product/:id" element={<Product />} />
+      <Route path="product/:id" element={<Product cart={cart} emptyCart={emptyCart}/>} />
     </Routes>
   );
 }
