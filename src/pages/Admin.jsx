@@ -261,6 +261,12 @@ switch (type) {
     useEffect(()=> loadCollections, [])
     useEffect(()=> loadCategories, [])
 
+    setTimeout(()=>{
+        tabs({target: document.querySelector("#product-tab")});
+    }, 1)
+    //set timeout to wait for the elements to be rendered before initializing the tabs
+    // 1ms seems to be enough
+
 
     return (
         <div>
@@ -269,7 +275,7 @@ switch (type) {
             <div id="tabs" className="container row mt-4 mx-auto">
                 <ul className="nav-tabs nav">
                     <li className="nav-item">
-                    <p data-tab-show="product-list" onClick={(event)=>tabs(event)} className="nav-link">Products</p>
+                    <p id="product-tab" data-tab-show="product-list" onClick={(event)=>tabs(event)} className="nav-link">Products</p>
                     </li>
                     <li className="nav-item">
                     <p data-tab-show="colors-list" onClick={(event)=>tabs(event)} className="nav-link">Colors</p>
@@ -302,6 +308,7 @@ switch (type) {
             <CreateOptions form={form} handleCreate={handleCreate}/>
       
         </div>
+        
 
     )
 

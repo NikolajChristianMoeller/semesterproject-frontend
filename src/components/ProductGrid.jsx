@@ -1,11 +1,16 @@
+import { useNavigate } from "react-router-dom";
+
 /* eslint-disable react/prop-types */
-export default function ProductGrid({ products, fillCart }) {
+export default function ProductGrid({ products, fillCart}) {
+  const navigate = useNavigate()
+
+
   try {
     return (
       <div className="container">
         <div className="row">
           {products.map((product) => (
-            <div className="col-sm-3" key={product.ID}>
+            <div className="col-sm-3" key={product.ID} onClick={()=>navigate("product/"+product.ID)}>
               <div className="card">
                 <img src="/vite.svg" className="card-img-top" />
                 <p className="card-header">{product.Name}</p>

@@ -27,13 +27,12 @@ export default function MiscTable({ objects, deleteClicked, updateClicked, table
               <td>{object.Name}{isColor(object)}</td>
               <td>
                 <button
-                  className="btn btn-outline-danger rounded-pill"
+                  className="btn btn-outline-danger"
                   type="button"
                   data-bs-toggle="modal"
                   data-bs-target="#delete-modal"
                   onClick={() => deleteClicked(object, table)}
                 >
-                  Delete
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="16"
@@ -46,13 +45,12 @@ export default function MiscTable({ objects, deleteClicked, updateClicked, table
                   </svg>
                 </button>
                 <button
-                  className="btn btn-info ms-2 rounded-pill"
+                  className="btn btn-info ms-2 "
                   type="button"
                   data-bs-toggle="modal"
                   data-bs-target="#update-modal"
                   onClick={() => updateClicked(object, table)}
                 >
-                  Update
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="16"
