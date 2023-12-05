@@ -1,6 +1,38 @@
-export default function ProductTableAdmin({ products, deleteClicked, updateClicked }) {
+//TODO: set button group, enable ok button when input is enabled
+
+
+export default function ProductTableAdmin({ products, deleteClicked, updateClicked, adjustStock }) {
+
+  const handleClick = (event, product)=>{
+    event.preventDefault()
+    const input = document.getElementById(product.ID+"-stock")
+    const submit = document.getElementById(product.ID+"-submit")
+    if(input.disabled){
+      input.disabled = false;
+      event.target.textContent = "Cancel"
+      // submit.disabled = true
+      submit.classList.remove("hidden")
+    } else {
+      input.value = product.Stock
+      input.disabled = true;
+      event.target.textContent = "Adjust"
+      // submit.disabled = false
+      submit.classList.add("hidden")
+    }
+  }
+
+  const handleSubmit = (e, product)=>{
+    e.preventDefault();
+    const form = e.target;
+    adjustStock(product.ID, form.stock.value)
+    form.stock.disabled = true;
+    form.querySelector("button").textContent = "Adjust"
+    form.querySelector("button:last-child").classList.add("hidden")
+  }
+
+
   return (
-    <table className="table" id="product-list">
+    <table className="table table-light table-striped" id="product-list">
       <thead>
         <tr>
           <th scope="col">ID</th>
@@ -14,7 +46,17 @@ export default function ProductTableAdmin({ products, deleteClicked, updateClick
           <tr key={product.ID}>
             <th scope="row">{product.ID}</th>
             <td>{product.Name}</td>
-            <td>{product.Stock}</td>
+            <td>
+              <form onSubmit={(event)=>handleSubmit(event, product)}>
+                <input className="form-control w-25" name="stock"id={product.ID+"-stock"} disabled defaultValue={product.Stock}/>
+            <button className="btn btn-secondary ms-2" onClick={(event)=>handleClick(event, product)}>
+              Adjust
+            </button>
+            <button role="submit" className="btn btn-success ms-2 hidden" id={product.ID+"-submit"}>
+              OK
+            </button>
+              </form>
+            </td>
             <td>
               <button
                 className="btn btn-outline-danger"

@@ -101,8 +101,21 @@ class RestService {
   
   }
 
+  async updateStock(object){
+    try {
+      const res = await fetch(`${this.endpoint}/products/${object.ID}/stock`, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(object),
+      });
+      return res.ok;
+    } catch (error) {
+      console.error(`error updating stock:`, error);
+    }
+  }
+
 
 }
-
-
 export default new RestService();

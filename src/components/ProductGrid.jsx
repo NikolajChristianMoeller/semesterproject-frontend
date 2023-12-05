@@ -4,7 +4,6 @@ import { useNavigate } from "react-router-dom";
 export default function ProductGrid({ products, fillCart}) {
   const navigate = useNavigate()
 
-
   try {
     return (
       <div className="container">

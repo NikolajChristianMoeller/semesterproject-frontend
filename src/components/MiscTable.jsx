@@ -13,11 +13,12 @@ export default function MiscTable({ objects, deleteClicked, updateClicked, table
   }
 
     return (
-      <table className="table hidden" id={table+"-list"}>
+      <table className="table table-light table-striped hidden" id={table+"-list"}>
         <thead>
           <tr>
             <th scope="col">ID</th>
             <th scope="col">Name</th>
+            <th scope="col">Options</th>
           </tr>
         </thead>
         <tbody>

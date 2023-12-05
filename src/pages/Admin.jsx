@@ -27,7 +27,6 @@ export default function Admin({cart, emptyCart}){
     } 
 
 
-    useEffect(()=> loadProducts, [])
     
     const loadProducts = async ()=>{
         try {
@@ -168,14 +167,26 @@ export default function Admin({cart, emptyCart}){
       }
     }
 
+    const adjustStock = async (id, stock)=>{
+        const object = {ID: id, Stock: stock}
+        try {
+            const res = await restService.updateStock(object);
+            if(res){
+                loadProducts();
+            }
+        } catch (error) {
+            console.error("error adjusting stock", error)
+        }
+    }
 
 
+    useEffect(()=> loadProducts, [])
     useEffect(()=> loadColors, [])
     useEffect(()=> loadCollections, [])
     useEffect(()=> loadCategories, [])
 
     setTimeout(()=>{
-        tabs({target: document.querySelector("#product-tab")});
+        document.querySelector("#product-tab").click()
     }, 1)
     //set timeout to wait for the elements to be rendered before initializing the tabs
     // 1ms seems to be enough
@@ -208,14 +219,14 @@ export default function Admin({cart, emptyCart}){
                     <button className="nav-item btn btn-danger" onClick={logout}>Log out</button>
                 </ul>
                 <div className="row">
-                    <ProductTableAdmin products={products} deleteClicked={deleteClicked} updateClicked={updateClicked}/>
+                    <ProductTableAdmin products={products} deleteClicked={deleteClicked} updateClicked={updateClicked} adjustStock={adjustStock}/>
                     <MiscTable objects={colors} table={"colors"} deleteClicked={deleteClicked} updateClicked={updateClicked}/>
                     <MiscTable objects={categories} table={"categories"} deleteClicked={deleteClicked} updateClicked={updateClicked}/>
                     <MiscTable objects={collections} table={"collections"} deleteClicked={deleteClicked} updateClicked={updateClicked}/>
                 </div>
             </div>
             <DeleteModal deleteTarget={deleteTarget} handleDelete={handleDelete}/>
-            <UpdateForm updateTarget={updateTarget} handleUpdate={handleUpdate} colors={colors} collections={collections} categories={categories}/>
+            <UpdateForm updateTarget={updateTarget} handleUpdate={handleUpdate} createOptionClick={createOptionClick} colors={colors} collections={collections} categories={categories}/>
             <CreateProduct handleCreate={handleCreate} createOptionClick={createOptionClick} colors={colors} collections={collections} categories={categories} />
             <CreateOptions form={form} handleCreate={handleCreate}/>
         </div>
