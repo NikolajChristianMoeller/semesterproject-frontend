@@ -1,10 +1,11 @@
-import { useEffect } from "react";
-import { useLocation } from "react-router-dom";
 
-export default function ScrollTop(){
-      const {pathName} = useLocation();
+export default function ScrollTop(target){
+//       const {pathName} = useLocation();
 
-   useEffect(() => {
-  window.scrollTo(0, 0)
-}, [pathName])
+//    useEffect(() => {
+//   window.scrollTo(0, 0)
+// }, [pathName])
+
+    setTimeout( ()=>document.getElementById(target).scrollIntoView({ behavior: 'instant' }),1)
+
 }
