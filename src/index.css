@@ -1,6 +1,8 @@
 body {
   padding-right: 0 !important;
   font-family: bauerbodnibtwxx-roman, serif;
+  background-color: #f6f3ec
+  
 }
 
 .colors {
@@ -56,4 +58,8 @@ footer {
 }
 textarea {
   resize: none;
+}
+
+#top-banner{
+  background-color: #A38B6F 
 }

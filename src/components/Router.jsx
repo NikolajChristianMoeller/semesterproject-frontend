@@ -4,6 +4,9 @@ import Checkout from "../pages/Checkout";
 import Admin from "../pages/Admin";
 import { useState } from "react";
 import Login from "../pages/Login";
+import Contactpage from "../pages/Contactpage";
+import Aboutpage from "../pages/Aboutpage"
+import Policiespage from "../pages/Policiespage"
 import { useEffect } from "react";
 import Product from "../pages/Product";
 import restService from "../services/restService";
@@ -73,10 +76,13 @@ export default function Router() {
     return isAuthenticated ? <Outlet /> : <Navigate to="/login" />;
   };
 
+
+
   useEffect(()=>getProductIDs, [])
     
 
   return (
+    
     <Routes>
       <Route
         path="/"
@@ -105,7 +111,10 @@ export default function Router() {
         path="login"
         element={<Login cart={cart} emptyCart={emptyCart} />}
       />
-      <Route path="product/:id" element={<Product cart={cart} emptyCart={emptyCart}/>} />
+      <Route path="product/:id" element={<Product cart={cart} emptyCart={emptyCart} fillCart={fillCart}/>} />
+        <Route path="/contact" element={<Contactpage cart={cart} emptyCart={emptyCart}/>} />
+        <Route path="/about" element={<Aboutpage cart={cart} emptyCart={emptyCart}/>} ></Route>
+        <Route path="/policies" element={<Policiespage cart={cart} emptyCart={emptyCart}/>} ></Route>
     </Routes>
   );
 }
