@@ -16,7 +16,7 @@ export default function ToolBar({ cart, emptyCart }) {
     >
       <div className="container-fluid">
         <div className="navbar-brand">
-          <Link to="/" style={{ textDecoration: "none", color: "black" }}>
+          <Link to="/" style={{ textDecoration: "none", color: "black" }} >
             MikroHome
           </Link>
         </div>

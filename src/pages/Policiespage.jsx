@@ -11,7 +11,7 @@ export default function Contactpage({cart, emptyCart}){
     try{
 
         return(
-            <div id="policiespage">
+            <div id="policiespage" className="ms-2 me-2">
                   <ToolBar cart={cart} emptyCart={emptyCart}/>
                   
  

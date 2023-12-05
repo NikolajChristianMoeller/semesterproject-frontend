@@ -39,10 +39,17 @@ export default function Footer(){
         </div>
 
             
-            <div className="row">
-                <a className="col text-end " href="https://www.facebook.com/Mikrohome"><img style={{width:"29px"}}src="/Facebook_Logo_Primary.png"/></a>
-            
-                <a  className="col text-start" href="https://www.instagram.com/mikrohomeinterior/"> <img style={{width:"29px"}}src="/Instagram_Glyph_Gradient.svg"/></a>
+            <div className="row justify-content-center my-2" >
+
+                 <div className="col-1" >
+        <a href="https://www.facebook.com/Mikrohome"><img style={{width:"29px"}}src="/Facebook_Logo_Primary.png"/></a>
+
+                    </div>         
+               
+           <div className="col-1">
+            <a   href="https://www.instagram.com/mikrohomeinterior/"> <img style={{width:"29px"}}src="/Instagram_Glyph_Gradient.svg"/></a>
+          </div>
+
 
             </div>
 
