@@ -1,21 +1,21 @@
 import ToolBar from "../components/ToolBar"
 import Footer from "../components/Footer"
-import ScrollTop from "../components/scrollTop";
+
 
 
 export default function Contactpage({cart, emptyCart}){
 
 
- ScrollTop("policiespage");
+
 
     try{
 
         return(
-            <div id="policiespage" className="ms-2 me-2">
+            <div id="policiespage" >
                   <ToolBar cart={cart} emptyCart={emptyCart}/>
                   
  
-        <div>
+        <div className="ms-2 me-2">
             <h3 className="text-center">HANDELSBETINGELSER</h3>
 
 <div>

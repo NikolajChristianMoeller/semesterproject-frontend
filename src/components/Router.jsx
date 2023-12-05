@@ -10,8 +10,21 @@ import Policiespage from "../pages/Policiespage"
 import { useEffect } from "react";
 import Product from "../pages/Product";
 import restService from "../services/restService";
+import { useLocation } from "react-router-dom";
+
+
 
 export default function Router() {
+
+
+  let location = useLocation();
+
+  useEffect(() => {
+    setTimeout(() => {
+      window.scroll(0, 0)
+    }, 1);
+  }, [location]);
+
   const [cart, setCart] = useState([]);
   const [productIDs, setProductIDs] = useState([]);
 
