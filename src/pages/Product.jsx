@@ -28,7 +28,19 @@ export default function Product({cart, emptyCart, fillCart}){
         }
     }
 
-    
+async function addReview(review){
+    try {
+        const response = await restService.create(review,"reviews");
+        if(response){
+            loadProduct();
+        } else{
+            throw new Error("Error adding review")
+        }
+        
+    } catch (error) {
+        console.error("error adding review", error)
+    }
+}
 
 try {
         return(
@@ -54,7 +66,7 @@ try {
                         <div className="col-sm-6"></div>
                     </div>
 
-               <Reviews reviews={product.Reviews}/>
+               <Reviews product={product} addReview={addReview}/>
                 </div>
                 <Footer/>
             </div>

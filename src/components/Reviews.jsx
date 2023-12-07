@@ -1,4 +1,4 @@
-export default function Reviews({reviews}){
+export default function Reviews({product, addReview}){
 
 
 function stars(rating){
@@ -21,10 +21,57 @@ return starsList.reverse()
 }
 
 
-    if( reviews!==undefined){
+
+
+function handleClick(event){
+    const form = document.querySelector("#review-form");
+
+    form.classList.remove("hidden");
+
+    event.target.classList.add("hidden");
+
+
+}
+
+function onSubmit(){
+    const form = event.target
+
+const review = {
+    Rating: form.rating.value,
+    Reviewer: form.reviewer.value,
+    Text: form.text.value,
+    ProductID: product.ID
+}
+
+addReview(review)
+}
+
+
+
+    if( product.Reviews!==undefined){
     return(
         <div className="container">
-            {reviews.map( (review)=>( 
+        
+        
+            <button onClick={(event)=>handleClick(event)} type="button" className="btn">Anmeld</button>
+
+            <form id="review-form" className="hidden my-5 text-center ">
+                
+
+                    <label className="form-label w-25 row mx-auto" htmlFor="rating">Rating</label>
+                    <input className="form-control w-25 row mx-auto" name="rating" type="number"></input>
+
+                    <label className="form-label w-25 row mx-auto" htmlFor="reviewer">Navn</label>
+                    <input className="form-control w-25 row mx-auto" name="reviewer" type="text"></input>
+
+                    <label className="form-label w-25 row mx-auto" htmlFor="text">Kommentar</label>
+                    <textarea rows="5" className="form-control w-25 row mx-auto" name="text" type="text" />
+
+                    <button type="submit" className="btn btn-success w-25 my-2 ">Send</button>
+               
+            </form>
+
+            {product.Reviews.map( (review)=>( 
                 <div className="row card" key={review.ID}>
                     <div className="card-body" >
                         <h4 style={{color:"gold"}}className="card-title"> {stars(review.Rating)}</h4>
@@ -37,7 +84,13 @@ return starsList.reverse()
                     
                 </div>
             ))}
+        
+        
+        
+        
         </div>
+
+        
 
     )
 }
