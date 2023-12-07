@@ -3,7 +3,6 @@ import { useParams } from "react-router-dom"
 import restService from "../services/restService";
 import ToolBar from "../components/ToolBar";
 import Footer from "../components/Footer";
-import ScrollTop from "../components/scrollTop";
 export default function Product({cart, emptyCart, fillCart}){
 
 
@@ -26,8 +25,6 @@ export default function Product({cart, emptyCart, fillCart}){
             console.error("error fetching", error);
         }
     }
-//makes page scroll to top when you visit it
- ScrollTop("productview");    // window.scrollTo({top: 0, behavior: 'smooth'})
 
 try {
         return(

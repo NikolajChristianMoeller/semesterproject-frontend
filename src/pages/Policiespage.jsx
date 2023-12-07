@@ -1,12 +1,9 @@
 import ToolBar from "../components/ToolBar"
 import Footer from "../components/Footer"
-import ScrollTop from "../components/scrollTop";
 
 
 export default function Contactpage({cart, emptyCart}){
 
-
- ScrollTop("policiespage");
 
     try{
 

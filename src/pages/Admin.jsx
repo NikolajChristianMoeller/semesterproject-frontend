@@ -11,6 +11,8 @@ import tabs from "../services/tabs";
 import MiscTable from "../components/MiscTable";
 import Feedback from "../components/Feedback.jsx";
 
+//TODO: make the active tab persistent so it doesn't switch to products when you perfom updates in misc table
+
 export default function Admin({cart, emptyCart}){
     const navigate = useNavigate();
     const [products, setProducts] = useState([]);
@@ -27,9 +29,11 @@ export default function Admin({cart, emptyCart}){
         navigate("/");
     } 
 
-   
-    
-
+    setTimeout(()=>{
+        document.querySelector("#product-tab").click()
+    }, 1)
+    //set timeout to wait for the elements to be rendered before initializing the tabs
+    // 1ms seems to be enough
     
     const loadProducts = async ()=>{
         try {
@@ -156,13 +160,14 @@ switch (type) {
         setTargetType(type);
     }
 
+
     const handleUpdate = async (object, type)=>{
         try {
             const res = await restService.update(object, type);
             if(res){
                     switch (type) {
                         case type = "colors":
-                            loadColors();                        
+                            loadColors();
                             showFeedback(res,"update");
                         break;
                         case type = "collections":
@@ -272,11 +277,7 @@ switch (type) {
     useEffect(()=> loadCollections, [])
     useEffect(()=> loadCategories, [])
 
-    setTimeout(()=>{
-        document.querySelector("#product-tab").click()
-    }, 1)
-    //set timeout to wait for the elements to be rendered before initializing the tabs
-    // 1ms seems to be enough
+
 
 
     return (
@@ -289,13 +290,13 @@ switch (type) {
                     <p id="product-tab" data-tab-show="product-list" onClick={(event)=>tabs(event)} className="nav-link">Products</p>
                     </li>
                     <li className="nav-item">
-                    <p data-tab-show="colors-list" onClick={(event)=>tabs(event)} className="nav-link">Colors</p>
+                    <p id="color-tab" data-tab-show="colors-list" onClick={(event)=>tabs(event)} className="nav-link">Colors</p>
                     </li>
                     <li className="nav-item">
-                    <p data-tab-show="collections-list" onClick={(event)=>tabs(event)} className="nav-link">Collections</p>
+                    <p id="collection-tab" data-tab-show="collections-list" onClick={(event)=>tabs(event)} className="nav-link">Collections</p>
                     </li>
                     <li className="nav-item">
-                    <p data-tab-show="categories-list" onClick={(event)=>tabs(event)} className="nav-link">Categories</p>
+                    <p id="category-tab" data-tab-show="categories-list" onClick={(event)=>tabs(event)} className="nav-link">Categories</p>
                     </li>
                     <button className="nav-item btn btn-info ms-2" 
                         type="button"
@@ -308,9 +309,9 @@ switch (type) {
                 </ul>
                 <div className="row">
                     <ProductTableAdmin products={products} deleteClicked={deleteClicked} updateClicked={updateClicked} adjustStock={adjustStock}/>
-                    <MiscTable objects={colors} table={"colors"} deleteClicked={deleteClicked} updateClicked={updateClicked}/>
-                    <MiscTable objects={categories} table={"categories"} deleteClicked={deleteClicked} updateClicked={updateClicked}/>
-                    <MiscTable objects={collections} table={"collections"} deleteClicked={deleteClicked} updateClicked={updateClicked}/>
+                    <MiscTable objects={colors} table={"colors"} deleteClicked={deleteClicked} handleUpdate={handleUpdate}/>
+                    <MiscTable objects={categories} table={"categories"} deleteClicked={deleteClicked} handleUpdate={handleUpdate}/>
+                    <MiscTable objects={collections} table={"collections"} deleteClicked={deleteClicked} handleUpdate={handleUpdate}/>
                 </div>
             </div>
             <DeleteModal deleteTarget={deleteTarget} handleDelete={handleDelete}/>

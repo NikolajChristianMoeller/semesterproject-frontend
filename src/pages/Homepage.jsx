@@ -4,14 +4,8 @@ import ToolBar from '../components/ToolBar';
 import restService from '../services/restService';
 import Footer from '../components/Footer';
 import Carousel from '../components/Carousel';
-import ScrollTop from '../components/scrollTop';
 
 export default function Homepage({fillCart, cart, emptyCart}){
-
-
-    ScrollTop("homepage");
-    // setTimeout( ()=>document.getElementById("homepage").scrollIntoView({ behavior: 'instant' }),1)
-
     const [products, setProducts] = useState([]);
 
     useEffect(()=> loadProducts, [])

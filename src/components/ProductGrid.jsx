@@ -7,9 +7,9 @@ export default function ProductGrid({ products, fillCart}) {
   try {
     return (
       <div className="container">
-        <div className="row">
+        <div className="row gy-5">
           {products.map((product) => (
-            <div className="col-sm-3" key={product.ID} onClick={()=>navigate("product/"+product.ID) }>
+            <div className="col-lg-3" key={product.ID} onClick={()=>navigate("product/"+product.ID) }>
               <div className="card">
                 <img src="/vite.svg" className="card-img-top" />
                 <p className="card-header">{product.Name}</p>
