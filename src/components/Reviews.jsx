@@ -33,7 +33,9 @@ function handleClick(event){
 
 }
 
-function onSubmit(){
+function handleSubmit(event){
+    event.preventDefault()
+
     const form = event.target
 
 const review = {
@@ -44,6 +46,12 @@ const review = {
 }
 
 addReview(review)
+
+  form.classList.add("hidden");
+
+  document.querySelector("#toggle-form").classList.remove("hidden")
+
+  form.reset()
 }
 
 
@@ -53,9 +61,9 @@ addReview(review)
         <div className="container">
         
         
-            <button onClick={(event)=>handleClick(event)} type="button" className="btn">Anmeld</button>
+            <button id="toggle-form" onClick={(event)=>handleClick(event)} type="button" className="btn btn-secondary">Anmeld</button>
 
-            <form id="review-form" className="hidden my-5 text-center ">
+            <form id="review-form" className="hidden my-5 text-center" onSubmit={(event)=>handleSubmit(event)}>
                 
 
                     <label className="form-label w-25 row mx-auto" htmlFor="rating">Rating</label>
@@ -67,12 +75,12 @@ addReview(review)
                     <label className="form-label w-25 row mx-auto" htmlFor="text">Kommentar</label>
                     <textarea rows="5" className="form-control w-25 row mx-auto" name="text" type="text" />
 
-                    <button type="submit" className="btn btn-success w-25 my-2 ">Send</button>
+                    <button  type="submit" className="btn btn-success w-25 my-2 ">Send</button>
                
             </form>
 
             {product.Reviews.map( (review)=>( 
-                <div className="row card" key={review.ID}>
+                <div className="row card w-50 mx-auto my-2" key={review.ID}>
                     <div className="card-body" >
                         <h4 style={{color:"gold"}}className="card-title"> {stars(review.Rating)}</h4>
                     <h5 className="card-subtitle  mb-2 text-body-secondary"> {review.Reviewer}</h5>                    
