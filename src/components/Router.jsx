@@ -19,10 +19,12 @@ export default function Router() {
 
   let location = useLocation();
 
+  //først når vi er ude af funktionen skal du scrolle
+  
   useEffect(() => {
     setTimeout(() => {
       window.scroll(0, 0)
-    }, 1);
+    }, 0);
   }, [location]);
 
   const [cart, setCart] = useState([]);

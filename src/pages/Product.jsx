@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom"
 import restService from "../services/restService";
 import ToolBar from "../components/ToolBar";
 import Footer from "../components/Footer";
+import Reviews from "../components/Reviews";
 
 export default function Product({cart, emptyCart, fillCart}){
 
@@ -27,6 +28,7 @@ export default function Product({cart, emptyCart, fillCart}){
         }
     }
 
+    
 
 try {
         return(
@@ -38,6 +40,7 @@ try {
                         <div className="col-sm-6 text-start">
                            
                             <h3 className="ms-0">{product.Name}</h3>
+                            <h4>Beskrivelse</h4>
                             <p className="fs-5" >{product.Description}</p>
                             <p className="fs-4">Pris: {product.Price}</p>
                             <p>Farve: {product.Colors}</p>
@@ -51,7 +54,7 @@ try {
                         <div className="col-sm-6"></div>
                     </div>
 
-
+               <Reviews reviews={product.Reviews}/>
                 </div>
                 <Footer/>
             </div>
