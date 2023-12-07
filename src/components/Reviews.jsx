@@ -67,7 +67,7 @@ addReview(review)
                 
 
                     <label className="form-label w-25 row mx-auto" htmlFor="rating">Rating</label>
-                    <input className="form-control w-25 row mx-auto" name="rating" type="number"></input>
+                    <input className="form-control w-25 row mx-auto" min="1" max="5" name="rating" type="number"></input>
 
                     <label className="form-label w-25 row mx-auto" htmlFor="reviewer">Navn</label>
                     <input className="form-control w-25 row mx-auto" name="reviewer" type="text"></input>

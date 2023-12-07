@@ -1,11 +1,10 @@
 import { Link } from "react-router-dom"
-import { useNavigate } from "react-router-dom"
 
 
 export default function Footer(){
 
 
-const navigate = useNavigate();
+
  
     return(
         <footer className="container text-center" style={{marginTop:"5rem", paddingBottom:"2rem",maxWidth:"100%"}} >
