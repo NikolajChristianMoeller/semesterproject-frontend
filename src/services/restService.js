@@ -6,13 +6,19 @@ import Category from "../models/category";
 class RestService {
   endpoint = "http://localhost:3000";
 
-  async getAll(type) {
+  async getAll(type, page, sort) {
     try {
-      const res = await fetch(`${this.endpoint}/${type}`);
+      let res
+      if(sort != undefined) {
+        res = await fetch(`${this.endpoint}/${type}?offSet=${page*20}&sortBy=${sort.sortBy}&sortDir=${sort.sortDir}`);
+      }else{
+        res = await fetch(`${this.endpoint}/${type}?offSet=${page*20}`);
+      }
       const data = await res.json();
       switch(type){
         case type = "products":
-          return data.map((json) => new Product(json));
+          data.rows = data.rows.map((json) => new Product(json));
+        return data
         case type = "colors":
           return data.map((json) => new Color(json));
         case type = "collections":

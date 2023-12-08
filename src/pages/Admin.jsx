@@ -38,7 +38,7 @@ export default function Admin({cart, emptyCart}){
     const loadProducts = async ()=>{
         try {
             const products = await restService.getAll("products");
-            setProducts(products) 
+            setProducts(products.rows) 
         } catch (error) {
             console.error("error fetching", error);
         }
@@ -243,7 +243,7 @@ switch (type) {
 
     const loadCollections = async ()=>{
       try {
-          const collections = await restService.getAll("collections");
+          const collections = await restService.getAll("collections", 0);
           setCollections(collections) 
       } catch (error) {
           console.error("error fetching collections", error);
@@ -252,7 +252,7 @@ switch (type) {
 
     const loadCategories = async ()=>{
       try {
-          const categories = await restService.getAll("categories");
+          const categories = await restService.getAll("categories", 0);
           setCategories(categories) 
       } catch (error) {
           console.error("error fetching categories", error);
