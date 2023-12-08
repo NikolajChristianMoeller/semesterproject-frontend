@@ -1,7 +1,7 @@
 body {
   padding-right: 0 !important;
-  font-family: bauerbodnibtwxx-roman, serif;
-  background-color: #f6f3ec
+  font-family: palatino;
+  background-color: #f6f3ec;
   
 }
 
@@ -34,7 +34,7 @@ h5 {
 }
 
 footer {
-  background-color: #faebd7;
+  background-color: #ffffff;
 }
 
 .hidden {
@@ -61,5 +61,5 @@ textarea {
 }
 
 #top-banner{
-  background-color: #A38B6F 
+  background-color: #A38B6F;
 }
