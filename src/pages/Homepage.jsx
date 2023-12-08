@@ -10,7 +10,7 @@ export default function Homepage({fillCart, cart, emptyCart}){
     const [products, setProducts] = useState([]);
     const [page, setPage] = useState(0)
     const [sort, setSort] = useState({sortBy:"ID", sortDir:"DESC"})
-    const [filter, setFilter] = useState()
+    const [filter, setFilter] = useState({filterBy:"Colors", filterValue:"White"})
 
     useEffect(()=> loadProducts, [])
     
@@ -18,7 +18,6 @@ export default function Homepage({fillCart, cart, emptyCart}){
         try {
             const res = await restService.getAll("products",page, sort, filter);
             setProducts(res.rows)
-            console.log(res.count)
         } catch (error) {
             console.error("error fetching", error);
         }
@@ -31,8 +30,11 @@ export default function Homepage({fillCart, cart, emptyCart}){
         loadProducts();
     }
     
-    const changeFilter = ()=>{
-
+    const changeFilter = (filterTable, filterValue)=>{
+        filter.filterBy = filterTable
+        filter.filterValue = filterValue
+        setFilter(filter)
+        loadProducts()
     }
 
     try {
@@ -47,7 +49,7 @@ export default function Homepage({fillCart, cart, emptyCart}){
                         <h2 className="text-center my-5" style={{marginBottom:"3rem"}}>Katalog</h2>
                     </div>
                 </div>
-                    <OptionsBar changeSort={changeSort} setFilter={setFilter}/>
+                    <OptionsBar changeSort={changeSort} changeFilter={changeFilter}/>
                 <div className='container'>
                     <ProductGrid products={products} fillCart={fillCart} emptyCart={emptyCart}/>
                 </div>

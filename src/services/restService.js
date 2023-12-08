@@ -6,13 +6,13 @@ import Category from "../models/category";
 class RestService {
   endpoint = "http://localhost:3000";
 
-  async getAll(type, page, sort) {
+  async getAll(type, page, sort, filter) {
     try {
       let res
-      if(sort != undefined) {
-        res = await fetch(`${this.endpoint}/${type}?offSet=${page*20}&sortBy=${sort.sortBy}&sortDir=${sort.sortDir}`);
+      if(filter != undefined) {
+        res = await fetch(`${this.endpoint}/${type}?offSet=${page*20}&sortBy=${sort.sortBy}&sortDir=${sort.sortDir}&filterBy=${filter.filterBy}&filterValue=${filter.filterValue}`);
       }else{
-        res = await fetch(`${this.endpoint}/${type}?offSet=${page*20}`);
+        res = await fetch(`${this.endpoint}/${type}?offSet=0&sortBy=ID&sortDir=DESC`);
       }
       const data = await res.json();
       switch(type){

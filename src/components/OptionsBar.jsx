@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
 import restService from "../services/restService"
 
-export default function OptionsBar({changeSort}){
+export default function OptionsBar({changeSort, changeFilter}){
     const [categories, setCategories] = useState([]);
     const [colors, setColors] = useState([]);
     const [collections, setCollections] = useState([]);
@@ -40,10 +40,10 @@ export default function OptionsBar({changeSort}){
     useEffect(()=> loadCategories, [])
 
     return(
-        <div className="container mx-auto my-3">
-            <div className="row align-items-center">
+        <div className="container mx-auto my-3 w-100">
+            <div className="row mx-auto gx-0">
                 <div className="dropdown col">
-                <button className="btn btn-lg dropdown-toggle w-100" type="button" data-bs-toggle="dropdown" style={{backgroundColor:"white"}}>
+                <button className="btn btn-lg dropdown-toggle w-100" type="button" data-bs-toggle="dropdown" style={{backgroundColor:"white", borderRadius:"0px"}}>
                 Sorter efter
                 </button>
                     <ul className="dropdown-menu">
@@ -56,24 +56,37 @@ export default function OptionsBar({changeSort}){
 
                     </ul>
                 </div>
-                <select className="form-select w-25 col mx-2" defaultValue={"undefined"}>
-                <option value={"undefined"}>Alle Kategorier</option>
-                {categories.map((category)=>(
-                    <option key={category.ID} value={category.Name}>{category.Name}</option>
-                ))}
-                </select>
-                <select className="form-select w-25 col mx-2" defaultValue={"undefined"}>
-                <option value={"undefined"}>Alle Farver</option>
-                {colors.map((color)=>(
-                    <option key={color.ID} value={color.Name}>{color.Name}</option>
-                ))}
-                </select>
-                <select className="form-select w-25 col mx-2" defaultValue={"undefined"}>
-                <option value={"undefined"}>Alle Kollektioner</option>
-                {collections.map((collection)=>(
-                    <option key={collection.ID} value={collection.Name}>{collection.Name}</option>
-                ))}
-                </select>
+                <div className="dropdown col">
+                <button className="btn btn-lg dropdown-toggle w-100" type="button" data-bs-toggle="dropdown" style={{backgroundColor:"white", borderRadius:"0px"}}>
+                Farver
+                </button>
+                    <ul className="dropdown-menu">
+                        {colors.map((color)=>(
+                            <li key={color.ID} className="dropdown-item" onClick={()=>changeFilter("Colors", color.Name)}>{color.Name}</li>
+                        ))}
+                    </ul>
+                </div>
+                <div className="dropdown col">
+                <button className="btn btn-lg dropdown-toggle w-100" type="button" data-bs-toggle="dropdown" style={{backgroundColor:"white", borderRadius:"0px"}}>
+                Kollektioner
+                </button>
+                    <ul className="dropdown-menu">
+                        {collections.map((collection)=>(
+                            <li key={collection.ID} className="dropdown-item" onClick={()=>changeFilter("Collections",collection.Name)}>{collection.Name}</li>
+                        ))}
+                    </ul>
+                </div>
+                <div className="dropdown col">
+                <button className="btn btn-lg dropdown-toggle w-100" type="button" data-bs-toggle="dropdown" style={{backgroundColor:"white", borderRadius:"0px"}}>
+                Kategorier
+                </button>
+                    <ul className="dropdown-menu">
+                        {categories.map((category)=>(
+                            <li key={category.ID} className="dropdown-item" onClick={()=>changeFilter("Categories",category.Name)}>{category.Name}</li>
+                        ))}
+                    </ul>
+                </div>
+
 
             </div>
         </div>
