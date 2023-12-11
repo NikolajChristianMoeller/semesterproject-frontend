@@ -14,8 +14,8 @@ export default function Cart({ cart, emptyCart }) {
             </li>
           ))}
         </ul>
-        <p>Total {totalPrice(cart)}kr</p>
-        <p>Varer i Kurv {totalItems(cart)}</p>
+        <p>Total: {totalPrice(cart)}kr</p>
+        <p>Produkter i Kurv: {totalItems(cart)}</p>
         <button className="btn btn-outline-success">
           <Link
             to="../checkout"
