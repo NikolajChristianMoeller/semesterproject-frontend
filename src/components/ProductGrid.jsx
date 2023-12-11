@@ -18,7 +18,7 @@ export default function ProductGrid({ products, fillCart}) {
                   {product.Colors.map((color) => (
                     <div
                       className="color-dot"
-                      key={product.ID + color.ID}
+                      key={product.ID + color.Code}
                       style={{ backgroundColor: color.Code }}
                     />
                   ))}

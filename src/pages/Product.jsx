@@ -38,7 +38,11 @@ try {
                             <h3 className="ms-0">{product.Name}</h3>
                             <p className="fs-5" >{product.Description}</p>
                             <p className="fs-4">Pris: {product.Price}</p>
-                            <p>Farve: {product.Colors}</p>
+                            <ul>
+                                {product.Colors.map((color)=>(
+                                <li key={color.Code}>{color.Code}</li>
+                                ))}
+                            </ul>
                             <p>Antal på lager: {product.Stock}</p>
                             <button  onClick={() => fillCart(product)} type="button" className="btn btn-dark">Tilføj til kurv</button>
                         </div>
@@ -58,7 +62,6 @@ try {
         return(
             <div>
                 <p>Oops, we couldn't find what you were looking for. Please try again</p>
-                <p>{error}</p>
             </div>
         )
     }
