@@ -97,7 +97,7 @@ export default function ToolBar({ cart, emptyCart }) {
                   className="nav-link active"
                   aria-current="page"
                 >
-                  Checkout
+                  Til Kassen
                 </Link>
               </li>
               <li className="nav-item">
