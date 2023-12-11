@@ -11,6 +11,8 @@ import tabs from "../services/tabs";
 import MiscTable from "../components/MiscTable";
 import Feedback from "../components/Feedback.jsx";
 
+//TODO: make the active tab persistent so it doesn't switch to products when you perfom updates in misc table
+
 export default function Admin({cart, emptyCart}){
     const navigate = useNavigate();
     const [products, setProducts] = useState([]);
@@ -27,15 +29,16 @@ export default function Admin({cart, emptyCart}){
         navigate("/");
     } 
 
-   
-    
-
-    useEffect(()=> loadProducts, [])
+    setTimeout(()=>{
+        document.querySelector("#product-tab").click()
+    }, 1)
+    //set timeout to wait for the elements to be rendered before initializing the tabs
+    // 1ms seems to be enough
     
     const loadProducts = async ()=>{
         try {
             const products = await restService.getAll("products");
-            setProducts(products) 
+            setProducts(products.rows) 
         } catch (error) {
             console.error("error fetching", error);
         }
@@ -157,13 +160,14 @@ switch (type) {
         setTargetType(type);
     }
 
+
     const handleUpdate = async (object, type)=>{
         try {
             const res = await restService.update(object, type);
             if(res){
                     switch (type) {
                         case type = "colors":
-                            loadColors();                        
+                            loadColors();
                             showFeedback(res,"update");
                         break;
                         case type = "collections":
@@ -239,7 +243,7 @@ switch (type) {
 
     const loadCollections = async ()=>{
       try {
-          const collections = await restService.getAll("collections");
+          const collections = await restService.getAll("collections", 0);
           setCollections(collections) 
       } catch (error) {
           console.error("error fetching collections", error);
@@ -248,24 +252,32 @@ switch (type) {
 
     const loadCategories = async ()=>{
       try {
-          const categories = await restService.getAll("categories");
+          const categories = await restService.getAll("categories", 0);
           setCategories(categories) 
       } catch (error) {
           console.error("error fetching categories", error);
       }
     }
 
+    const adjustStock = async (id, stock)=>{
+        const object = {ID: id, Stock: stock}
+        try {
+            const res = await restService.updateStock(object);
+            if(res){
+                loadProducts();
+            }
+        } catch (error) {
+            console.error("error adjusting stock", error)
+        }
+    }
 
 
+    useEffect(()=> loadProducts, [])
     useEffect(()=> loadColors, [])
     useEffect(()=> loadCollections, [])
     useEffect(()=> loadCategories, [])
 
-    setTimeout(()=>{
-        tabs({target: document.querySelector("#product-tab")});
-    }, 1)
-    //set timeout to wait for the elements to be rendered before initializing the tabs
-    // 1ms seems to be enough
+
 
 
     return (
@@ -278,13 +290,13 @@ switch (type) {
                     <p id="product-tab" data-tab-show="product-list" onClick={(event)=>tabs(event)} className="nav-link">Products</p>
                     </li>
                     <li className="nav-item">
-                    <p data-tab-show="colors-list" onClick={(event)=>tabs(event)} className="nav-link">Colors</p>
+                    <p id="color-tab" data-tab-show="colors-list" onClick={(event)=>tabs(event)} className="nav-link">Colors</p>
                     </li>
                     <li className="nav-item">
-                    <p data-tab-show="collections-list" onClick={(event)=>tabs(event)} className="nav-link">Collections</p>
+                    <p id="collection-tab" data-tab-show="collections-list" onClick={(event)=>tabs(event)} className="nav-link">Collections</p>
                     </li>
                     <li className="nav-item">
-                    <p data-tab-show="categories-list" onClick={(event)=>tabs(event)} className="nav-link">Categories</p>
+                    <p id="category-tab" data-tab-show="categories-list" onClick={(event)=>tabs(event)} className="nav-link">Categories</p>
                     </li>
                     <button className="nav-item btn btn-info ms-2" 
                         type="button"
@@ -296,14 +308,14 @@ switch (type) {
                     <button className="nav-item btn btn-danger" onClick={logout}>Log out</button>
                 </ul>
                 <div className="row">
-                    <ProductTableAdmin products={products} deleteClicked={deleteClicked} updateClicked={updateClicked}/>
-                    <MiscTable objects={colors} table={"colors"} deleteClicked={deleteClicked} updateClicked={updateClicked}/>
-                    <MiscTable objects={categories} table={"categories"} deleteClicked={deleteClicked} updateClicked={updateClicked}/>
-                    <MiscTable objects={collections} table={"collections"} deleteClicked={deleteClicked} updateClicked={updateClicked}/>
+                    <ProductTableAdmin products={products} deleteClicked={deleteClicked} updateClicked={updateClicked} adjustStock={adjustStock}/>
+                    <MiscTable objects={colors} table={"colors"} deleteClicked={deleteClicked} handleUpdate={handleUpdate}/>
+                    <MiscTable objects={categories} table={"categories"} deleteClicked={deleteClicked} handleUpdate={handleUpdate}/>
+                    <MiscTable objects={collections} table={"collections"} deleteClicked={deleteClicked} handleUpdate={handleUpdate}/>
                 </div>
             </div>
             <DeleteModal deleteTarget={deleteTarget} handleDelete={handleDelete}/>
-            <UpdateForm updateTarget={updateTarget} handleUpdate={handleUpdate} colors={colors} collections={collections} categories={categories}/>
+            <UpdateForm updateTarget={updateTarget} handleUpdate={handleUpdate} createOptionClick={createOptionClick} colors={colors} collections={collections} categories={categories}/>
             <CreateProduct handleCreate={handleCreate} createOptionClick={createOptionClick} colors={colors} collections={collections} categories={categories} />
             <CreateOptions form={form} handleCreate={handleCreate}/>
       

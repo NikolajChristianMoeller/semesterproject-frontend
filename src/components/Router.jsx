@@ -126,7 +126,7 @@ export default function Router() {
         path="login"
         element={<Login cart={cart} emptyCart={emptyCart} />}
       />
-      <Route path="product/:id" element={<Product cart={cart} emptyCart={emptyCart} fillCart={fillCart}/>} />
+      <Route path="/product/:id" element={<Product cart={cart} emptyCart={emptyCart} fillCart={fillCart}/>} />
         <Route path="/contact" element={<Contactpage cart={cart} emptyCart={emptyCart}/>} />
         <Route path="/about" element={<Aboutpage cart={cart} emptyCart={emptyCart}/>} ></Route>
         <Route path="/policies" element={<Policiespage cart={cart} emptyCart={emptyCart}/>} ></Route>

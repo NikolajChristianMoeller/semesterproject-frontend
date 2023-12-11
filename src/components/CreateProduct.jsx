@@ -45,17 +45,20 @@ export default function CreateProduct({handleCreate, createOptionClick, collecti
     }
   }
 
-      const handleSubmit = ()=> {
+      const handleSubmit = (event)=> {
+          event.preventDefault()
           const product = {
-          Name: document.querySelector("#create-product-form").productName.value,
-          Price: document.querySelector("#create-product-form").productPrice.value,
-          Description: document.querySelector("#create-product-form").productDescription.value,
+          Name: event.target.productName.value,
+          Price: event.target.productPrice.value,
+          Description: event.target.productDescription.value,
           Stock: 0,
           colors: newColors,
-          ProductCollection: newCollections,
+          collections: newCollections,
+          categories: newCategories
           }
           
         handleCreate(product, "products");
+        document.getElementById("create-product-modal").style.display = "none"
       }
 
     return(

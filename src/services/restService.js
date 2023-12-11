@@ -6,13 +6,19 @@ import Category from "../models/category";
 class RestService {
   endpoint = "http://localhost:3000";
 
-  async getAll(type) {
+  async getAll(type, page, sort, filter) {
     try {
-      const res = await fetch(`${this.endpoint}/${type}`);
+      let res
+      if(filter != undefined) {
+        res = await fetch(`${this.endpoint}/${type}?offSet=${page*20}&sortBy=${sort.sortBy}&sortDir=${sort.sortDir}&filterBy=${filter.filterBy}&filterValue=${filter.filterValue}`);
+      }else{
+        res = await fetch(`${this.endpoint}/${type}?offSet=0&sortBy=ID&sortDir=DESC`);
+      }
       const data = await res.json();
       switch(type){
         case type = "products":
-          return data.map((json) => new Product(json));
+          data.rows = data.rows.map((json) => new Product(json));
+        return data
         case type = "colors":
           return data.map((json) => new Color(json));
         case type = "collections":
@@ -101,8 +107,21 @@ class RestService {
   
   }
 
+  async updateStock(object){
+    try {
+      const res = await fetch(`${this.endpoint}/products/${object.ID}/stock`, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(object),
+      });
+      return res.ok;
+    } catch (error) {
+      console.error(`error updating stock:`, error);
+    }
+  }
+
 
 }
-
-
 export default new RestService();

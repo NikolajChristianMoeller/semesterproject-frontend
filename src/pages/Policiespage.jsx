@@ -2,10 +2,7 @@ import ToolBar from "../components/ToolBar"
 import Footer from "../components/Footer"
 
 
-
 export default function Contactpage({cart, emptyCart}){
-
-
 
 
     try{

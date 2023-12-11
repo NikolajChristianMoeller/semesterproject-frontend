@@ -7,6 +7,7 @@ export default function UpdateForm({
   colors,
   collections,
   categories,
+  createOptionClick
 }) {
   const [newColors, setNewColors] = useState([]);
   const [newCollections, setNewCollections] = useState([]);
@@ -65,7 +66,7 @@ export default function UpdateForm({
       categories: newCategories,
     };
 
-    handleUpdate(product);
+    handleUpdate(product, "products");
   };
 
   return (
@@ -131,78 +132,57 @@ export default function UpdateForm({
                 />
               </div>
 
-              <div className="row g-3">
-                <fieldset className="col-2">
-                  <legend>Collection</legend>
-                  {collections.map((collection) => (
-                    <div
-                      className="form-check form-check"
-                      key={collection.ID + "checkbox"}
-                    >
-                      <input
-                        className="form-check-input"
-                        type="checkbox"
-                        id="update-collections"
-                        onChange={(event) =>
-                          handleChangeCollection(event, collection.ID)
-                        }
-                      />
-                      <label
-                        className="form-check-label"
-                        htmlFor="update-collections"
-                      >
-                        {collection.Name}
-                      </label>
-                    </div>
-                  ))}
+              <div className="row mx-auto">
+                <fieldset className="col">
+                  <legend>
+                    Collection
+                  </legend>
+                      {collections.map((collection)=>(
+                        <div className="form-check form-check" key={collection.ID+"checkbox"}>
+                        <input className="form-check-input" type="checkbox" id="update-collections" onChange={(event)=>handleChangeCollection(event, collection.ID)}/>
+                        <label className="form-check-label" htmlFor="update-collections">
+                         {collection.Name}
+                        </label>
+                        </div>
+                        ))}                    
                 </fieldset>
-                <fieldset className="col-2">
-                  <legend>Colors</legend>
-                  {colors.map((color) => (
-                    <div
-                      className="form-check form-check"
-                      key={color.ID + "checkbox"}
-                    >
-                      <input
-                        className="form-check-input"
-                        type="checkbox"
-                        id={"checkbox-" + color.Name}
-                        onChange={(event) => handleChangeColor(event, color.ID)}
-                      />
-                      <label
-                        className="form-check-label"
-                        htmlFor={"checkbox-" + color.Name}
-                      >
-                        {color.Name}
-                      </label>
-                    </div>
-                  ))}
+                <fieldset className="col">
+                <legend>
+                    Colors
+                  </legend>
+                      {colors.map((color)=>(
+                        <div className="form-check form-check " key={color.ID+"checkbox"}>
+                        <label className="form-check-label d-flex flex-nowrap" htmlFor={"checkbox-"+color.Name}>
+                        <input className="form-check-input" type="checkbox" id={"checkbox-"+color.Name} onChange={(event)=>handleChangeColor(event, color.ID)}/>
+                        <div
+                      className="color-dot mt-0"
+                      style={{ backgroundColor: color.Code}}
+                    />
+                         {color.Name}
+                        </label>
+                        </div>
+                        ))}                  
                 </fieldset>
-                <fieldset className="col-2">
-                  <legend>Categories</legend>
-                  {categories.map((category) => (
-                    <div
-                      className="form-check form-check"
-                      key={category.ID + "checkbox"}
-                    >
-                      <input
-                        className="form-check-input"
-                        type="checkbox"
-                        id={"checkbox-" + category.Name}
-                        onChange={(event) =>
-                          handleChangeCategory(event, category.ID)
-                        }
-                      />
-                      <label
-                        className="form-check-label"
-                        htmlFor={"checkbox-" + category.Name}
-                      >
-                        {category.Name}
-                      </label>
-                    </div>
-                  ))}
+                <fieldset className="col">
+                <legend>
+                    Categories
+                  </legend>
+                      {categories.map((category)=>(
+                        <div className="form-check form-check" key={category.ID+"checkbox"}>
+                        <input className="form-check-input" type="checkbox" id={"checkbox-"+category.Name} onChange={(event)=>handleChangeCategory(event, category.ID)}/>
+                        <label className="form-check-label" htmlFor={"checkbox-"+category.Name}>
+                         {category.Name}
+                        </label>
+                        </div>
+                        ))}                  
                 </fieldset>
-              </div>
+                </div>
+                <div className="row">
+                  <div className="alert alert-info w-50 mt-5 mx-auto">
+                    <p>Not seeing what you're looking for? Click below to add more colors, collections and categories! </p>
+                    <button className="btn btn-primary ms-2" data-bs-target="#create-options-modal" data-bs-toggle="modal" onClick={(event)=>{createOptionClick(event, "create")}}>Add more!</button> 
+                    </div>
+                  </div>
               <div className="col-10">
                 <button type="submit" className="btn btn-primary">
                   Update product
