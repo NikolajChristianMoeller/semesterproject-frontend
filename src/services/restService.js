@@ -83,6 +83,7 @@ class RestService {
 
   async update(item, type) {
     try {
+      console.log(`${this.endpoint}/${type}/${item.ID}`)
       const res = await fetch(`${this.endpoint}/${type}/${item.ID}`, {
         method: "PUT",
         headers: {

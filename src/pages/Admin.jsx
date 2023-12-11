@@ -181,7 +181,7 @@ switch (type) {
                         case type = "products":
                             loadProducts();
                             showFeedback(res,"update");
-                        break;
+                            return res;
                         default:
                             break;
                     }
@@ -214,7 +214,7 @@ switch (type) {
                         case type = "products":
                         loadProducts();         
                         showFeedback(res,"create");
-                        break;
+                        return res;
                     default:
                         break;
                 }

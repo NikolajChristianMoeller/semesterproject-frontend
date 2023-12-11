@@ -10,7 +10,7 @@ export default function Homepage({fillCart, cart, emptyCart}){
     const [products, setProducts] = useState([]);
     const [page, setPage] = useState(0)
     const [sort, setSort] = useState({sortBy:"ID", sortDir:"DESC"})
-    const [filter, setFilter] = useState({filterBy:"Colors", filterValue:"White"})
+    const [filter, setFilter] = useState()
 
     useEffect(()=> loadProducts, [])
     

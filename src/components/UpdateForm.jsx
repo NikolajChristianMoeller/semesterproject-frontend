@@ -1,5 +1,4 @@
 /* eslint-disable react/prop-types */
-import { useState } from "react";
 
 export default function UpdateForm({
   updateTarget,
@@ -9,17 +8,17 @@ export default function UpdateForm({
   categories,
   createOptionClick
 }) {
-  const [newColors, setNewColors] = useState([]);
-  const [newCollections, setNewCollections] = useState([]);
-  const [newCategories, setNewCategories] = useState([]);
+
+  const newColors = [];
+  const newCollections = [];
+  const newCategories = [];
 
   const handleChangeColor = (event, color) => {
     try {
       if (event.target.checked) {
-        setNewColors([...newColors, color]);
+        newColors.push(color);
       } else {
         newColors.splice([newColors.indexOf(color)], 1);
-        setNewColors([...newColors]);
       }
     } catch (error) {
       console.error("error adding color:", error);
@@ -29,10 +28,9 @@ export default function UpdateForm({
   const handleChangeCategory = (event, category) => {
     try {
       if (event.target.checked) {
-        setNewCategories([...newCategories, category]);
+        newCategories.push(category)
       } else {
         newCategories.splice([newCategories.indexOf(category)], 1);
-        setNewCategories([...newCategories]);
       }
     } catch (error) {
       console.error("error adding category:", error);
@@ -42,17 +40,16 @@ export default function UpdateForm({
   const handleChangeCollection = (event, collection) => {
     try {
       if (event.target.checked) {
-        setNewCollections([...newCollections, collection]);
+        newCollections.push(collection);
       } else {
         newCollections.splice([newCollections.indexOf(collection)], 1);
-        setNewCollections([...newCollections]);
       }
     } catch (error) {
       console.error("error adding collection:", error);
     }
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
 
     const product = {
@@ -61,12 +58,16 @@ export default function UpdateForm({
       Price: document.querySelector("#update-product-form").productPrice.value,
       Description: document.querySelector("#update-product-form")
         .productDescription.value,
-      colors: newColors,
-      collections: newCollections,
-      categories: newCategories,
+      Colors: newColors,
+      Collections: newCollections,
+      Categories: newCategories,
     };
 
-    handleUpdate(product, "products");
+    const res = await handleUpdate(product, "products");
+    if(res){
+      document.querySelector("#update-close").click();
+    }
+
   };
 
   return (
@@ -85,6 +86,7 @@ export default function UpdateForm({
               Update {updateTarget.Name} ({updateTarget.ID})
             </h1>
             <button
+              id="update-close"
               type="button"
               className="btn-close"
               data-bs-dismiss="modal"
@@ -153,7 +155,7 @@ export default function UpdateForm({
                       {colors.map((color)=>(
                         <div className="form-check form-check " key={color.ID+"checkbox"}>
                         <label className="form-check-label d-flex flex-nowrap" htmlFor={"checkbox-"+color.Name}>
-                        <input className="form-check-input" type="checkbox" id={"checkbox-"+color.Name} onChange={(event)=>handleChangeColor(event, color.ID)}/>
+                        <input className="form-check-input" type="checkbox" id={"checkbox-"+color.Name} onChange={(event)=>handleChangeColor(event, color.Code)}/>
                         <div
                       className="color-dot mt-0"
                       style={{ backgroundColor: color.Code}}

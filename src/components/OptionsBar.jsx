@@ -62,7 +62,7 @@ export default function OptionsBar({changeSort, changeFilter}){
                 </button>
                     <ul className="dropdown-menu">
                         {colors.map((color)=>(
-                            <li key={color.ID} className="dropdown-item" onClick={()=>changeFilter("Colors", color.Name)}>{color.Name}</li>
+                            <li key={color.Code} className="dropdown-item" onClick={()=>changeFilter("Colors", color.Name)}>{color.Name}</li>
                         ))}
                     </ul>
                 </div>

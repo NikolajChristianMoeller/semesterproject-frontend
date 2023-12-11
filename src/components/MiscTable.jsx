@@ -3,7 +3,7 @@ export default function MiscTable({ objects, deleteClicked, table, handleUpdate 
   const isColor = (object)=>{
     if (table === "colors"){
       return(
-          <input id={object.ID+"-picker"} disabled type="color" defaultValue={object.Code}>
+          <input id={object.Code+"-picker"} disabled type="color" defaultValue={object.Code}>
           </input>
       )
     } else{

@@ -45,20 +45,22 @@ export default function CreateProduct({handleCreate, createOptionClick, collecti
     }
   }
 
-      const handleSubmit = (event)=> {
+      const handleSubmit = async (event)=> {
           event.preventDefault()
           const product = {
           Name: event.target.productName.value,
           Price: event.target.productPrice.value,
           Description: event.target.productDescription.value,
           Stock: 0,
-          colors: newColors,
-          collections: newCollections,
-          categories: newCategories
+          Colors: newColors,
+          Collections: newCollections,
+          Categories: newCategories
           }
           
-        handleCreate(product, "products");
-        document.getElementById("create-product-modal").style.display = "none"
+        const res = await handleCreate(product, "products");
+        if(res){
+          document.querySelector("#close-create").click();
+        }
       }
 
     return(
@@ -67,7 +69,7 @@ export default function CreateProduct({handleCreate, createOptionClick, collecti
           <div className="modal-content">
             <div className="modal-header">
               <h1 className="modal-title fs-5" id="create-modal-label">Create new product</h1>
-              <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              <button id="close-create" type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div className="modal-body container">
             <form id="create-product-form" className="row"  onSubmit={(event)=>handleSubmit(event)}>
@@ -105,9 +107,9 @@ export default function CreateProduct({handleCreate, createOptionClick, collecti
                     Colors
                   </legend>
                       {colors.map((color)=>(
-                        <div className="form-check form-check " key={color.ID+"checkbox"}>
+                        <div className="form-check form-check " key={color.Code+"checkbox"}>
                         <label className="form-check-label d-flex flex-nowrap" htmlFor={"checkbox-"+color.Name}>
-                        <input className="form-check-input" type="checkbox" id={"checkbox-"+color.Name} onChange={(event)=>handleChangeColor(event, color.ID)}/>
+                        <input className="form-check-input" type="checkbox" id={"checkbox-"+color.Name} onChange={(event)=>handleChangeColor(event, color.Code)}/>
                         <div
                       className="color-dot mt-0"
                       style={{ backgroundColor: color.Code}}
