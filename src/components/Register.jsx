@@ -1,6 +1,7 @@
 /* eslint-disable react/prop-types */
 export default function Register({cart, fillCart, reduceCart}){
-    try {
+    if(cart){
+        try {
             return(
                 <section id="product-grid">
                 {cart.map((product)=>(
@@ -22,6 +23,13 @@ export default function Register({cart, fillCart, reduceCart}){
                <p>Der skete en fejl :(</p> 
                <p>{error}</p>
             </div>
+        )
+    }
+    }else{
+        return(
+            <p>
+                Din Kurv er tom.
+            </p>
         )
     }
 

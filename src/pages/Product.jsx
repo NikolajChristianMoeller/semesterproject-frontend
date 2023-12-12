@@ -55,11 +55,15 @@ try {
                             <h4>Beskrivelse</h4>
                             <p className="fs-5" >{product.Description}</p>
                             <p className="fs-4">Pris: {product.Price}</p>
-                            <ul>
-                                {product.Colors.map((color)=>(
-                                <li key={color.Code}>{color.Code}</li>
-                                ))}
-                            </ul>
+                            <div className="row">
+                                {product.Colors.map((color) => (
+                                    <div
+                                    key={product.ID + color.Code}
+                                    className="color-dot"
+                                    style={{ backgroundColor: color.Code }}
+                                    />
+                                    ))}
+                            </div>
                             <p>Antal på lager: {product.Stock}</p>
                             <button  onClick={() => fillCart(product)} type="button" className="btn btn-dark">Tilføj til kurv</button>
                         </div>

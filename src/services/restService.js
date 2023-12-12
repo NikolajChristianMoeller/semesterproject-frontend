@@ -123,6 +123,21 @@ class RestService {
     }
   }
 
+  async sendMail(content){
+    try {
+      const res = await fetch(`${this.endpoint}/mail`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(content),
+    });
+    return res.ok;
+    } catch (error) {
+      console.error("Error sending mail", error)
+    }
+  }
+
 
 }
 export default new RestService();
