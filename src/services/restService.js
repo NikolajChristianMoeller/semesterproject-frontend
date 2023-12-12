@@ -1,32 +1,36 @@
 import Product from "../models/product";
-import Color from "../models/color"
-import Collection from "../models/collection"
+import Color from "../models/color";
+import Collection from "../models/collection";
 import Category from "../models/category";
 
 class RestService {
-  endpoint = "http://localhost:3000";
+  endpoint = "https://semesterprojekt-server.azurewebsites.net";
 
   async getAll(type, page, sort, filter) {
     const pageSize = page < 0 ? 100 : 20;
-    const offSet = page <= 0 ? 0 : page 
+    const offSet = page <= 0 ? 0 : page;
     try {
-      let res
-      if(filter) {
-        res = await fetch(`${this.endpoint}/${type}?offSet=${offSet}&limit=${pageSize}&sortBy=${sort.sortBy}&sortDir=${sort.sortDir}&filterBy=${filter.filterBy}&filterValue=${filter.filterValue}`);
-      }else{
-        res = await fetch(`${this.endpoint}/${type}?offSet=${offSet}&limit=${pageSize}&sortBy=ID&sortDir=DESC`);
+      let res;
+      if (filter) {
+        res = await fetch(
+          `${this.endpoint}/${type}?offSet=${offSet}&limit=${pageSize}&sortBy=${sort.sortBy}&sortDir=${sort.sortDir}&filterBy=${filter.filterBy}&filterValue=${filter.filterValue}`
+        );
+      } else {
+        res = await fetch(
+          `${this.endpoint}/${type}?offSet=${offSet}&limit=${pageSize}&sortBy=ID&sortDir=DESC`
+        );
       }
       const data = await res.json();
-      switch(type){
-        case type = "products":
+      switch (type) {
+        case (type = "products"):
           data.rows = data.rows.map((json) => new Product(json));
-        return data
-        case type = "colors":
+          return data;
+        case (type = "colors"):
           return data.map((json) => new Color(json));
-        case type = "collections":
+        case (type = "collections"):
           return data.map((json) => new Collection(json));
-        case type = "categories":
-          return data.map((json) => new Category(json));    
+        case (type = "categories"):
+          return data.map((json) => new Category(json));
         default:
           throw new Error("unknown type");
       }
@@ -35,24 +39,24 @@ class RestService {
     }
   }
 
-  async getOne(id, type){
+  async getOne(id, type) {
     try {
       const res = await fetch(`${this.endpoint}/${type}/${id}`);
       const data = await res.json();
-      switch(type){
-        case type = "products":
+      switch (type) {
+        case (type = "products"):
           return new Product(data);
-        case type = "colors":
+        case (type = "colors"):
           return new Color(data);
-        case type = "collections":
+        case (type = "collections"):
           return new Collection(data);
-        case type = "categories":
-          return new Category(data);    
+        case (type = "categories"):
+          return new Category(data);
         default:
           throw new Error("unknown type");
       }
     } catch (error) {
-      console.error("Error getting"+id, error)
+      console.error("Error getting" + id, error);
     }
   }
 
@@ -97,18 +101,17 @@ class RestService {
     }
   }
 
-  async getIDs(){
+  async getIDs() {
     try {
       const res = await fetch(`${this.endpoint}/keys`);
       const data = await res.json();
       return data;
     } catch (error) {
-      console.error("error getting IDs", error)
+      console.error("error getting IDs", error);
     }
-  
   }
 
-  async updateStock(object){
+  async updateStock(object) {
     try {
       const res = await fetch(`${this.endpoint}/products/${object.ID}/stock`, {
         method: "PUT",
@@ -122,7 +125,5 @@ class RestService {
       console.error(`error updating stock:`, error);
     }
   }
-
-
 }
 export default new RestService();
