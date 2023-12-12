@@ -14,7 +14,7 @@ export default function Paginator({ count, setPage, page, loadProducts }) {
           loadProducts();
         }}
         key={`page${p}`}
-        className={`btn ${isActive ? "btn-primary" : "btn-secondary"} `}
+        className={`btn ${isActive ? "active-btn" : "btn-secondary"} `}
         id={`pages${p + 1}`}
       >{`${p + 1}`}</button>
     );

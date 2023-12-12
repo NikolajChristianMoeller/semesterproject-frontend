@@ -1,8 +1,7 @@
 body {
   padding-right: 0 !important;
   font-family: bauerbodnibtwxx-roman, serif;
-  background-color: #f6f3ec
-  
+  background-color: #f6f3ec;
 }
 
 .colors {
@@ -62,12 +61,16 @@ textarea {
   resize: none;
 }
 
-#top-banner{
-  background-color: #A38B6F 
+#top-banner {
+  background-color: #a38b6f;
 }
 
+input.transparent-input {
+  background-color: rgba(0, 0, 0, 0) !important;
+  border: none !important;
+}
 
-input.transparent-input{
-     background-color:rgba(0,0,0,0) !important;
-     border:none !important;
-  }
+.active-btn {
+  background-color: #d3d3d3;
+  color: #000000;
+}
