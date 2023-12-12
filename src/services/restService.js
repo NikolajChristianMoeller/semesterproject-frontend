@@ -4,7 +4,7 @@ import Collection from "../models/collection";
 import Category from "../models/category";
 
 class RestService {
-  endpoint = "https://semesterprojekt-server.azurewebsites.net";
+  endpoint = "http://localhost:3000";
 
   async getAll(type, page, sort, filter) {
     const pageSize = page < 0 ? 100 : 20;

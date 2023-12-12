@@ -14,7 +14,7 @@ export default function Product({cart, emptyCart, fillCart}){
 
 
 
-    useEffect(()=> loadProduct, [])
+    useEffect(()=> loadProduct(), [])
   
   
 

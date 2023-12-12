@@ -12,7 +12,7 @@ export default function ProductGrid({ products, fillCart }) {
             <div className="col-lg-3" key={product.ID}>
               <div className="card">
                 <img
-                  src="/vite.svg"
+                  src={product.Images}
                   className="card-img-top"
                   onClick={() => navigate("product/" + product.ID)}
                   style={{ cursor: "pointer" }}

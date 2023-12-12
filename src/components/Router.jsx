@@ -93,7 +93,7 @@ export default function Router() {
 
 
 
-  useEffect(()=>getProductIDs, [])
+  useEffect(()=>getProductIDs(), [])
     
 
   return (

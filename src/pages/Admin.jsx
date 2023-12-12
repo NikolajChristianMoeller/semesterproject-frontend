@@ -297,10 +297,10 @@ export default function Admin({ cart, emptyCart }) {
     }
   };
 
-  useEffect(() => loadProducts, []);
-  useEffect(() => loadColors, []);
-  useEffect(() => loadCollections, []);
-  useEffect(() => loadCategories, []);
+  useEffect(() => loadProducts(), []);
+  useEffect(() => loadColors(), []);
+  useEffect(() => loadCollections(), []);
+  useEffect(() => loadCategories(), []);
 
   return (
     <div>

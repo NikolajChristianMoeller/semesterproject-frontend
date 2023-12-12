@@ -35,9 +35,9 @@ export default function OptionsBar({changeSort, changeFilter, handleSearch}){
       }
     }
 
-    useEffect(()=> loadColors, [])
-    useEffect(()=> loadCollections, [])
-    useEffect(()=> loadCategories, [])
+    useEffect(()=> loadColors(), [])
+    useEffect(()=> loadCollections(), [])
+    useEffect(()=> loadCategories(), [])
 
     return(
         <div className="container mx-auto my-3 w-100">
