@@ -18,7 +18,6 @@ export default function Homepage({fillCart, cart, emptyCart}){
     const loadProducts = async ()=>{
         try {
             const res = await restService.getAll("products",page.limit, sort, filter);
-            console.log(res.count)
             setCount(res.count)
             setProducts(res.rows)
         } catch (error) {
@@ -49,6 +48,7 @@ export default function Homepage({fillCart, cart, emptyCart}){
         filter.filterBy = "Search";
         filter.filterValue = event.target.search.value
         setFilter(filter)
+        event.target.reset();
         loadProducts();
     }
 
@@ -65,7 +65,7 @@ export default function Homepage({fillCart, cart, emptyCart}){
                         <h2 className="text-center my-5" style={{marginBottom:"3rem"}}>Katalog</h2>
                     </div>
                 </div>
-                    <OptionsBar changeSort={changeSort} changeFilter={changeFilter}/>
+                    <OptionsBar changeSort={changeSort} changeFilter={changeFilter} handleSearch={handleSearch}/>
                 <div className='container'>
                     <ProductGrid products={products} fillCart={fillCart} emptyCart={emptyCart}/>
                     <Paginator count={count} loadProducts={loadProducts} setPage={setPage} page={page}/>
