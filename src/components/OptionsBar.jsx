@@ -61,6 +61,7 @@ export default function OptionsBar({changeSort, changeFilter}){
                 Farver
                 </button>
                     <ul className="dropdown-menu">
+                        <li className="dropdown-item" onClick={()=>changeFilter("All", "")}>Alle</li>
                         {colors.map((color)=>(
                             <li key={color.Code} className="dropdown-item" onClick={()=>changeFilter("Colors", color.Name)}>{color.Name}</li>
                         ))}
@@ -71,6 +72,7 @@ export default function OptionsBar({changeSort, changeFilter}){
                 Kollektioner
                 </button>
                     <ul className="dropdown-menu">
+                    <li className="dropdown-item" onClick={()=>changeFilter("All", "")}>Alle</li>
                         {collections.map((collection)=>(
                             <li key={collection.ID} className="dropdown-item" onClick={()=>changeFilter("Collections",collection.Name)}>{collection.Name}</li>
                         ))}
@@ -81,6 +83,7 @@ export default function OptionsBar({changeSort, changeFilter}){
                 Kategorier
                 </button>
                     <ul className="dropdown-menu">
+                    <li className="dropdown-item" onClick={()=>changeFilter("All", "")}>Alle</li>
                         {categories.map((category)=>(
                             <li key={category.ID} className="dropdown-item" onClick={()=>changeFilter("Categories",category.Name)}>{category.Name}</li>
                         ))}

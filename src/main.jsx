@@ -9,7 +9,6 @@ import Router from './components/Router'
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <BrowserRouter>
-      
       <Router/>
     </BrowserRouter>
   </React.StrictMode>,

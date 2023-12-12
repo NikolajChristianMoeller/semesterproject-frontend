@@ -4,7 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 import TopBannerCarousel from "./TopBannerCarousel";
 
 
-export default function ToolBar({ cart, emptyCart }) {
+export default function ToolBar({ cart, emptyCart, handleSearch }) {
   const navigate = useNavigate();
   return (
       <div className="sticky-top">
@@ -78,15 +78,17 @@ export default function ToolBar({ cart, emptyCart }) {
             ></button>
           </div>
           <div className="offcanvas-body">
-          <form className="d-flex mt-3 mt-lg-0" role="search">
+          <form className="d-flex mt-3 mt-lg-0" role="search" onSubmit={(event)=>handleSearch(event)}>
               <input
                 className="form-control me-2"
                 type="search"
-                placeholder="Search"
-                aria-label="Search"
+                placeholder="Søg efter produkt"
+                name="search"
               />
               <button className="btn btn-outline-success" type="submit">
-                Search
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-search" viewBox="0 0 16 16">
+                  <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"/>
+                  </svg>
               </button>
             </form>
             <ul className="navbar-nav justify-content-end flex-grow-1 pe-3">

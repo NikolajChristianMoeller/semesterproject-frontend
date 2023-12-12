@@ -9,7 +9,7 @@ import CreateProduct from "../components/CreateProduct";
 import CreateOptions from "../components/CreateOptions";
 import tabs from "../services/tabs";
 import MiscTable from "../components/MiscTable";
-import Feedback from "../components/Feedback.jsx";
+import Feedback from "../components/Feedback";
 
 //TODO: make the active tab persistent so it doesn't switch to products when you perfom updates in misc table
 
@@ -37,7 +37,7 @@ export default function Admin({cart, emptyCart}){
     
     const loadProducts = async ()=>{
         try {
-            const products = await restService.getAll("products");
+            const products = await restService.getAll("products", -1);
             setProducts(products.rows) 
         } catch (error) {
             console.error("error fetching", error);

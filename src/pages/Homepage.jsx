@@ -5,23 +5,30 @@ import restService from '../services/restService';
 import Footer from '../components/Footer';
 import Carousel from '../components/Carousel';
 import OptionsBar from '../components/OptionsBar';
+import Paginator from '../components/Paginator';
 
 export default function Homepage({fillCart, cart, emptyCart}){
     const [products, setProducts] = useState([]);
-    const [page, setPage] = useState(0)
     const [sort, setSort] = useState({sortBy:"ID", sortDir:"DESC"})
-    const [filter, setFilter] = useState()
+    const [filter, setFilter] = useState({filterBy:"All", filterValue:""})
+    const [count, setCount] = useState()
+    const [page, setPage] = useState({limit: 0})
 
-    useEffect(()=> loadProducts, [])
     
     const loadProducts = async ()=>{
         try {
-            const res = await restService.getAll("products",page, sort, filter);
+            const res = await restService.getAll("products",page.limit, sort, filter);
+            console.log(res.count)
+            setCount(res.count)
             setProducts(res.rows)
         } catch (error) {
             console.error("error fetching", error);
         }
     }
+
+    useEffect(()=> loadProducts, [])
+
+
 
     const changeSort = (value, dir)=>{
         sort.sortBy = value
@@ -31,16 +38,25 @@ export default function Homepage({fillCart, cart, emptyCart}){
     }
     
     const changeFilter = (filterTable, filterValue)=>{
-        filter.filterBy = filterTable
-        filter.filterValue = filterValue
-        setFilter(filter)
-        loadProducts()
+        filter.filterBy = filterTable;
+        filter.filterValue = filterValue;
+        setFilter(filter);
+        loadProducts();
     }
+
+    const handleSearch = (event)=>{
+        event.preventDefault();
+        filter.filterBy = "Search";
+        filter.filterValue = event.target.search.value
+        setFilter(filter)
+        loadProducts();
+    }
+
 
     try {
         return ( 
             <div>
-                <ToolBar cart={cart} emptyCart={emptyCart}/>
+                <ToolBar cart={cart} emptyCart={emptyCart} handleSearch={handleSearch}/>
                 <div className="container" id="homepage" style={{maxWidth:"100vw", padding:"0"}}>
                     <div className="row">
                         <Carousel className="col w-100"/>
@@ -52,6 +68,7 @@ export default function Homepage({fillCart, cart, emptyCart}){
                     <OptionsBar changeSort={changeSort} changeFilter={changeFilter}/>
                 <div className='container'>
                     <ProductGrid products={products} fillCart={fillCart} emptyCart={emptyCart}/>
+                    <Paginator count={count} loadProducts={loadProducts} setPage={setPage} page={page}/>
                 </div>
                 <Footer/>
             </div>

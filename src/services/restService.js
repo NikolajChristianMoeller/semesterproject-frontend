@@ -7,12 +7,14 @@ class RestService {
   endpoint = "http://localhost:3000";
 
   async getAll(type, page, sort, filter) {
+    const pageSize = page < 0 ? 100 : 20;
+    const offSet = page <= 0 ? 0 : page 
     try {
       let res
-      if(filter != undefined) {
-        res = await fetch(`${this.endpoint}/${type}?offSet=${page*20}&sortBy=${sort.sortBy}&sortDir=${sort.sortDir}&filterBy=${filter.filterBy}&filterValue=${filter.filterValue}`);
+      if(filter) {
+        res = await fetch(`${this.endpoint}/${type}?offSet=${offSet}&limit=${pageSize}&sortBy=${sort.sortBy}&sortDir=${sort.sortDir}&filterBy=${filter.filterBy}&filterValue=${filter.filterValue}`);
       }else{
-        res = await fetch(`${this.endpoint}/${type}?offSet=0&sortBy=ID&sortDir=DESC`);
+        res = await fetch(`${this.endpoint}/${type}?offSet=${offSet}&limit=${pageSize}&sortBy=ID&sortDir=DESC`);
       }
       const data = await res.json();
       switch(type){
@@ -59,7 +61,6 @@ class RestService {
       const res = await fetch(`${this.endpoint}/${type}/${id}`, {
         method: "DELETE",
       });
-      console.log(res.ok);
       return res.ok;
     } catch (error) {
       console.error(`error deleting ${type}:`, error);
@@ -83,7 +84,6 @@ class RestService {
 
   async update(item, type) {
     try {
-      console.log(`${this.endpoint}/${type}/${item.ID}`)
       const res = await fetch(`${this.endpoint}/${type}/${item.ID}`, {
         method: "PUT",
         headers: {

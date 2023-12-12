@@ -153,7 +153,7 @@ export default function UpdateForm({
                     Colors
                   </legend>
                       {colors.map((color)=>(
-                        <div className="form-check form-check " key={color.ID+"checkbox"}>
+                        <div className="form-check form-check " key={color.Code+"checkbox"}>
                         <label className="form-check-label d-flex flex-nowrap" htmlFor={"checkbox-"+color.Name}>
                         <input className="form-check-input" type="checkbox" id={"checkbox-"+color.Name} onChange={(event)=>handleChangeColor(event, color.Code)}/>
                         <div

@@ -12,12 +12,12 @@ export default function MiscTable({ objects, deleteClicked, table, handleUpdate 
     }
   }
 
-  const handleEdit = (id)=>{
-    const input = document.getElementById(id+"-input");
-    const submit = document.getElementById(id+"-submit");
+  const handleEdit = (object)=>{
+    const input = document.getElementById(object.Name+"-input");
+    const submit = document.getElementById(object.Name+"-submit");
 
     if(table === "colors"){
-      const colorPicker = document.getElementById(id+"-picker");
+      const colorPicker = document.getElementById(object.Name+"-picker");
       if(input.disabled){
         input.disabled = false;
         colorPicker.disabled = false;
@@ -65,7 +65,6 @@ export default function MiscTable({ objects, deleteClicked, table, handleUpdate 
       <table className="table table-light table-striped hidden" id={table+"-list"}>
         <thead>
           <tr>
-            <th scope="col">ID</th>
             <th scope="col">Name</th>
             <th scope="col"></th>
             <th scope="col">Options</th>
@@ -73,10 +72,8 @@ export default function MiscTable({ objects, deleteClicked, table, handleUpdate 
         </thead>
         <tbody>
           {objects.map((object) => (
-            <tr key={object.ID}>
-              <th scope="row">{object.ID}
-              </th>
-              <td><input id={object.ID+"-input"}defaultValue={object.Name} disabled className="form-control text-black transparent-input"></input></td>
+            <tr key={object.ID || object.Code}>
+              <th><input id={object.Name+"-input"}defaultValue={object.Name} disabled className="form-control text-black transparent-input"></input></th>
               <td>{isColor(object)}</td>
               <td>
                 <button
@@ -100,7 +97,7 @@ export default function MiscTable({ objects, deleteClicked, table, handleUpdate 
                 <button
                   className="btn btn-info ms-2 "
                   type="button"
-                  onClick={() => handleEdit(object.ID)}
+                  onClick={() => handleEdit(object)}
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -114,10 +111,10 @@ export default function MiscTable({ objects, deleteClicked, table, handleUpdate 
                   </svg>
                 </button>
                 <button
-                  id={object.ID+"-submit"}
+                  id={object.Name+"-submit"}
                   className="btn btn-success hidden ms-2 submit"
                   type="button"
-                  onClick={() => handleSubmit(object.ID)}
+                  onClick={() => handleSubmit(object)}
                 >
                   <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-check2" viewBox="0 0 16 16">
                   <path d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0z"/>
