@@ -3,6 +3,8 @@ import { useParams } from "react-router-dom"
 import restService from "../services/restService";
 import ToolBar from "../components/ToolBar";
 import Footer from "../components/Footer";
+import Reviews from "../components/Reviews";
+
 export default function Product({cart, emptyCart, fillCart}){
 
 
@@ -26,6 +28,20 @@ export default function Product({cart, emptyCart, fillCart}){
         }
     }
 
+async function addReview(review){
+    try {
+        const response = await restService.create(review,"reviews");
+        if(response){
+            loadProduct();
+        } else{
+            throw new Error("Error adding review")
+        }
+        
+    } catch (error) {
+        console.error("error adding review", error)
+    }
+}
+
 try {
         return(
             <div id="productview">
@@ -36,6 +52,7 @@ try {
                         <div className="col-sm-6 text-start">
                            
                             <h3 className="ms-0">{product.Name}</h3>
+                            <h4>Beskrivelse</h4>
                             <p className="fs-5" >{product.Description}</p>
                             <p className="fs-4">Pris: {product.Price}</p>
                             <ul>
@@ -53,7 +70,7 @@ try {
                         <div className="col-sm-6"></div>
                     </div>
 
-
+               <Reviews product={product} addReview={addReview}/>
                 </div>
                 <Footer/>
             </div>

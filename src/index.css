@@ -34,7 +34,9 @@ h5 {
 }
 
 footer {
-  background-color: #faebd7;
+  background-color: white;
+  border-top: solid;
+  border-top-width: thin;
 }
 
 .hidden {

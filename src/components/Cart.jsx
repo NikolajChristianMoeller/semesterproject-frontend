@@ -14,14 +14,14 @@ export default function Cart({ cart, emptyCart }) {
             </li>
           ))}
         </ul>
-        <p>Total {totalPrice(cart)}kr</p>
-        <p>Items in Cart {totalItems(cart)}</p>
+        <p>Total: {totalPrice(cart)}kr</p>
+        <p>Produkter i Kurv: {totalItems(cart)}</p>
         <button className="btn btn-outline-success">
           <Link
             to="../checkout"
             style={{ textDecoration: "none", color: "black" }}
           >
-            Go to checkout
+            Til Kassen 
           </Link>
         </button>
         <button className="btn btn-outline-danger" onClick={() => emptyCart()}>

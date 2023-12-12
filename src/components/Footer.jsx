@@ -3,13 +3,15 @@ import { Link } from "react-router-dom"
 
 export default function Footer(){
 
+
+
  
     return(
         <footer className="container text-center" style={{marginTop:"5rem", paddingBottom:"2rem",maxWidth:"100%"}} >
         <div className="row">
             <div className="col">
                 <h5>MIKROHOME</h5>
-                  <p><Link to="/about" style={{textDecoration: "none", color:"black"}}>Om Os</Link></p>
+                  <p><Link to="/about" style={{textDecoration: "none", color:"black"}}>Om os </Link></p>
              
                  <p><Link to="/contact" style={{textDecoration: "none", color:"black"}}>Kontakt</Link> </p>
                 <p>Info</p>
