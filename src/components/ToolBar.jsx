@@ -1,6 +1,6 @@
 import totalItems from "../services/TotalItems";
 import Cart from "./Cart";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import TopBannerCarousel from "./TopBannerCarousel";
 
 
@@ -16,9 +16,10 @@ export default function ToolBar({ cart, emptyCart, handleSearch }) {
     >
       <div className="container-fluid">
         <div className="navbar-brand">
-          <Link to="/" style={{ textDecoration: "none", color: "black" }} >
-            MikroHome
-          </Link>
+        <h5 onClick={()=>navigate("/")} style={{ cursor: "pointer"}}
+            >
+              MikroHome
+            </h5>
         </div>
         <ul className="ms-auto mb-2 mb-lg-0">
           <div className="dropstart nav-item">
@@ -61,14 +62,10 @@ export default function ToolBar({ cart, emptyCart, handleSearch }) {
         >
           <div className="offcanvas-header">
             <h5 className="offcanvas-title" id="offcanvasNavbarLabel">
-            <Link
-                  to="/"
-                  style={{ textDecoration: "none", color: "black" }}
-                  className="nav-link active"
-                  aria-current="page"
-                >
-                  MikroHome
-                </Link>
+            <h5 onClick={()=>navigate("/")} style={{ cursor: "pointer"}}
+            >
+              MikroHome
+            </h5>
             </h5>
             <button
               type="button"
@@ -93,34 +90,22 @@ export default function ToolBar({ cart, emptyCart, handleSearch }) {
             </form>
             <ul className="navbar-nav justify-content-end flex-grow-1 pe-3">
               <li className="nav-item">
-                <Link
-                  to="/checkout"
-                  style={{ textDecoration: "none", color: "black" }}
-                  className="nav-link active"
-                  aria-current="page"
+                <p onClick={()=>navigate("/checkout")} style={{ cursor: "pointer"}}
                 >
-                  Til Kassen
-                </Link>
+                Til Kassen
+                </p>
               </li>
               <li className="nav-item">
-                <Link
-                  to="/login"
-                  style={{ textDecoration: "none", color: "black" }}
-                  className="nav-link active"
-                  aria-current="page"
-                >
-                  Login
-                </Link>
+              <p onClick={()=>navigate("/login")} style={{ cursor: "pointer"}}
+            >
+              Login
+            </p>
               </li>
               <li className="nav-item">
-                <Link
-                  to="/admin"
-                  style={{ textDecoration: "none", color: "black" }}
-                  className="nav-link active"
-                  aria-current="page"
-                >
-                  Admin
-                </Link>
+              <p onClick={()=>navigate("/admin")} style={{ cursor: "pointer"}}
+            >
+              Admin
+            </p>
               </li>
             </ul>
             <button

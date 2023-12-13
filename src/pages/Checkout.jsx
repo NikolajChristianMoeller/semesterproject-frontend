@@ -1,9 +1,10 @@
 import ToolBar from "../components/ToolBar";
 import Register from "../components/Register";
 import CheckoutBanner from "../components/CheckoutBanner";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 export default function Checkout({ cart, fillCart, reduceCart, emptyCart }) {
+  const navigate = useNavigate()
   try {
     if (cart.length >= 1) {
       return (
@@ -33,9 +34,9 @@ export default function Checkout({ cart, fillCart, reduceCart, emptyCart }) {
             className="btn btn-outline-primary"
             style={{ margin: "1rem" }}
           >
-            <Link to="/" style={{ textDecoration: "none", color: "black" }}>
+            <p onClick={()=>navigate("/")} style={{ cursor: "pointer"}}>
               Tilbage til butikken
-            </Link>
+            </p>
           </button>
         </div>
       );

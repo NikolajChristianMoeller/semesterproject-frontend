@@ -1,8 +1,9 @@
+import { useNavigate } from "react-router-dom";
 import totalItems from "../services/TotalItems";
 import totalPrice from "../services/TotalPrice";
-import { Link } from "react-router-dom";
 
 export default function Cart({ cart, emptyCart }) {
+  const navigate = useNavigate()
   try {
     return (
       <section className="text-center" style={{ width: "18rem" }}>
@@ -17,12 +18,9 @@ export default function Cart({ cart, emptyCart }) {
         <p>Total: {totalPrice(cart)}kr</p>
         <p>Produkter i Kurv: {totalItems(cart)}</p>
         <button className="btn btn-outline-success">
-          <Link
-            to="../checkout"
-            style={{ textDecoration: "none", color: "black" }}
-          >
+          <p onClick={()=>navigate("/checkout")} style={{ cursor: "pointer"}}>
             Til Kassen 
-          </Link>
+          </p>
         </button>
         <button className="btn btn-outline-danger" onClick={() => emptyCart()}>
           Tøm Kurv

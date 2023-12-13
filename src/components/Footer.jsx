@@ -1,6 +1,7 @@
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 export default function Footer() {
+  const navigate = useNavigate()
   return (
     <footer
       className="container text-center"
@@ -10,21 +11,17 @@ export default function Footer() {
         <div className="col">
           <h5>MIKROHOME</h5>
           <p>
-            <Link
-              to="/about"
-              style={{ textDecoration: "none", color: "black" }}
+            <p onClick={()=>navigate("/about")} style={{ cursor: "pointer"}}
             >
-              Om os{" "}
-            </Link>
+              Om os
+            </p>
           </p>
 
           <p>
-            <Link
-              to="/contact"
-              style={{ textDecoration: "none", color: "black" }}
+          <p onClick={()=>navigate("/contact")} style={{ cursor: "pointer"}}
             >
               Kontakt
-            </Link>{" "}
+            </p>
           </p>
           <p>Info</p>
         </div>
@@ -33,12 +30,10 @@ export default function Footer() {
           <h5>FORHANDLER</h5>
           <p>Bliv forhandler</p>
           <p>Billedbank</p>
-          <Link
-            to="/policies"
-            style={{ textDecoration: "none", color: "black" }}
-          >
-            Handelsbetingelser
-          </Link>
+          <p onClick={()=>navigate("/policies")} style={{ cursor: "pointer"}}
+            >
+              Handelsbetingelser
+            </p>
         </div>
 
         <div className="col">
