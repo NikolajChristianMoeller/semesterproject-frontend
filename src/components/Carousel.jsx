@@ -25,50 +25,52 @@ export default function Carousel() {
           data-bs-slide-to="2"
           aria-label="Slide 3"
         ></button>
-        <button
+        {/* <button
           type="button"
           data-bs-target="#carousel"
           data-bs-slide-to="3"
           aria-label="Slide 4"
-        ></button>
+        ></button> */}
       </div>
       <div className="carousel-inner">
         <div className="carousel-item active">
           <img
-            src="https://semesterprojekt.blob.core.windows.net/images/images/homepage/IMG_20220906_183940_720x.jpg"
+            src="https://semesterprojekt.blob.core.windows.net/images/images/homepage/4501255-11_900x.jpg"
             className="d-block w-100 object-fit-cover"
             alt="..."
           />
           <div className="carousel-caption d-none d-md-block bg-dark bg-opacity-25 rounded-pill">
-            <h4>Sennep Kollektion</h4>
+            <h4>INDRETNING MED BALIVIBES</h4>
             <p>
-              En kollektion af ting du ikke kan se at der er spildt sennep på.
+              Behøver man at rejse sydpå eller tage i spa for at få en fornyet omgivelserne? Gør det derhjemme!
             </p>
           </div>
         </div>
         <div className="carousel-item">
           <img
-            src="https://semesterprojekt.blob.core.windows.net/images/images/homepage/to_skaller_og_mig_13.jpg"
+            src="https://semesterprojekt.blob.core.windows.net/images/images/homepage/2101455-11_900x.jpg"
             className="d-block w-100 object-fit-cover"
             alt="..."
           />
           <div className="carousel-caption d-none d-md-block bg-dark bg-opacity-25 rounded-pill">
-            <h4>Beach Kollektion</h4>
-            <p>Some representative placeholder content for the third slide.</p>
+            <h4>PUFS</h4>
+            <p>Er du vild med pufs? Mangler du et lille spark i din indretning af stuen? Vi har et lækkert udvalg lige her på shoppen:</p>
           </div>
         </div>
         <div className="carousel-item">
           <img
-            src="https://semesterprojekt.blob.core.windows.net/images/images/homepage/profil10_spejlvendt_1800x.jpg"
+            src="https://semesterprojekt.blob.core.windows.net/images/images/homepage/2201030-0_900x.jpg"
             className="d-block w-100 object-fit-cover"
             alt="..."
           />
           <div className="carousel-caption d-none d-md-block bg-dark bg-opacity-25 rounded-pill">
-            <h4>Ketchup Kollektion</h4>
-            <p>Kollektionen til kun de største Heinz fans.</p>
+            <h4>SIMPEL INDRETNING</h4>
+            <p>Hvis du er til en lidt mere simpel indretning kan du her se et udvalg der passer dertil.
+
+            </p>
           </div>
         </div>
-        <div className="carousel-item">
+        {/* <div className="carousel-item">
           <img
             src="https://semesterprojekt.blob.core.windows.net/images/images/homepage/droemmefanger_profil_2.jpg"
             className="d-block w-100 object-fit-cover"
@@ -78,7 +80,7 @@ export default function Carousel() {
             <h4>Mayo Kollektion</h4>
             <p>Udforsk de mange forskellige nuancer af mayonnaise.</p>
           </div>
-        </div>
+        </div> */}
       </div>
       <button
         className="carousel-control-prev"
