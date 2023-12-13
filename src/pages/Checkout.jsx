@@ -34,7 +34,7 @@ export default function Checkout({ cart, fillCart, reduceCart, emptyCart }) {
             className="btn btn-outline-primary"
             style={{ margin: "1rem" }}
           >
-            <p onClick={()=>navigate("/")} style={{ cursor: "pointer"}}>
+            <p onClick={()=>navigate("../")} style={{ cursor: "pointer"}}>
               Tilbage til butikken
             </p>
           </button>
