@@ -1,5 +1,3 @@
-/* eslint-disable react/prop-types */
-
 export default function UpdateForm({
   updateTarget,
   handleUpdate,
@@ -61,6 +59,7 @@ export default function UpdateForm({
       Colors: newColors,
       Collections: newCollections,
       Categories: newCategories,
+      Images:event.target.productImage.value
     };
 
     const res = await handleUpdate(product, "products");
@@ -69,7 +68,7 @@ export default function UpdateForm({
     }
 
   };
-
+  
   return (
     <div
       className="modal"
@@ -133,9 +132,13 @@ export default function UpdateForm({
                   defaultValue={updateTarget.Description}
                 />
               </div>
+              <div className="row">
+                    <label htmlFor="productImage" className="form-label">Image link</label>
+                    <input type="url" className="form-control" id="productImage" defaultValue={updateTarget.Images}/>
 
+              </div>
               <div className="row mx-auto">
-                <fieldset className="col">
+                <fieldset className="col" id="collections-checkbox">
                   <legend>
                     Collection
                   </legend>
@@ -148,7 +151,7 @@ export default function UpdateForm({
                         </div>
                         ))}                    
                 </fieldset>
-                <fieldset className="col">
+                <fieldset className="col"  id="colors-checkbox">
                 <legend>
                     Colors
                   </legend>
@@ -165,7 +168,7 @@ export default function UpdateForm({
                         </div>
                         ))}                  
                 </fieldset>
-                <fieldset className="col">
+                <fieldset className="col"  id="category-checkbox">
                 <legend>
                     Categories
                   </legend>

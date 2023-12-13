@@ -52,6 +52,7 @@ export default function CreateProduct({handleCreate, createOptionClick, collecti
           Price: event.target.productPrice.value,
           Description: event.target.productDescription.value,
           Stock: 0,
+          Images: event.target.productImage.value,
           Colors: newColors,
           Collections: newCollections,
           Categories: newCategories
@@ -86,6 +87,11 @@ export default function CreateProduct({handleCreate, createOptionClick, collecti
                 <div className="row">
                     <label htmlFor="productDescription" className="form-label">Description</label>
                     <textarea type="text" className="form-control" id="productDescription" rows="6" />
+
+              </div>
+              <div className="row">
+                    <label htmlFor="productImage" className="form-label">Image link</label>
+                    <input type="url" className="form-control" id="productImage" />
 
               </div>
                 <div className="row mx-auto">
