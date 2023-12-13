@@ -229,15 +229,15 @@ export default function Admin({ cart, emptyCart }) {
           case (type = "colors"):
             loadColors();
             showFeedback(res, "create");
-            break;
+            return res;
           case (type = "collections"):
             loadCollections();
             showFeedback(res, "create");
-            break;
+            return res;
           case (type = "categories"):
             loadCategories();
             showFeedback(res, "create");
-            break;
+            return res;
           case (type = "products"):
             loadProducts();
             showFeedback(res, "create");

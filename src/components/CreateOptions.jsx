@@ -53,7 +53,8 @@ export default function CreateOptions({form, handleCreate}){
             document.querySelector("#alert-success").classList.remove("hidden");
             setTimeout(()=>{
                 document.querySelector("#alert-success").classList.add("hidden")
-            }, 5000)        }else{
+            }, 5000)       
+         }else{
             document.querySelector("#alert-error").classList.remove("hidden");
             setTimeout(()=>{
                 document.querySelector("#alert-error").classList.add("hidden")
