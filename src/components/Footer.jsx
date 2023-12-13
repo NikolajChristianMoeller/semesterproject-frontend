@@ -30,7 +30,7 @@ export default function Footer() {
           <h5>FORHANDLER</h5>
           <p>Bliv forhandler</p>
           <p>Billedbank</p>
-          <p onClick={()=>navigate("../policies")} style={{ cursor: "pointer"}}
+          <p onClick={()=>navigate("policies")} style={{ cursor: "pointer"}}
             >
               Handelsbetingelser
             </p>
