@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react"
+import { useCallback, useEffect, useState } from "react"
 import restService from "../services/restService"
 
 export default function OptionsBar({changeSort, changeFilter, handleSearch}){
@@ -8,36 +8,36 @@ export default function OptionsBar({changeSort, changeFilter, handleSearch}){
 
 
 
-    const loadColors = async ()=>{
+    const loadColors = useCallback(async ()=>{
         try {
             const colors = await restService.getAll("colors");
             setColors(colors) 
         } catch (error) {
             console.error("error fetching colors", error);
         }
-    }
+    },[])
 
-    const loadCollections = async ()=>{
+    const loadCollections = useCallback(async ()=>{
       try {
           const collections = await restService.getAll("collections");
           setCollections(collections) 
       } catch (error) {
           console.error("error fetching collections", error);
       }
-    }
+    },[])
 
-    const loadCategories = async ()=>{
+    const loadCategories = useCallback(async ()=>{
       try {
           const categories = await restService.getAll("categories");
           setCategories(categories) 
       } catch (error) {
           console.error("error fetching categories", error);
       }
-    }
+    }, [])
 
-    useEffect(()=> loadColors(), [])
-    useEffect(()=> loadCollections(), [])
-    useEffect(()=> loadCategories(), [])
+    useEffect(()=> {loadColors()}, [loadColors])
+    useEffect(()=> {loadCollections()}, [loadCollections])
+    useEffect(()=> {loadCategories()}, [loadCategories])
 
     return(
         <div className="container mx-auto my-3 w-100">

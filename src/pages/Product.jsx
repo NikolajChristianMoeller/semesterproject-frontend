@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react"
+import { useCallback, useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
 import restService from "../services/restService";
 import ToolBar from "../components/ToolBar";
@@ -14,11 +14,11 @@ export default function Product({cart, emptyCart, fillCart}){
 
 
 
-    useEffect(()=> loadProduct(), [])
+    useEffect(()=> {loadProduct()}, [loadProduct])
   
   
 
-    const loadProduct = async ()=>{
+    const loadProduct = useCallback(async ()=>{
         
         try {
             const data = await restService.getOne(id, "products");
@@ -26,7 +26,7 @@ export default function Product({cart, emptyCart, fillCart}){
         } catch (error) {
             console.error("error fetching", error);
         }
-    }
+    },[id])
 
 async function addReview(review){
     try {

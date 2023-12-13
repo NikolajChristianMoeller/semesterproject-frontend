@@ -10,19 +10,16 @@ export default function Footer() {
       <div className="row">
         <div className="col">
           <h5>MIKROHOME</h5>
-          <p>
-            <p onClick={()=>navigate("../about")} style={{ cursor: "pointer"}}
+            <p onClick={()=>navigate("/about")} style={{ cursor: "pointer"}}
             >
               Om os
             </p>
-          </p>
 
-          <p>
-          <p onClick={()=>navigate("../contact")} style={{ cursor: "pointer"}}
+      
+          <p onClick={()=>navigate("/contact")} style={{ cursor: "pointer"}}
             >
               Kontakt
             </p>
-          </p>
           <p>Info</p>
         </div>
 
@@ -30,7 +27,7 @@ export default function Footer() {
           <h5>FORHANDLER</h5>
           <p>Bliv forhandler</p>
           <p>Billedbank</p>
-          <p onClick={()=>navigate("policies")} style={{ cursor: "pointer"}}
+          <p onClick={()=>navigate("/policies")} style={{ cursor: "pointer"}}
             >
               Handelsbetingelser
             </p>

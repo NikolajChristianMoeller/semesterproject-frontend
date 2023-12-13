@@ -2,7 +2,7 @@ import { useNavigate } from "react-router";
 import ToolBar from "../components/ToolBar";
 import ProductTableAdmin from "../components/ProductTableAdmin";
 import restService from "../services/restService";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import DeleteModal from "../components/DeleteModal";
 import UpdateForm from "../components/UpdateForm";
 import CreateProduct from "../components/CreateProduct";
@@ -41,14 +41,14 @@ export default function Admin({ cart, emptyCart }) {
   //set timeout to wait for the elements to be rendered before initializing the tabs
   // 1ms seems to be enough
 
-  const loadProducts = async () => {
+  const loadProducts = useCallback(async () => {
     try {
       const products = await restService.getAll("products", -1);
       setProducts(products.rows);
     } catch (error) {
       console.error("error fetching", error);
     }
-  };
+  },[]);
 
   const deleteClicked = (item, type) => {
     setDeleteTarget(item);
@@ -258,32 +258,32 @@ export default function Admin({ cart, emptyCart }) {
     setForm(form);
   };
 
-  const loadColors = async () => {
+  const loadColors = useCallback(async () => {
     try {
       const colors = await restService.getAll("colors");
       setColors(colors);
     } catch (error) {
       console.error("error fetching colors", error);
     }
-  };
+  },[]);
 
-  const loadCollections = async () => {
+  const loadCollections = useCallback(async () => {
     try {
       const collections = await restService.getAll("collections", 0);
       setCollections(collections);
     } catch (error) {
       console.error("error fetching collections", error);
     }
-  };
+  },[]);
 
-  const loadCategories = async () => {
+  const loadCategories = useCallback(async () => {
     try {
       const categories = await restService.getAll("categories", 0);
       setCategories(categories);
     } catch (error) {
       console.error("error fetching categories", error);
     }
-  };
+  },[]);
 
   const adjustStock = async (id, stock) => {
     const object = { ID: id, Stock: stock };
@@ -297,10 +297,10 @@ export default function Admin({ cart, emptyCart }) {
     }
   };
 
-  useEffect(() => loadProducts(), []);
-  useEffect(() => loadColors(), []);
-  useEffect(() => loadCollections(), []);
-  useEffect(() => loadCategories(), []);
+  useEffect(() => {loadProducts()}, [loadProducts]);
+  useEffect(() => {loadColors()}, [loadColors]);
+  useEffect(() => {loadCollections()}, [loadCollections]);
+  useEffect(() => {loadCategories()}, [loadCategories]);
 
   return (
     <div>

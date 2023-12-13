@@ -1,4 +1,4 @@
-import {  useEffect, useState } from 'react'
+import {  useCallback, useEffect, useState } from 'react'
 import ProductGrid from '../components/ProductGrid';
 import ToolBar from '../components/ToolBar';
 import restService from '../services/restService';
@@ -15,7 +15,7 @@ export default function Homepage({fillCart, cart, emptyCart}){
     const [page, setPage] = useState({limit: 0})
 
     
-    const loadProducts = async ()=>{
+    const loadProducts = useCallback(async ()=>{
         try {
             const res = await restService.getAll("products",page.limit, sort, filter);
             setCount(res.count)
@@ -23,9 +23,10 @@ export default function Homepage({fillCart, cart, emptyCart}){
         } catch (error) {
             console.error("error fetching", error);
         }
-    }
+    },[filter, page, sort])
+    
 
-    useEffect(()=> loadProducts(), [])
+    useEffect(()=> {loadProducts()}, [loadProducts])
 
 
 

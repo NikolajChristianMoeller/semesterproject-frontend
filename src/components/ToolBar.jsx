@@ -62,10 +62,10 @@ export default function ToolBar({ cart, emptyCart, handleSearch }) {
         >
           <div className="offcanvas-header">
             <h5 className="offcanvas-title" id="offcanvasNavbarLabel">
-            <h5 onClick={()=>navigate("/")} style={{ cursor: "pointer"}}
+            <span onClick={()=>navigate("/")} style={{ cursor: "pointer"}}
             >
               MikroHome
-            </h5>
+            </span>
             </h5>
             <button
               type="button"
