@@ -90,19 +90,19 @@ export default function ToolBar({ cart, emptyCart, handleSearch }) {
             </form>
             <ul className="navbar-nav justify-content-end flex-grow-1 pe-3">
               <li className="nav-item">
-                <p onClick={()=>navigate("/checkout")} style={{ cursor: "pointer"}}
+                <p onClick={()=>navigate("../checkout")} style={{ cursor: "pointer"}}
                 >
                 Til Kassen
                 </p>
               </li>
               <li className="nav-item">
-              <p onClick={()=>navigate("/login")} style={{ cursor: "pointer"}}
+              <p onClick={()=>navigate("../login")} style={{ cursor: "pointer"}}
             >
               Login
             </p>
               </li>
               <li className="nav-item">
-              <p onClick={()=>navigate("/admin")} style={{ cursor: "pointer"}}
+              <p onClick={()=>navigate("../admin")} style={{ cursor: "pointer"}}
             >
               Admin
             </p>

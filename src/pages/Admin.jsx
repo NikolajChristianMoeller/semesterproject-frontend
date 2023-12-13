@@ -32,7 +32,7 @@ export default function Admin({ cart, emptyCart }) {
 
   const logout = () => {
     sessionStorage.removeItem("authenticated");
-    navigate("/");
+    navigate("../");
   };
 
   setTimeout(() => {
