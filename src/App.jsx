@@ -99,34 +99,34 @@ export default function App() {
     createRoutesFromElements(
             
     <Route path="/">
-    <Route
+      <Route
       index
       element={
-        <HomePage fillCart={fillCart} cart={cart} emptyCart={emptyCart}/>
+      <HomePage fillCart={fillCart} cart={cart} emptyCart={emptyCart}/>
       }
-    />
-    <Route
+      />
+      <Route
       path="/checkout"
       element={
-        <Checkout
-          cart={cart}
-          fillCart={fillCart}
-          reduceCart={reduceCart}
-          emptyCart={emptyCart}
-        />
-      }
-    />
-    <Route element={<AdminAuth />}>
-      <Route
-        path="/admin"
-        element={<Admin cart={cart} emptyCart={emptyCart} />}
+      <Checkout
+      cart={cart}
+      fillCart={fillCart}
+      reduceCart={reduceCart}
+      emptyCart={emptyCart}
       />
-    </Route>
-    <Route
+      }
+      />
+      <Route element={<AdminAuth />}>
+      <Route
+      path="/admin"
+      element={<Admin cart={cart} emptyCart={emptyCart} />}
+      />
+      </Route>
+      <Route
       path="login"
       element={<Login cart={cart} emptyCart={emptyCart} />}
-    />
-    <Route path="/product/:id" element={<Product cart={cart} emptyCart={emptyCart} fillCart={fillCart}/>} />
+      />
+      <Route path="/product/:id" element={<Product cart={cart} emptyCart={emptyCart} fillCart={fillCart}/>} />
       <Route path="/contact" element={<Contactpage cart={cart} emptyCart={emptyCart}/>} />
       <Route path="/about" element={<Aboutpage cart={cart} emptyCart={emptyCart}/>}/>
       <Route path="/policies" element={<Policiespage cart={cart} emptyCart={emptyCart}/>}/>
