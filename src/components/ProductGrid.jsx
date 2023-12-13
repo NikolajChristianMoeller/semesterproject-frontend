@@ -15,7 +15,7 @@ export default function ProductGrid({ products, fillCart }) {
                   src={product.Images}
                   className="card-img-top"
                   onClick={() => navigate("./product" + product.ID)}
-                  style={{ cursor: "pointer" }}
+                  style={{ cursor: "pointer", height: "300px" }}
                 />
                 <p className="card-header" style={{ height: "8vh" }}>
                   {product.Name}
