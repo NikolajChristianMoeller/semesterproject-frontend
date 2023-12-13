@@ -14,10 +14,9 @@ export default function Product({cart, emptyCart, fillCart}){
 
 
 
-    useEffect(()=> {loadProduct()}, [loadProduct])
-  
-  
-
+    
+    
+    
     const loadProduct = useCallback(async ()=>{
         
         try {
@@ -27,22 +26,24 @@ export default function Product({cart, emptyCart, fillCart}){
             console.error("error fetching", error);
         }
     },[id])
-
-async function addReview(review){
-    try {
-        const response = await restService.create(review,"reviews");
-        if(response){
-            loadProduct();
-        } else{
-            throw new Error("Error adding review")
+    
+    async function addReview(review){
+        try {
+            const response = await restService.create(review,"reviews");
+            if(response){
+                loadProduct();
+            } else{
+                throw new Error("Error adding review")
+            }
+            
+        } catch (error) {
+            console.error("error adding review", error)
         }
-        
-    } catch (error) {
-        console.error("error adding review", error)
     }
-}
+    
+    useEffect(()=> {loadProduct()}, [loadProduct])
 
-try {
+    try {
         return(
             <div id="productview">
                 <ToolBar cart={cart} emptyCart={emptyCart}/>
