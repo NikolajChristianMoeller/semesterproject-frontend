@@ -25,7 +25,7 @@ export default function Homepage({fillCart, cart, emptyCart}){
         }
     }
 
-    useEffect(()=> loadProducts, [])
+    useEffect(()=> loadProducts(), [])
 
 
 

@@ -1,11 +1,12 @@
 import ToolBar from "../components/ToolBar";
 import Register from "../components/Register";
 import CheckoutBanner from "../components/CheckoutBanner";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import restService from "../services/restService";
 import Feedback from "../components/Feedback";
 
 export default function Checkout({ cart, fillCart, reduceCart, emptyCart }) {
+  const navigate = useNavigate()
 
   const handleOrder = async (event)=>{
     event.preventDefault();

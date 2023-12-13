@@ -14,7 +14,7 @@ export default function Product({cart, emptyCart, fillCart}){
 
 
 
-    useEffect(()=> loadProduct, [])
+    useEffect(()=> loadProduct(), [])
   
   
 
@@ -48,7 +48,7 @@ try {
                 <ToolBar cart={cart} emptyCart={emptyCart}/>
                 <div className="container mx-0 " >
                     <div className="row">
-                         <img src="/vite.svg" className="img-fluid col-sm-6  "/>
+                         <img src={product.Images} className="img-fluid col-sm-6  "/>
                         <div className="col-sm-6 text-start">
                            
                             <h3 className="ms-0">{product.Name}</h3>
