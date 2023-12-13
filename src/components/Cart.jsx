@@ -17,10 +17,8 @@ export default function Cart({ cart, emptyCart }) {
         </ul>
         <p>Total: {totalPrice(cart)}kr</p>
         <p>Produkter i Kurv: {totalItems(cart)}</p>
-        <button className="btn btn-outline-success">
-          <p onClick={()=>navigate("/checkout")} style={{ cursor: "pointer"}}>
-            Til Kassen 
-          </p>
+        <button className="btn btn-outline-success" onClick={()=>navigate("/checkout")} style={{ cursor: "pointer"}}>
+            Til Kassen
         </button>
         <button className="btn btn-outline-danger" onClick={() => emptyCart()}>
           Tøm Kurv
