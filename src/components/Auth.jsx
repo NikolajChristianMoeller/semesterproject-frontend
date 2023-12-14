@@ -35,8 +35,6 @@ export default function Auth(){
                 Incorrect username or password!
             </div>
             </form>
-
-            <p>User: Jane, Password: testpassword</p>
         </div>
     )
 }

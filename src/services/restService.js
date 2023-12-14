@@ -4,21 +4,29 @@ import Collection from "../models/collection";
 import Category from "../models/category";
 
 class RestService {
-  endpoint = "https://semesterprojekt-server.azurewebsites.net";
+  // endpoint = "https://semesterprojekt-server.azurewebsites.net";
+  endpoint = "http://localhost:3000";
+
 
   async getAll(type, page, sort, filter) {
-    const pageSize = page < 0 ? 100 : 20;
-    const offSet = page <= 0 ? 0 : page;
+    let pageSize
+    let offSet
     try {
       let res;
       if (filter) {
+        pageSize = page < 0 ? 100 : 20;
+        offSet = page <= 0 ? 0 : page;
         res = await fetch(
           `${this.endpoint}/${type}?offSet=${offSet}&limit=${pageSize}&sortBy=${sort.sortBy}&sortDir=${sort.sortDir}&filterBy=${filter.filterBy}&filterValue=${filter.filterValue}`
         );
-      } else {
+      } else if(page){
+        pageSize = page < 0 ? 100 : 20;
+        offSet = page <= 0 ? 0 : page;
         res = await fetch(
           `${this.endpoint}/${type}?offSet=${offSet}&limit=${pageSize}&sortBy=ID&sortDir=DESC`
         );
+      }else{
+        res = await fetch(`${this.endpoint}/${type}`)
       }
       const data = await res.json();
       switch (type) {
