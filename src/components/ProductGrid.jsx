@@ -1,6 +1,4 @@
 import { useNavigate } from "react-router-dom";
-
-/* eslint-disable react/prop-types */
 export default function ProductGrid({ products, fillCart }) {
   const navigate = useNavigate();
 
