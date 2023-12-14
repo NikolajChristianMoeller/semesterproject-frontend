@@ -1,10 +1,14 @@
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 
+
+//TODO: consider adding timeout for login cred to expire
 export default function Auth(){
     const navigate = useNavigate();
     const [username, setusername] = useState("");
     const [password, setpassword] = useState("");
+
+  //should be an encrypted table of users and passwords in the future
     const users = [{ username: "Jane", password: "testpassword" }];
     
     const handleSubmit = (e) => {
@@ -17,6 +21,8 @@ export default function Auth(){
         document.getElementById("alert").classList.remove("hidden");
       }
     }
+
+
     return (
         <div>
             <h2 className="text-center">Login</h2>
