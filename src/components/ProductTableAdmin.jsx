@@ -83,6 +83,7 @@ export default function ProductTableAdmin({ products, deleteClicked, updateClick
                 data-bs-target="#update-modal"
                 onClick={() => updateClicked(product, "products")}
               >
+                Update
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="16"
