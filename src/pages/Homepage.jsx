@@ -47,7 +47,7 @@ export default function Homepage({fillCart, cart, emptyCart}){
     const handleSearch = (event)=>{
         event.preventDefault();
         filter.filterBy = "Search";
-        filter.filterValue = event.target.search.value
+        filter.filterValue = event.target.search.value.trim()
         setFilter(filter)
         event.target.reset();
         loadProducts();
