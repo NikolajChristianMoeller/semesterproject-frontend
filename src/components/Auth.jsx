@@ -1,8 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 
-
-//TODO: consider adding timeout for login cred to expire
 export default function Auth(){
     const navigate = useNavigate();
     const [username, setusername] = useState("");

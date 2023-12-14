@@ -83,7 +83,6 @@ export default function Product({cart, emptyCart, fillCart}){
     } catch (error) {
         return(
             <div>
-                <p>Oops, we couldn't find what you were looking for. Please try again.</p>
             </div>
         )
     }

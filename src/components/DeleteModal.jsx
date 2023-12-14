@@ -1,5 +1,3 @@
-//TODO: add feedback before closing!!
-
 export default function DeleteModal({deleteTarget, handleDelete}){
     return(
        <div className="modal fade" id="delete-modal" tabIndex="-1" data-bs-keyboard="false">

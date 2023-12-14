@@ -1,6 +1,3 @@
-// todo: add links to collections or whatnot that are displayed on the carousel
-// todo: find solution warping on slim aspects
-
 export default function Carousel() {
   return (
     <div id="carousel" className="carousel slide" data-bs-ride="carousel">

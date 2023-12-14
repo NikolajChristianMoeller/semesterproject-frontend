@@ -108,11 +108,3 @@ export default function OptionsBar({changeSort, changeFilter, handleSearch}){
     )
 
 }
-
-
-{/* <select className="form-select w-25 col mx-2" defaultValue={"undefined"} onChange={(event)=>changeSort(event.target.value)}>
-<option value={"undefined"} disabled>Sorter efter</option>
-<option value="Name">Navn</option>
-<option value="Price">Pris</option>
-<option value="ID">Nyeste/Ældste</option>
-</select> */}

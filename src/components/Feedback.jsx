@@ -10,8 +10,6 @@ export default function Feedback(){
                             <p>Error completing operation, please try again later!</p>
                         </div>
 
-
-
 {/*Delete Feedback*/}
           <div className="alert alert-success hidden" role="alert" id="feedback-delete-success">
                                 <p>Delete completed successfully!</p>
@@ -40,19 +38,6 @@ export default function Feedback(){
 <div className="alert alert-warning hidden" role="alert" id="feedback-update-error">
                             <p>Error updating item, please try again later!</p>
                         </div>
-
-
-
-
-
      </div>
-
-
-
-
-
-
-
-
     )
 }

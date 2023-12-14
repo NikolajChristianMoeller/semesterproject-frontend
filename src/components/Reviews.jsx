@@ -20,17 +20,12 @@ for (let index = 0; index < rating; index++) {
 return starsList.reverse()
 }
 
-
-
-
 function handleClick(event){
     const form = document.querySelector("#review-form");
 
     form.classList.remove("hidden");
 
     event.target.classList.add("hidden");
-
-
 }
 
 function handleSubmit(event){
@@ -53,8 +48,6 @@ addReview(review)
 
   form.reset()
 }
-
-
 
     if( product.Reviews!==undefined){
     return(
@@ -87,19 +80,8 @@ addReview(review)
                     <div className="card-text">{review.Text}</div>
                     
                             </div>
-                    
-                   
-                    
                 </div>
-            ))}
-        
-        
-        
-        
+            ))}      
         </div>
-
-        
-
-    )
-}
+    )}
 }
