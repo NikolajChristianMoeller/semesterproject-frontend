@@ -75,7 +75,7 @@ export default function Footer() {
         </div>
       </div>
 
-      <p>
+      <p className="mt-3 px-5">
         Formålet med Mikrohome er at give dig indsigt og inspiration til at
         indrette efter dine følelser og opnå en oplevelse af bedst muligt
         velvære i dit hjem og dine omgivelser. For mig er det vigtigt at du
