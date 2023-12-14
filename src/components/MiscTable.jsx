@@ -21,12 +21,16 @@ export default function MiscTable({ objects, deleteClicked, table, handleUpdate 
       const colorPicker = document.getElementById(object.Name+"-picker");
       if(input.disabled){
         event.target.textContent = "Cancel"
+        event.target.classList.remove("btn-info")
+        event.target.classList.add("btn-secondary")
         input.disabled = false;
         colorPicker.disabled = false;
         input.classList.remove("transparent-input")
         submit.classList.remove("hidden")
       } else {
         event.target.textContent = "Update"
+        event.target.classList.remove("btn-secondary")
+        event.target.classList.add("btn-info")
         input.disabled = true;
         colorPicker.disabled = true;
         input.classList.add("transparent-input")
@@ -35,11 +39,15 @@ export default function MiscTable({ objects, deleteClicked, table, handleUpdate 
     }else{
       if(input.disabled){
         event.target.textContent = "Cancel"
+        event.target.classList.remove("btn-info")
+        event.target.classList.add("btn-secondary")
         input.disabled = false;
         input.classList.remove("transparent-input")
         submit.classList.remove("hidden")
       } else {
         event.target.textContent = "Update"
+        event.target.classList.remove("btn-secondary")
+        event.target.classList.add("btn-info")
         input.disabled = true;
         input.classList.add("transparent-input")
         submit.classList.add("hidden")
