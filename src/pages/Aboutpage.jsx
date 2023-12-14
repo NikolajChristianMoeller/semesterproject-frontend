@@ -2,7 +2,7 @@ import ToolBar from "../components/ToolBar"
 import Footer from "../components/Footer"
 import About from "../components/About"
 
-export default function Contactpage({cart, emptyCart}){
+export default function Aboutpage({cart, emptyCart}){
     try{
         return(
             <div>
