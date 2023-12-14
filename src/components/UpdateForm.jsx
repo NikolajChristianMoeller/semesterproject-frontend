@@ -87,7 +87,7 @@ export default function UpdateForm({
             <button
               id="update-close"
               type="button"
-              className="btn-close"
+              className="btn-close me-3"
               data-bs-dismiss="modal"
               aria-label="Close"
             ></button>

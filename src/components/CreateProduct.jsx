@@ -70,7 +70,7 @@ export default function CreateProduct({handleCreate, createOptionClick, collecti
           <div className="modal-content">
             <div className="modal-header">
               <h1 className="modal-title fs-5" id="create-modal-label">Create new product</h1>
-              <button id="close-create" type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              <button id="close-create" type="button" className="btn-close me-3" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div className="modal-body container">
             <form id="create-product-form" className="row"  onSubmit={(event)=>handleSubmit(event)}>

@@ -69,7 +69,7 @@ export default function CreateOptions({form, handleCreate}){
             <div className="modal-content">
                 <div className="modal-header">
                     <h1 className="modal-title fs-5" id="create-color-modal-head">Create Product</h1>
-                    <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <button type="button" className="btn-close me-3" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                         <div className="alert alert-success hidden" role="alert" id="alert-success">
                                 <p>Operation completed successfully!</p>
