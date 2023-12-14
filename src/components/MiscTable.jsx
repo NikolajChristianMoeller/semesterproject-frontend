@@ -12,18 +12,21 @@ export default function MiscTable({ objects, deleteClicked, table, handleUpdate 
     }
   }
 
-  const handleEdit = (object)=>{
+  const handleEdit = (event, object)=>{
     const input = document.getElementById(object.Name+"-input");
     const submit = document.getElementById(object.Name+"-submit");
+
 
     if(table === "colors"){
       const colorPicker = document.getElementById(object.Name+"-picker");
       if(input.disabled){
+        event.target.textContent = "Cancel"
         input.disabled = false;
         colorPicker.disabled = false;
         input.classList.remove("transparent-input")
         submit.classList.remove("hidden")
       } else {
+        event.target.textContent = "Update"
         input.disabled = true;
         colorPicker.disabled = true;
         input.classList.add("transparent-input")
@@ -31,10 +34,12 @@ export default function MiscTable({ objects, deleteClicked, table, handleUpdate 
       }
     }else{
       if(input.disabled){
+        event.target.textContent = "Cancel"
         input.disabled = false;
         input.classList.remove("transparent-input")
         submit.classList.remove("hidden")
       } else {
+        event.target.textContent = "Update"
         input.disabled = true;
         input.classList.add("transparent-input")
         submit.classList.add("hidden")
@@ -97,7 +102,7 @@ export default function MiscTable({ objects, deleteClicked, table, handleUpdate 
                 <button
                   className="btn btn-info ms-2 "
                   type="button"
-                  onClick={() => handleEdit(object)}
+                  onClick={(event) => handleEdit(event, object)}
                 >
                   Update 
                   {/* <svg
