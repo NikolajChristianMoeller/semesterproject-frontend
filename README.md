@@ -1,13 +1,55 @@
-# React + Vite
+Semesterprojekt Frontend
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Link to deployed backend:
 
-Currently, two official plugins are available:
+# https://semesterprojekt-server.azurewebsites.net/
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Link to backend repo:
 
+# https://github.com/JaDetGodtDu/Semesterprojekt_BACKEND
 
-# Credentials for testing:
-User: Jane 
-Password: testpassword
+Link to deployed frontend:
+
+# https://semesterprojekt-frontend.vercel.app/
+
+Admin login credentials:
+
+# username: Jane
+
+# password: testpassword
+
+Installation:
+
+First off download and install our backend server and set it up with a database. See the link above. The readme there, will run you through installation.
+
+To run this app locally:
+
+       1 - Clone the project and open it in your preferred code editor.
+
+       2 - In your terminal, navigate to the project folder.
+
+       3 - While in the project folder, in your terminal, run the following command  to install the necessary dependencies.
+
+                npm install
+
+       4 - While in the project folder, in your terminal, run the following commands to start the server locally.
+
+           4.1 - To run the app in development mode, run the following command:
+
+                npm run dev
+
+           4.2 - To run the app in production mode, run the following commands:
+
+                npm run build
+
+                npm run preview
+
+            4.3 - To acces the frontend, click the link given in the terminal.
+
+                For development mode: http://localhost:5173
+
+                For production mode: http://localhost:4173
+
+        5 - Now connect to your local backend-server with your endpoint, set in the restService.js file in the services folder. - or you can connect to our online server, as written in the link above.
+
+        6 - Have fun!
