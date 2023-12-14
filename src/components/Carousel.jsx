@@ -25,12 +25,6 @@ export default function Carousel() {
           data-bs-slide-to="2"
           aria-label="Slide 3"
         ></button>
-        {/* <button
-          type="button"
-          data-bs-target="#carousel"
-          data-bs-slide-to="3"
-          aria-label="Slide 4"
-        ></button> */}
       </div>
       <div className="carousel-inner">
         <div className="carousel-item active">
@@ -54,7 +48,7 @@ export default function Carousel() {
           />
           <div className="carousel-caption d-none d-md-block bg-dark bg-opacity-25 rounded-pill">
             <h4>PUFS</h4>
-            <p>Er du vild med pufs? Mangler du et lille spark i din indretning af stuen? Vi har et lækkert udvalg lige her på shoppen:</p>
+            <p>Er du vild med pufs? Mangler du et lille spark i din indretning af stuen? Vi har et lækkert udvalg lige her på shoppen.</p>
           </div>
         </div>
         <div className="carousel-item">
@@ -70,17 +64,6 @@ export default function Carousel() {
             </p>
           </div>
         </div>
-        {/* <div className="carousel-item">
-          <img
-            src="https://semesterprojekt.blob.core.windows.net/images/images/homepage/droemmefanger_profil_2.jpg"
-            className="d-block w-100 object-fit-cover"
-            alt="..."
-          />
-          <div className="carousel-caption d-none d-md-block bg-dark bg-opacity-25 rounded-pill">
-            <h4>Mayo Kollektion</h4>
-            <p>Udforsk de mange forskellige nuancer af mayonnaise.</p>
-          </div>
-        </div> */}
       </div>
       <button
         className="carousel-control-prev"
