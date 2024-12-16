@@ -1,28 +1,27 @@
-Semesterprojekt Frontend
+# 2nd Semester Project: Frontend
 
-Link to deployed backend:
+## Link to deployed backend
 
-# https://semesterprojekt-server.azurewebsites.net/
+https://semesterprojekt-server.azurewebsites.net/
 
-Link to backend repo:
+## Link to backend repo
 
-# https://github.com/JaDetGodtDu/Semesterprojekt_BACKEND
+https://github.com/JaDetGodtDu/Semesterprojekt_BACKEND
 
-Link to deployed frontend:
+## Link to deployed frontend
 
-# https://semesterprojekt-frontend.vercel.app/
+https://semesterprojekt-frontend.vercel.app/
 
-Admin login credentials:
+## Admin login credentials:
 
-# username: Jane
+- username: Jane
+- password: testpassword
 
-# password: testpassword
+# Installation
 
-Installation:
+Download and install our backend server and set it up with a database. See the link above. The readme there, will run you through the installation process.
 
-First off download and install our backend server and set it up with a database. See the link above. The readme there, will run you through installation.
-
-To run this app locally:
+To run this application on your local machine:
 
        1 - Clone the project and open it in your preferred code editor.
 
