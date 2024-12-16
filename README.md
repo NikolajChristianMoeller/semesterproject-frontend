@@ -1,4 +1,4 @@
-# 2nd Semester Project: Frontend
+# 2nd Semester Project - Frontend
 
 ## Link to deployed backend
 
@@ -12,7 +12,7 @@ https://github.com/JaDetGodtDu/Semesterprojekt_BACKEND
 
 https://semesterprojekt-frontend.vercel.app/
 
-## Admin login credentials:
+## Admin login credentials
 
 - username: Jane
 - password: testpassword
@@ -51,6 +51,6 @@ To run this application on your local machine:
 
         5 - Setup our backend server API locally, it can be accessed through the link above.
 
-        6 - Now connect to your local backend-server with your endpoint, set in the restService.js file in the services folder. - As of now, it is not possible to acces our online API through a local frontend, due to CORS policies.
+        6 - Now connect to your local backend-server with your endpoint, set in the restService.js file in the services folder. As of now, it is not possible to acces our online API through a local frontend, due to CORS policies.
 
-        7 - Have fun!
+        7 - All done!
